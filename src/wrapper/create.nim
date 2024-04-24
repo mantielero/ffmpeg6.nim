@@ -41,11 +41,23 @@ libavutil/
 #   "avcodec.h"
 
 
-# libavutil -----------------
+# libswscale ----------------
 # importc:
-#   outputPath currentSourcePath.parentDir / "libavutil" / "mathematics.nim"
-#   path "/usr/include/libavutil/"
-#   "mathematics.h"
+#   outputPath currentSourcePath.parentDir / "libswscale" / "swscale.nim"
+#   #renameCallback renameCb
+#   path "./FFmpeg"
+#   "libswscale/swscale.h"
+
+# libavutil -----------------
+importc:
+  outputPath currentSourcePath.parentDir / "libavutil" / "mathematics.nim"
+  path "/usr/include/libavutil/"
+  "mathematics.h"
+
+importc:
+  outputPath currentSourcePath.parentDir / "libavutil" / "imgutils.nim"
+  path "./FFmpeg"
+  "libavutil/imgutils.h"
 
 # importc:
 #   outputPath currentSourcePath.parentDir / "libavutil" / "dict.nim"
