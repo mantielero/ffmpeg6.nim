@@ -49,15 +49,15 @@ libavutil/
 #   "libswscale/swscale.h"
 
 # libavutil -----------------
-importc:
-  outputPath currentSourcePath.parentDir / "libavutil" / "mathematics.nim"
-  path "/usr/include/libavutil/"
-  "mathematics.h"
+# importc:
+#   outputPath currentSourcePath.parentDir / "libavutil" / "mathematics.nim"
+#   path "/usr/include/libavutil/"
+#   "mathematics.h"
 
-importc:
-  outputPath currentSourcePath.parentDir / "libavutil" / "imgutils.nim"
-  path "./FFmpeg"
-  "libavutil/imgutils.h"
+# importc:
+#   outputPath currentSourcePath.parentDir / "libavutil" / "imgutils.nim"
+#   path "./FFmpeg"
+#   "libavutil/imgutils.h"
 
 # importc:
 #   outputPath currentSourcePath.parentDir / "libavutil" / "dict.nim"
@@ -89,6 +89,12 @@ importc:
   path "./FFmpeg/libavutil"
   "libavutil/mathematics.h" ]#
 
+# libavcodec -----------------
+importc:
+  outputPath currentSourcePath.parentDir / "libavcodec" / "avcodec.nim"
+  path "./FFmpeg"
+  #path "./FFmpeg/libavutil"
+  "libavcodec/avcodec.h"
 # libavformat----------------
 #[
 importc:

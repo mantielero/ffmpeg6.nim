@@ -30,20 +30,6 @@ proc fillYUVimage( data:array[4,ptr uint8];
 # mplayer -demuxer rawvideo -rawvideo w=800:h=600:format=rgb24 salida.raw -loop 0
 
 
-# proc swsgetcontext*(srcw: cint; srch: cint; srcformat: enumavpixelformat;
-#                     dstw: cint; dsth: cint; dstformat: enumavpixelformat;
-#                     flags: cint; srcfilter: ptr Swsfilter_520094180;
-#                     dstfilter: ptr Swsfilter_520094180; param: ptr cdouble): ptr structswscontext {.
-#     cdecl, importc: "sws_getContext".}
-
-#[
-  avutil.enumavpixelformat: enumavpixelformat
-  imgutils.enumavpixelformat: enumavpixelformat
-  avformat.enumavpixelformat: enumavpixelformat
-  swscale.enumavpixelformat: enumavpixelformat
-
-]#
-
 proc main =
   var srcData, dstData:array[4,ptr uint8] # array[4,ptr uint8]
   var srcLinesize, dstLinesize: array[4, cint]
