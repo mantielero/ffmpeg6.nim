@@ -7,7 +7,11 @@ import wrapper/libavformat/libavformat
 export libavformat
 
 
+import wrapper/libswscale/swscale
+export swscale
 
+import wrapper/libavcodec/avcodec
+export avcodec
 
 # import lib/avutil/[dict]
 # export dict
@@ -15,8 +19,6 @@ export libavformat
 import lib/avformat/[avformat, formatcontext]
 export avformat, formatcontext
 
-import wrapper/libswscale/swscale
-export swscale
+import lib/avcodec/[packet,codec, parser_context]
+export packet,codec,parser_context
 
-import wrapper/libavcodec/avcodec
-export avcodec

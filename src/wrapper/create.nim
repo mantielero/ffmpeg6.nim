@@ -59,6 +59,11 @@ libavutil/
 #   path "./FFmpeg"
 #   "libavutil/imgutils.h"
 
+importc:
+  outputPath currentSourcePath.parentDir / "libavutil" / "timestamp.nim"
+  path "./FFmpeg/libavutil"
+  "libavutil/timestamp.h"
+
 # importc:
 #   outputPath currentSourcePath.parentDir / "libavutil" / "dict.nim"
 #   #path "/usr/include/libavutil/"

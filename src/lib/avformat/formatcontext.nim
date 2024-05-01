@@ -1,6 +1,7 @@
 import ../../wrapper/libavformat/libavformat
 import ../../wrapper/libavutil/dict as d
 import ../avutil/dict
+import std/[strformat]
 
 type
   FormatContextObj* = object
@@ -15,6 +16,11 @@ proc getFormatContext*(fileName:string): FormatContext =
   if ret != 0:
     raise newException(ValueError, "failed getting the FormatContext")
 
+proc openInput*(fileName:string):FormatContext =
+  result = new FormatContext
+  var ret = avformat_open_input(result.handle.addr, fileName.cstring, nil, nil)
+  if ret < 0:
+    raise newException(ValueError, &"Could not open input file '{fileName}'")
 
 proc metadata*(val:FormatContext):Dict =
   result = new Dict
@@ -22,6 +28,20 @@ proc metadata*(val:FormatContext):Dict =
 
   # for k,v in pairs(metadata):
   #   echo k, ": ", v  
+
+proc streamsNumber*(fc:FormatContext):int =
+  fc.handle.nb_streams.int
+
+proc allocOutputContext*(filename:string):FormatContext =
+  result = new FormatContext
+
+  # https://ffmpeg.org/doxygen/trunk/avformat_8h.html#af5930942120e38a4766dc0bb9e4cae74
+  let ret = avformat_alloc_output_context2(result.handle.addr, nil, nil, filename.cstring)
+  if ret < 0:
+    raise newException(ValueError, "negative AVERROR code")    
+  if result.handle == nil:
+    raise newException(ValueError, "could not create output context")
+
 #[
   structavformatcontext_520094281 {.pure, inheritable, bycopy.} = object
     avclass*: ptr Avclass_520094091 ## Generated based on /usr/include/libavformat/avformat.h:1121:16
