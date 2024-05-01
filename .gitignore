@@ -10,3 +10,5 @@ src/wrapper/create
 
 examples/*
 !examples/*.nim
+
+.vscode/*
