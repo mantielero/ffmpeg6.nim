@@ -29,37 +29,6 @@ const
 
 
 type
-  AvCodecObj* = object
-    handle*:ptr avcodec.Avcodec
-
-  AvCodecRef* = ref AvCodecObj
-
-proc findDecoder*(typ:avcodec.enumavcodecid):AvCodecRef =
-  result = new AvCodecRef
-  result.handle = avcodec.avcodec_find_decoder(AV_CODEC_ID_MP2)
-  if result.handle == nil:
-    raise newException(ValueError, "codec not found")
-
-proc id*(val:AvCodecRef):avcodec.enumavcodecid =
-  return val.handle.id
-
-type
-  ParserContextObj* = object
-    handle*:ptr AVCodecParserContext
-
-  ParserContextRef* = ref ParserContextObj
-
-proc `destroy=`*(val:ParserContextObj) =
-  if val.handle != nil:
-    avcodec.av_free(val.handle)
-
-proc newParser(id:avcodec.enumavcodecid):ParserContextRef =
-  result = new ParserContextRef
-  result.handle = av_parser_init(id.cint)
-  if result.handle == nil:
-    raise newException(ValueError, "parser not found")
-
-type
   CodecContextObj* = object
     handle*:ptr AVCodecContext
 
@@ -110,7 +79,7 @@ static int get_format_from_sample_fmt(const char **fmt,
 
 
 proc decode(decCtx: CodecContextRef;
-            pkt: ptr avcodec.AVPacket;
+            pkt: ptr avcodec.c;
             f:FileStream) =
   echo "Start decoding...."
   #if decoded_frame == nil:
