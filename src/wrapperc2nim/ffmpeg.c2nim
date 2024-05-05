@@ -1,0 +1,22 @@
+#ifdef C2NIM
+#def av_const
+#def av_always_inline 
+#def av_pure
+#pp AV_HAVE_BIGENDIAN
+#pp FF_API_OLD_CHANNEL_LAYOUT
+#def FF_API_AVIO_WRITE_NONCONST 0
+#def FF_API_R_FRAME_RATE TRUE
+#def attribute_deprecated
+#def av_warn_unused_result
+#def AV_PIX_FMT_NE
+
+#endif
+
+
+
+#ifdef C2NIM
+#@
+template AV_PIX_FMT_NE*(be, le: untyped):untyped  =
+  `AV_PIX_FMT le`
+@#
+#endif
