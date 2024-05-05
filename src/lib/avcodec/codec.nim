@@ -10,9 +10,17 @@ type
 
 proc findDecoder*(typ:enumavcodecid):AvCodecRef =
   result = new AvCodecRef
-  result.handle = avcodec_find_decoder(AV_CODEC_ID_MP2)
+  result.handle = avcodec_find_decoder(typ)
   if result.handle == nil:
     raise newException(ValueError, "codec not found")
+
+
+proc findEncoder*(typ:enumavcodecid):AvCodecRef =
+  result = new AvCodecRef
+  result.handle = avcodec_find_encoder(typ) # AV_CODEC_ID_MP2
+  if result.handle == nil:
+    raise newException(ValueError, "codec not found")
+
 
 proc id*(val:AvCodecRef):enumavcodecid =
   return val.handle.id
@@ -44,7 +52,7 @@ proc allocContext*(codec: AvCodecRef):CodecContext =
 proc open*(codecContext: CodecContext; codec: AvCodecRef ) = # ; options:ptr ptr dict.Avdictionary = nil
   ## Initialize the AVCodecContext to use the given AVCodec.
   ## https://ffmpeg.org/doxygen/trunk/group__lavc__core.html#ga11f785a188d7d9df71621001465b0f1d
-  echo codecContext.handle.pix_fmt
+  #echo codecContext.handle.pix_fmt
   var ret = avcodec_open2(codecContext.handle, codec.handle, nil)
   if ret < 0:
     raise newException(ValueError, "could not open codec")  

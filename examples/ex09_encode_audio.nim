@@ -1,5 +1,7 @@
 # https://github.com/FFmpeg/FFmpeg/blob/release/6.1/doc/examples/encode_audio.c
 # Generate a synthetic audio signal and encode it to an output MP2 file.
+# cc  -Wall -g   -c -o encode_audio.o encode_audio.c && cc   encode_audio.o  -lavdevice -lavformat -lavfilter -lavcodec -lswresample -lswscale -lavutil  -lm -o encode_audio && ./encode_audio media/deleteme.mp2
+
 import ffmpeg6
 import std/[os,streams,math, posix, strformat]
 
@@ -44,10 +46,6 @@ let
 
 
 
-
-
-
-
 proc checkSampleFmt(codec:AvCodecRef; sampleFmt: enumavsampleformat): bool =
   ## check that a given sample format is supported by the encoder
   # samplefmts*: ptr enumavsampleformat_520094093
@@ -65,19 +63,22 @@ proc selectSampleRate(codec:AvCodecRef): int =
   ## just pick the highest supported samplerate
   #const int *p;
   # codec: structavcodec_520094219 --> supportedsamplerates*: ptr cint
-  echo "Selecting sample rate...."
+  #echo "Selecting sample rate...."
   var p:ptr cint
   var best_samplerate = 0
 
   if codec.handle.supported_samplerates == nil:
-    echo "  DONE: 44100"
+    #echo "  DONE: 44100"
     return 44100
 
+  #var sampleRates = cast[ptr UncheckedArray[cint]](p)
   p = codec.handle.supported_samplerates
-  while p != nil:
-    if (best_samplerate != 0) or (abs(44100 - p[]) < abs(44100 - best_samplerate)):
+  while p[] != 0:
+    #echo "  Sample Rate: ", p[]
+    #echo "  Best Sample Rate: ", best_samplerate
+    if (best_samplerate == 0) or ( abs(44100 - p[]) < abs(44100 - best_samplerate) ):
       best_samplerate = p[]
-      p = cast[ptr cint](cast[int](p) + sizeof(cint))
+    p = cast[ptr cint](cast[int](p) + sizeof(cint))
   
   return best_samplerate
 
@@ -111,7 +112,7 @@ proc selectChannelLayout(codec: AVCodecRef; dst:CodecContext):int = #ptr AVChann
   ## codec: structavcodec_520094219 --> chlayouts*: ptr Avchannellayout_520094091
   ## dst: structavcodeccontext_520094273 --> chlayout*: Avchannellayout_520094091
   #const AVChannelLayout *p, *best_ch_layout;
-  echo "Selecting Channel Layout...."
+  #echo "Selecting Channel Layout...."
   var best_nb_channels = 0
   #echo "  CODEC Channel Layout: ", codec.handle.ch_layouts[]  # chlayouts*: ptr Avchannellayout_520094091
   #echo "  DEST Channel layout: ", dst.handle.ch_layout # Es un objeto
@@ -129,7 +130,7 @@ proc selectChannelLayout(codec: AVCodecRef; dst:CodecContext):int = #ptr AVChann
   var p:ptr AVChannelLayout = codec.handle.ch_layouts
   var best_ch_layout:ptr AVChannelLayout
   while p.nb_channels > 0:
-    echo "  Number of channels: ", p.nb_channels
+    #echo "  Number of channels: ", p.nb_channels
     var nb_channels = p.nb_channels
 
     if nb_channels > best_nb_channels:
@@ -137,12 +138,12 @@ proc selectChannelLayout(codec: AVCodecRef; dst:CodecContext):int = #ptr AVChann
       best_nb_channels = nb_channels
   
     p = cast[ptr Avchannellayout](cast[int](p) + sizeof(Avchannellayout))
-  echo "  DONE2"  
+  #echo "  DONE2"  
   return av_channel_layout_copy(dst.handle.ch_layout.addr, best_ch_layout)
 
 proc main =
   let outFilename = "media/outfile.mp2"
-  let codec = findDecoder(AV_CODEC_ID_MP2) 
+  let codec = findEncoder(AV_CODEC_ID_MP2) 
   var c = allocContext(codec)
   c.handle.bit_rate = 64000  # put sample parameters 
 
@@ -157,7 +158,6 @@ proc main =
   c.handle.sample_rate = selectSampleRate(codec).cint
 
 
-  # <<<----------
   var ret = selectChannelLayout(codec, c) #.handle.ch_layout.addr)
   if (ret < 0):
     quit(QuitFailure)
@@ -165,22 +165,22 @@ proc main =
 
   # open it
   open(c,codec)
-
+  #echo "CodecContext - frame size: ", c.handle.frame_size.int
   # Open File for writting
   let outFile = newFileStream(outFilename, fmWrite)
 
 
   # packet for holding encoded output
   let pkt = newPacket()
-  echo "CodecContext - frame size: ", c.handle.frame_size
+
   # frame containing input raw audio
   var frame = newFrame()
   frame.handle.nb_samples = c.handle.frame_size
-  echo "Frame size: ", c.handle.frame_size
+  #echo "Frame size: ", c.handle.frame_size
   frame.handle.format     = c.handle.sample_fmt.cint
-  echo "Sample format: ", c.handle.sample_fmt.cint
+  #echo "Sample format: ", c.handle.sample_fmt.cint
   ret = av_channel_layout_copy(frame.handle.ch_layout.addr, c.handle.ch_layout.addr)
-  echo "Channel layout copied: ", ret
+  #echo "Channel layout copied: ", ret
   if (ret < 0):
     quit(QuitFailure)
 
