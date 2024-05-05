@@ -1,4 +1,6 @@
-import ../../wrapper/libavformat/libavformat
+#import ../../wrapper/libavformat/libavformat
+#import ../../wrapperc2nim/libavformat
+import ../../wrapperFuthark/libav
 import formatcontext
 
 

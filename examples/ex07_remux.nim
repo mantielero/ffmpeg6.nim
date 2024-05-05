@@ -32,7 +32,7 @@ proc isFinite*(val:float):bool =
     return true
   return false
 
-proc toTime*[T:SomeInteger](time:T; timeBase:avutil.AvRational):float =
+proc toTime*[T:SomeInteger](time:T; timeBase:AvRational):float =
   return timeBase.num / timeBase.den * time.float
 
 
@@ -55,7 +55,7 @@ proc log_packet(fmtCtx:FormatContext; pkt:PacketRef; tag:string) =
   var num = tmp2.time_base.num
   var den = tmp2.time_base.den
   echo " ok 2"
-  var timeBase = cast[avutil.AvRational](streams[pkt.handle.stream_index].time_base)
+  var timeBase = cast[AvRational](streams[pkt.handle.stream_index].time_base)
   #echo timeBase.den
   #echo timeBase.num
   #let timeBaseFloat = timeBase.num / timeBase.den
@@ -197,7 +197,7 @@ proc main =
     raise newException(ValueError, "Error occurred when opening output file")
 
   while true:
-    var ret = av_read_frame(formatContext.handle, cast[ptr avformat.AvPacket](pkt.handle))
+    var ret = av_read_frame(formatContext.handle, cast[ptr AvPacket](pkt.handle))
     if ret < 0:
       break
 
@@ -219,12 +219,12 @@ proc main =
     # copy packet
     # https://ffmpeg.org/doxygen/trunk/group__lavc__packet.html#gae5c86e4d93f6e7aa62ef2c60763ea67e
     # av_packet_rescale_ts(pkt, in_stream->time_base, out_stream->time_base);
-    av_packet_rescale_ts(cast[ptr avformat.AvPacket](pkt.handle), 
+    av_packet_rescale_ts(cast[ptr AvPacket](pkt.handle), 
                          inStream.time_base, outStream.time_base);
     pkt.handle.pos = -1
     #log_packet(outFmtCtx.handle, pkt.handle, "out".cstring)
 
-    ret = av_interleaved_write_frame(outFmtCtx.handle, cast[ptr avformat.AvPacket](pkt.handle))
+    ret = av_interleaved_write_frame(outFmtCtx.handle, cast[ptr AvPacket](pkt.handle))
     # pkt is now blank (av_interleaved_write_frame() takes ownership of
     # its contents and resets pkt), so that no unreferencing is necessary.
     # This would be different if one used av_write_frame(). */

@@ -36,8 +36,8 @@ proc main =
   var srcW = 320
   var srcH = 240
   var dstW, dstH: int
-  var srcPixFmt:swscale.enumavpixelformat = Avpixfmtyuv420p # AVPixelFormat
-  var dstPixFmt:swscale.enumavpixelformat = Avpixfmtrgb24   # AVPixelFormat
+  var srcPixFmt:enumavpixelformat = Avpixfmtyuv420p # AVPixelFormat
+  var dstPixFmt:enumavpixelformat = Avpixfmtrgb24   # AVPixelFormat
 
   let dstSize = "800x600"
   let dstFilename = "salida.raw"
@@ -57,12 +57,12 @@ proc main =
   # allocate source and destination image buffers
   # https://ffmpeg.org/doxygen/trunk/group__lavu__picture.html#ga841e0a89a642e24141af1918a2c10448
   var ret = av_image_alloc( srcData, srcLinesize,
-                            srcW.cint, srcH.cint, imgutils.enumavpixelformat(srcPixFmt), 16)
+                            srcW.cint, srcH.cint, enumavpixelformat(srcPixFmt), 16)
 
   
   # buffer is going to be written to rawvideo file, no alignment
   ret = av_image_alloc( dstData, dstLinesize,
-                        dstW.cint, dstH.cint, imgutils.enumavpixelformat(dst_pix_fmt), 1)#)
+                        dstW.cint, dstH.cint, enumavpixelformat(dst_pix_fmt), 1)#)
     # if ((ret = av_image_alloc(dst_data, dst_linesize,
     #                           dst_w, dst_h, dst_pix_fmt, 1)) < 0) {
     #     fprintf(stderr, "Could not allocate destination image\n");

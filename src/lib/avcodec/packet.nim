@@ -1,4 +1,5 @@
-import ../../wrapper/libavcodec/avcodec
+#import ../../wrapper/libavcodec/avcodec
+import ../../wrapperFuthark/libav
 
 type
   PacketObj* = object
@@ -11,6 +12,6 @@ proc `destroy=`*(val:PacketRef) =
 
 proc newPacket*():PacketRef =
   result = new PacketRef
-  result.handle = avcodec.av_packet_alloc()
+  result.handle = av_packet_alloc()
   if result.handle == nil:
     raise newException(ValueError, "could not allocate AVPacket")

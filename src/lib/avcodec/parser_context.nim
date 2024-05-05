@@ -1,4 +1,5 @@
-import ../../wrapper/libavcodec/avcodec
+#import ../../wrapper/libavcodec/avcodec
+import ../../wrapperFuthark/libav
 
 type
   ParserContextObj* = object
@@ -8,7 +9,7 @@ type
 
 proc `destroy=`*(val:ParserContextObj) =
   if val.handle != nil:
-    avcodec.av_free(val.handle)
+    av_free(val.handle)
 
 proc newParser*(id:enumavcodecid):ParserContextRef =
   result = new ParserContextRef

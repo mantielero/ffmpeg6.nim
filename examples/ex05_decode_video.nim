@@ -202,7 +202,7 @@ proc pgmSave2(buf:ptr uint8; wrap:int; xsize:int; ysize:int; filename:string) =
   f.close
 
 proc decode(decCtx:ptr AVCodecContext; 
-            pkt:ptr avcodec.AVPacket;
+            pkt:ptr AVPacket;
             filename:string) =
   # https://ffmpeg.org/doxygen/trunk/group__lavc__decoding.html#ga58bc4bf1e0ac59e27362597e467efff3
   # Supply raw packet data as input to a decoder.
@@ -221,7 +221,7 @@ another negative error code	legitimate decoding errors
     raise newException(ValueError, "error sending a packet for decoding")
   #echo "Receiving frame"
 
-  var frame: ptr avcodec.Avframe = avcodec.av_frame_alloc()  # avformat.av_frame_alloc()
+  var frame: ptr Avframe = av_frame_alloc()  # avformat.av_frame_alloc()
   #result = avcodec.av_frame_alloc() 
   if frame == nil:
     raise newException(ValueError, "could not allocate video frame")   
@@ -292,13 +292,13 @@ proc main =
   # https://ffmpeg.org/doxygen/trunk/structAVPacket.html#details
   # https://ffmpeg.org/doxygen/trunk/group__lavc__packet.html#gaaf85aa950695631e0217a16062289b66
   # AvPacket stores compressed data
-  var pkt = avcodec.av_packet_alloc() # avformat.av_packet_alloc()
+  var pkt = av_packet_alloc() # avformat.av_packet_alloc()
   if pkt == nil:
     quit(QuitFailure) 
 
 
   # find the MPEG-1 video decoder
-  var codec = avcodec.avcodec_find_decoder(AV_CODEC_ID_MPEG1VIDEO) 
+  var codec = avcodec_find_decoder(AV_CODEC_ID_MPEG1VIDEO) 
   if codec == nil:
     raise newException(ValueError, "codec not found")
 
@@ -330,7 +330,7 @@ proc main =
 
   # =============================================================
   # set end of buffer to 0 (this ensures that no overreading happens for damaged MPEG streams)
-  var inbuf = newSeq[uint8](INBUF_SIZE + avcodec.AV_INPUT_BUFFER_PADDING_SIZE ) 
+  var inbuf = newSeq[uint8](INBUF_SIZE + AV_INPUT_BUFFER_PADDING_SIZE ) 
   # 4096+64 = 4160
   var n = 0
   while not f.atEnd:

@@ -28,22 +28,17 @@ const
   AVERROR_EOF = -541478725
 
 
-type
-  CodecContextObj* = object
-    handle*:ptr AVCodecContext
+# type
+#   CodecContextObj* = object
+#     handle*:ptr AVCodecContext
 
-  CodecContextRef* = ref CodecContextObj
+#   CodecContextRef* = ref CodecContextObj
 
-proc allocContext(codec:AvCodecRef):CodecContextRef =
-  result = new CodecContextRef
-  result.handle = avcodec_alloc_context3(codec.handle)
-  if result.handle == nil:
-    raise newException(ValueError, "could not allocate audio codec context")
-
-proc open(codecContext: CodecContextRef; codec: AvCodecRef ) = # ; options:ptr ptr dict.Avdictionary = nil
-  var ret = avcodec_open2(codecContext.handle, codec.handle, nil)
-  if ret < 0:
-    raise newException(ValueError, "could not open codec")  
+# proc allocContext(codec:AvCodecRef):CodecContextRef =
+#   result = new CodecContextRef
+#   result.handle = avcodec_alloc_context3(codec.handle)
+#   if result.handle == nil:
+#     raise newException(ValueError, "could not allocate audio codec context")
 
 
 #[
@@ -78,12 +73,12 @@ static int get_format_from_sample_fmt(const char **fmt,
 ]#
 
 
-proc decode(decCtx: CodecContextRef;
-            pkt: ptr avcodec.c;
+proc decode(decCtx: CodecContext;
+            pkt: ptr AvPacket;
             f:FileStream) =
   echo "Start decoding...."
   #if decoded_frame == nil:
-  var decodedFrame = avcodec.av_frame_alloc()
+  var decodedFrame = av_frame_alloc()
   if decodedFrame == nil:
     raise newException(ValueError, "Could not allocate audio frame")
 
@@ -159,9 +154,9 @@ proc main =
   let outFileName = "media/sample3.raw"
 
   # find the MPEG audio decoder
-  var codec = findDecoder(AV_CODEC_ID_MP2) 
-  var parser = newParser(codec.id)
-  var c = allocContext(codec)
+  var codec:AvCodecRef = findDecoder(AV_CODEC_ID_MP2) 
+  var parser:ParserContextRef = newParser(codec.id)
+  var c:CodecContext = allocContext(codec)
   # open it
   open(c, codec)
 
@@ -169,12 +164,12 @@ proc main =
   var outFile = newFileStream(outFileName, fmWrite)
 
   # decode until eof
-  echo "TOTAL: ", AUDIO_INBUF_SIZE + avcodec.AV_INPUT_BUFFER_PADDING_SIZE
-  var inbuf = newSeq[uint8](AUDIO_INBUF_SIZE + avcodec.AV_INPUT_BUFFER_PADDING_SIZE ) 
+  echo "TOTAL: ", AUDIO_INBUF_SIZE + AV_INPUT_BUFFER_PADDING_SIZE
+  var inbuf = newSeq[uint8](AUDIO_INBUF_SIZE + AV_INPUT_BUFFER_PADDING_SIZE ) 
   var data_size = f.readData(inbuf[0].addr, AUDIO_INBUF_SIZE)
   var data = inbuf
   #var decoded_frame:ptr avcodec.AVFrame = nil
-  var pkt = avcodec.av_packet_alloc()
+  var pkt = av_packet_alloc()
   var ini = 0  
   var remainingData = data_size - ini
   var nbytes = data_size

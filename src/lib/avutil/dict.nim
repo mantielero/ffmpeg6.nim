@@ -1,6 +1,8 @@
 # https://ffmpeg.org/doxygen/trunk/group__lavu__dict.html#gac1ee576724d94d686a1ba5d842257119https://ffmpeg.org/doxygen/trunk/group__lavu__dict.html#gac1ee576724d94d686a1ba5d842257119
 
-import ../../wrapper/libavutil/dict
+#import ../../wrapper/libavutil/dict
+#import ../../wrapperc2nim/avutil/dict
+import ../../wrapperFuthark/libav
 
 type
   DictObj* = object

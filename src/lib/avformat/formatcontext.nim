@@ -1,5 +1,9 @@
-import ../../wrapper/libavformat/libavformat
-import ../../wrapper/libavutil/dict as d
+#import ../../wrapper/libavformat/libavformat
+#import ../../wrapperc2nim/avformat/libavformat
+#import ../../wrapper/libavutil/dict as d
+#import ../../wrapperc2nim/avutil/dict as d
+import ../../wrapperFuthark/libav
+
 import ../avutil/dict
 import std/[strformat]
 
@@ -24,7 +28,7 @@ proc openInput*(fileName:string):FormatContext =
 
 proc metadata*(val:FormatContext):Dict =
   result = new Dict
-  result.handle = cast[ptr d.Avdictionary](val.handle[].metadata)
+  result.handle = cast[ptr Avdictionary](val.handle[].metadata)
 
   # for k,v in pairs(metadata):
   #   echo k, ": ", v  
