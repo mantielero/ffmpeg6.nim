@@ -9,50 +9,50 @@ else:
     hint("Declaration of " & "structavdictionary" &
         " already exists, not redeclaring")
 type
-  structavdictionaryentry_520094967 {.pure, inheritable, bycopy.} = object
-    key*: cstring            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:89:16
+  structavdictionaryentry_520094038 {.pure, inheritable, bycopy.} = object
+    key*: cstring            ## Generated based on /usr/include/libavutil/dict.h:89:16
     value*: cstring
 
-  Avdictionaryentry_520094969 = structavdictionaryentry_520094968 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:92:3
-  Avdictionary_520094971 = structavdictionary ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:94:29
-  Avdictionaryentry_520094970 = (when declared(Avdictionaryentry):
+  Avdictionaryentry_520094041 = structavdictionaryentry_520094040 ## Generated based on /usr/include/libavutil/dict.h:92:3
+  Avdictionary_520094043 = structavdictionary ## Generated based on /usr/include/libavutil/dict.h:94:29
+  Avdictionaryentry_520094042 = (when declared(Avdictionaryentry):
     Avdictionaryentry
    else:
-    Avdictionaryentry_520094969)
-  structavdictionaryentry_520094968 = (when declared(structavdictionaryentry):
+    Avdictionaryentry_520094041)
+  structavdictionaryentry_520094040 = (when declared(structavdictionaryentry):
     structavdictionaryentry
    else:
-    structavdictionaryentry_520094967)
-  Avdictionary_520094972 = (when declared(Avdictionary):
+    structavdictionaryentry_520094038)
+  Avdictionary_520094044 = (when declared(Avdictionary):
     Avdictionary
    else:
-    Avdictionary_520094971)
+    Avdictionary_520094043)
 when not declared(Avdictionaryentry):
   type
-    Avdictionaryentry* = Avdictionaryentry_520094969
+    Avdictionaryentry* = Avdictionaryentry_520094041
 else:
   static :
     hint("Declaration of " & "Avdictionaryentry" &
         " already exists, not redeclaring")
 when not declared(structavdictionaryentry):
   type
-    structavdictionaryentry* = structavdictionaryentry_520094967
+    structavdictionaryentry* = structavdictionaryentry_520094038
 else:
   static :
     hint("Declaration of " & "structavdictionaryentry" &
         " already exists, not redeclaring")
 when not declared(Avdictionary):
   type
-    Avdictionary* = Avdictionary_520094971
+    Avdictionary* = Avdictionary_520094043
 else:
   static :
     hint("Declaration of " & "Avdictionary" & " already exists, not redeclaring")
 when not declared(Avdictmatchcase):
   when 1 is static:
     const
-      Avdictmatchcase* = 1   ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:74:9
+      Avdictmatchcase* = 1   ## Generated based on /usr/include/libavutil/dict.h:74:9
   else:
-    let Avdictmatchcase* = 1 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:74:9
+    let Avdictmatchcase* = 1 ## Generated based on /usr/include/libavutil/dict.h:74:9
 else:
   static :
     hint("Declaration of " & "Avdictmatchcase" &
@@ -60,9 +60,9 @@ else:
 when not declared(Avdictignoresuffix):
   when 2 is static:
     const
-      Avdictignoresuffix* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:75:9
+      Avdictignoresuffix* = 2 ## Generated based on /usr/include/libavutil/dict.h:75:9
   else:
-    let Avdictignoresuffix* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:75:9
+    let Avdictignoresuffix* = 2 ## Generated based on /usr/include/libavutil/dict.h:75:9
 else:
   static :
     hint("Declaration of " & "Avdictignoresuffix" &
@@ -70,9 +70,9 @@ else:
 when not declared(Avdictdontstrdupkey):
   when 4 is static:
     const
-      Avdictdontstrdupkey* = 4 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:77:9
+      Avdictdontstrdupkey* = 4 ## Generated based on /usr/include/libavutil/dict.h:77:9
   else:
-    let Avdictdontstrdupkey* = 4 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:77:9
+    let Avdictdontstrdupkey* = 4 ## Generated based on /usr/include/libavutil/dict.h:77:9
 else:
   static :
     hint("Declaration of " & "Avdictdontstrdupkey" &
@@ -80,9 +80,9 @@ else:
 when not declared(Avdictdontstrdupval):
   when 8 is static:
     const
-      Avdictdontstrdupval* = 8 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:79:9
+      Avdictdontstrdupval* = 8 ## Generated based on /usr/include/libavutil/dict.h:79:9
   else:
-    let Avdictdontstrdupval* = 8 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:79:9
+    let Avdictdontstrdupval* = 8 ## Generated based on /usr/include/libavutil/dict.h:79:9
 else:
   static :
     hint("Declaration of " & "Avdictdontstrdupval" &
@@ -90,9 +90,9 @@ else:
 when not declared(Avdictdontoverwrite):
   when 16 is static:
     const
-      Avdictdontoverwrite* = 16 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:81:9
+      Avdictdontoverwrite* = 16 ## Generated based on /usr/include/libavutil/dict.h:81:9
   else:
-    let Avdictdontoverwrite* = 16 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:81:9
+    let Avdictdontoverwrite* = 16 ## Generated based on /usr/include/libavutil/dict.h:81:9
 else:
   static :
     hint("Declaration of " & "Avdictdontoverwrite" &
@@ -100,58 +100,58 @@ else:
 when not declared(Avdictappend):
   when 32 is static:
     const
-      Avdictappend* = 32     ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:82:9
+      Avdictappend* = 32     ## Generated based on /usr/include/libavutil/dict.h:82:9
   else:
-    let Avdictappend* = 32   ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:82:9
+    let Avdictappend* = 32   ## Generated based on /usr/include/libavutil/dict.h:82:9
 else:
   static :
     hint("Declaration of " & "Avdictappend" & " already exists, not redeclaring")
 when not declared(Avdictmultikey):
   when 64 is static:
     const
-      Avdictmultikey* = 64   ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:84:9
+      Avdictmultikey* = 64   ## Generated based on /usr/include/libavutil/dict.h:84:9
   else:
-    let Avdictmultikey* = 64 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/FFmpeg/libavutil/dict.h:84:9
+    let Avdictmultikey* = 64 ## Generated based on /usr/include/libavutil/dict.h:84:9
 else:
   static :
     hint("Declaration of " & "Avdictmultikey" &
         " already exists, not redeclaring")
 when not declared(avdictget):
-  proc avdictget*(m: ptr Avdictionary_520094972; key: cstring;
-                  prev: ptr Avdictionaryentry_520094970; flags: cint): ptr Avdictionaryentry_520094970 {.
+  proc avdictget*(m: ptr Avdictionary_520094044; key: cstring;
+                  prev: ptr Avdictionaryentry_520094042; flags: cint): ptr Avdictionaryentry_520094042 {.
       cdecl, importc: "av_dict_get".}
 else:
   static :
     hint("Declaration of " & "avdictget" & " already exists, not redeclaring")
 when not declared(avdictiterate):
-  proc avdictiterate*(m: ptr Avdictionary_520094972; prev: ptr Avdictionaryentry_520094970): ptr Avdictionaryentry_520094970 {.
+  proc avdictiterate*(m: ptr Avdictionary_520094044; prev: ptr Avdictionaryentry_520094042): ptr Avdictionaryentry_520094042 {.
       cdecl, importc: "av_dict_iterate".}
 else:
   static :
     hint("Declaration of " & "avdictiterate" &
         " already exists, not redeclaring")
 when not declared(avdictcount):
-  proc avdictcount*(m: ptr Avdictionary_520094972): cint {.cdecl,
+  proc avdictcount*(m: ptr Avdictionary_520094044): cint {.cdecl,
       importc: "av_dict_count".}
 else:
   static :
     hint("Declaration of " & "avdictcount" & " already exists, not redeclaring")
 when not declared(avdictset):
-  proc avdictset*(pm: ptr ptr Avdictionary_520094972; key: cstring;
+  proc avdictset*(pm: ptr ptr Avdictionary_520094044; key: cstring;
                   value: cstring; flags: cint): cint {.cdecl,
       importc: "av_dict_set".}
 else:
   static :
     hint("Declaration of " & "avdictset" & " already exists, not redeclaring")
 when not declared(avdictsetint):
-  proc avdictsetint*(pm: ptr ptr Avdictionary_520094972; key: cstring;
+  proc avdictsetint*(pm: ptr ptr Avdictionary_520094044; key: cstring;
                      value: int64; flags: cint): cint {.cdecl,
       importc: "av_dict_set_int".}
 else:
   static :
     hint("Declaration of " & "avdictsetint" & " already exists, not redeclaring")
 when not declared(avdictparsestring):
-  proc avdictparsestring*(pm: ptr ptr Avdictionary_520094972; str: cstring;
+  proc avdictparsestring*(pm: ptr ptr Avdictionary_520094044; str: cstring;
                           keyvalsep: cstring; pairssep: cstring; flags: cint): cint {.
       cdecl, importc: "av_dict_parse_string".}
 else:
@@ -159,19 +159,19 @@ else:
     hint("Declaration of " & "avdictparsestring" &
         " already exists, not redeclaring")
 when not declared(avdictcopy):
-  proc avdictcopy*(dst: ptr ptr Avdictionary_520094972; src: ptr Avdictionary_520094972;
+  proc avdictcopy*(dst: ptr ptr Avdictionary_520094044; src: ptr Avdictionary_520094044;
                    flags: cint): cint {.cdecl, importc: "av_dict_copy".}
 else:
   static :
     hint("Declaration of " & "avdictcopy" & " already exists, not redeclaring")
 when not declared(avdictfree):
-  proc avdictfree*(m: ptr ptr Avdictionary_520094972): void {.cdecl,
+  proc avdictfree*(m: ptr ptr Avdictionary_520094044): void {.cdecl,
       importc: "av_dict_free".}
 else:
   static :
     hint("Declaration of " & "avdictfree" & " already exists, not redeclaring")
 when not declared(avdictgetstring):
-  proc avdictgetstring*(m: ptr Avdictionary_520094972; buffer: ptr cstring;
+  proc avdictgetstring*(m: ptr Avdictionary_520094044; buffer: ptr cstring;
                         keyvalsep: cschar; pairssep: cschar): cint {.cdecl,
       importc: "av_dict_get_string".}
 else:

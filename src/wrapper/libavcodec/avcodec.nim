@@ -1,3 +1,5 @@
+import ../libavutil/pixfmt
+
 
 from macros import hint
 
