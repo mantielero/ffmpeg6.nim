@@ -71,6 +71,59 @@ else:
   static :
     hint("Declaration of " & "Avcodechwconfigmethodadhoc" &
         " already exists, not redeclaring")
+when not declared(enumavchannel):
+  type
+    enumavchannel* {.size: sizeof(cint).} = enum
+      Avchannone = -1, Avchanfrontleft = 0, Avchanfrontright = 1,
+      Avchanfrontcenter = 2, Avchanlowfrequency = 3, Avchanbackleft = 4,
+      Avchanbackright = 5, Avchanfrontleftofcenter = 6,
+      Avchanfrontrightofcenter = 7, Avchanbackcenter = 8, Avchansideleft = 9,
+      Avchansideright = 10, Avchantopcenter = 11, Avchantopfrontleft = 12,
+      Avchantopfrontcenter = 13, Avchantopfrontright = 14,
+      Avchantopbackleft = 15, Avchantopbackcenter = 16, Avchantopbackright = 17,
+      Avchanstereoleft = 29, Avchanstereoright = 30, Avchanwideleft = 31,
+      Avchanwideright = 32, Avchansurrounddirectleft = 33,
+      Avchansurrounddirectright = 34, Avchanlowfrequency2 = 35,
+      Avchantopsideleft = 36, Avchantopsideright = 37,
+      Avchanbottomfrontcenter = 38, Avchanbottomfrontleft = 39,
+      Avchanbottomfrontright = 40, Avchanunused = 512, Avchanunknown = 768,
+      Avchanambisonicbase = 1024, Avchanambisonicend = 2047
+else:
+  static :
+    hint("Declaration of " & "enumavchannel" &
+        " already exists, not redeclaring")
+when not declared(enumavchannelorder):
+  type
+    enumavchannelorder* {.size: sizeof(cuint).} = enum
+      Avchannelorderunspec = 0, Avchannelordernative = 1,
+      Avchannelordercustom = 2, Avchannelorderambisonic = 3
+else:
+  static :
+    hint("Declaration of " & "enumavchannelorder" &
+        " already exists, not redeclaring")
+when not declared(enumavmatrixencoding):
+  type
+    enumavmatrixencoding* {.size: sizeof(cuint).} = enum
+      Avmatrixencodingnone = 0, Avmatrixencodingdolby = 1,
+      Avmatrixencodingdplii = 2, Avmatrixencodingdpliix = 3,
+      Avmatrixencodingdpliiz = 4, Avmatrixencodingdolbyex = 5,
+      Avmatrixencodingdolbyheadphone = 6, Avmatrixencodingnb = 7
+else:
+  static :
+    hint("Declaration of " & "enumavmatrixencoding" &
+        " already exists, not redeclaring")
+when not declared(enumavsampleformat):
+  type
+    enumavsampleformat* {.size: sizeof(cint).} = enum
+      Avsamplefmtnone = -1, Avsamplefmtu8 = 0, Avsamplefmts16 = 1,
+      Avsamplefmts32 = 2, Avsamplefmtflt = 3, Avsamplefmtdbl = 4,
+      Avsamplefmtu8p = 5, Avsamplefmts16p = 6, Avsamplefmts32p = 7,
+      Avsamplefmtfltp = 8, Avsamplefmtdblp = 9, Avsamplefmts64 = 10,
+      Avsamplefmts64p = 11, Avsamplefmtnb = 12
+else:
+  static :
+    hint("Declaration of " & "enumavsampleformat" &
+        " already exists, not redeclaring")
 when not declared(enumavclasscategory):
   type
     enumavclasscategory* {.size: sizeof(cuint).} = enum
@@ -324,59 +377,6 @@ when not declared(enumavchromalocation):
 else:
   static :
     hint("Declaration of " & "enumavchromalocation" &
-        " already exists, not redeclaring")
-when not declared(enumavchannel):
-  type
-    enumavchannel* {.size: sizeof(cint).} = enum
-      Avchannone = -1, Avchanfrontleft = 0, Avchanfrontright = 1,
-      Avchanfrontcenter = 2, Avchanlowfrequency = 3, Avchanbackleft = 4,
-      Avchanbackright = 5, Avchanfrontleftofcenter = 6,
-      Avchanfrontrightofcenter = 7, Avchanbackcenter = 8, Avchansideleft = 9,
-      Avchansideright = 10, Avchantopcenter = 11, Avchantopfrontleft = 12,
-      Avchantopfrontcenter = 13, Avchantopfrontright = 14,
-      Avchantopbackleft = 15, Avchantopbackcenter = 16, Avchantopbackright = 17,
-      Avchanstereoleft = 29, Avchanstereoright = 30, Avchanwideleft = 31,
-      Avchanwideright = 32, Avchansurrounddirectleft = 33,
-      Avchansurrounddirectright = 34, Avchanlowfrequency2 = 35,
-      Avchantopsideleft = 36, Avchantopsideright = 37,
-      Avchanbottomfrontcenter = 38, Avchanbottomfrontleft = 39,
-      Avchanbottomfrontright = 40, Avchanunused = 512, Avchanunknown = 768,
-      Avchanambisonicbase = 1024, Avchanambisonicend = 2047
-else:
-  static :
-    hint("Declaration of " & "enumavchannel" &
-        " already exists, not redeclaring")
-when not declared(enumavchannelorder):
-  type
-    enumavchannelorder* {.size: sizeof(cuint).} = enum
-      Avchannelorderunspec = 0, Avchannelordernative = 1,
-      Avchannelordercustom = 2, Avchannelorderambisonic = 3
-else:
-  static :
-    hint("Declaration of " & "enumavchannelorder" &
-        " already exists, not redeclaring")
-when not declared(enumavmatrixencoding):
-  type
-    enumavmatrixencoding* {.size: sizeof(cuint).} = enum
-      Avmatrixencodingnone = 0, Avmatrixencodingdolby = 1,
-      Avmatrixencodingdplii = 2, Avmatrixencodingdpliix = 3,
-      Avmatrixencodingdpliiz = 4, Avmatrixencodingdolbyex = 5,
-      Avmatrixencodingdolbyheadphone = 6, Avmatrixencodingnb = 7
-else:
-  static :
-    hint("Declaration of " & "enumavmatrixencoding" &
-        " already exists, not redeclaring")
-when not declared(enumavsampleformat):
-  type
-    enumavsampleformat* {.size: sizeof(cint).} = enum
-      Avsamplefmtnone = -1, Avsamplefmtu8 = 0, Avsamplefmts16 = 1,
-      Avsamplefmts32 = 2, Avsamplefmtflt = 3, Avsamplefmtdbl = 4,
-      Avsamplefmtu8p = 5, Avsamplefmts16p = 6, Avsamplefmts32p = 7,
-      Avsamplefmtfltp = 8, Avsamplefmtdblp = 9, Avsamplefmts64 = 10,
-      Avsamplefmts64p = 11, Avsamplefmtnb = 12
-else:
-  static :
-    hint("Declaration of " & "enumavsampleformat" &
         " already exists, not redeclaring")
 when not declared(enumavoptiontype):
   type
@@ -975,29 +975,46 @@ else:
     hint("Declaration of " & "structiomarker" &
         " already exists, not redeclaring")
 type
-  Avclasscategory_520094080 = enumavclasscategory_520094079 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:47:2
-  structavclass_520094082 {.pure, inheritable, bycopy.} = object
+  structavchannelcustom_520094084 {.pure, inheritable, bycopy.} = object
+    id*: enumavchannel_520094079 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:271:16
+    name*: array[16'i64, cschar]
+    opaque*: pointer
+
+  Avchannelcustom_520094086 = structavchannelcustom_520094085 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:275:3
+  structavchannellayout_u_t* {.union, bycopy.} = object
+    mask*: uint64
+    map*: ptr Avchannelcustom_520094087
+
+  structavchannellayout_520094088 {.pure, inheritable, bycopy.} = object
+    order*: enumavchannelorder_520094081 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:307:16
+    nbchannels*: cint
+    u*: structavchannellayout_u_t
+    opaque*: pointer
+
+  Avchannellayout_520094090 = structavchannellayout_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:365:3
+  Avclasscategory_520094096 = enumavclasscategory_520094095 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:47:2
+  structavclass_520094098 {.pure, inheritable, bycopy.} = object
     classname*: cstring      ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:66:16
     itemname*: proc (a0: pointer): cstring {.cdecl.}
-    option*: ptr structavoption_520094085
+    option*: ptr structavoption_520094101
     version*: cint
     logleveloffsetoffset*: cint
     parentlogcontextoffset*: cint
-    category*: Avclasscategory_520094081
-    getcategory*: proc (a0: pointer): Avclasscategory_520094081 {.cdecl.}
-    queryranges*: proc (a0: ptr ptr structavoptionranges_520094087; a1: pointer;
+    category*: Avclasscategory_520094097
+    getcategory*: proc (a0: pointer): Avclasscategory_520094097 {.cdecl.}
+    queryranges*: proc (a0: ptr ptr structavoptionranges_520094103; a1: pointer;
                         a2: cstring; a3: cint): cint {.cdecl.}
     childnext*: proc (a0: pointer; a1: pointer): pointer {.cdecl.}
-    childclassiterate*: proc (a0: ptr pointer): ptr structavclass_520094083 {.
+    childclassiterate*: proc (a0: ptr pointer): ptr structavclass_520094099 {.
         cdecl.}
 
   structavoption_defaultval_t {.union, bycopy.} = object
     i64*: int64
     dbl*: cdouble
     str*: cstring
-    q*: Avrational_520094101
+    q*: Avrational_520094117
 
-  structavoption_520094084 {.pure, inheritable, bycopy.} = object
+  structavoption_520094100 {.pure, inheritable, bycopy.} = object
     name*: cstring           ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:251:16
     help*: cstring
     offset*: cint
@@ -1008,51 +1025,34 @@ type
     flags*: cint
     unit*: cstring
 
-  structavoptionranges_520094086 {.pure, inheritable, bycopy.} = object
+  structavoptionranges_520094102 {.pure, inheritable, bycopy.} = object
     range*: ptr ptr Avoptionrange_520094156 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:336:16
     nbranges*: cint
     nbcomponents*: cint
 
-  Avclass_520094088 = structavclass_520094083 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:147:3
-  valist_520094090 = compilergnucvalist_520094372 ## Generated based on /usr/include/stdio.h:53:24
-  structavdictionaryentry_520094092 {.pure, inheritable, bycopy.} = object
+  Avclass_520094104 = structavclass_520094099 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:147:3
+  valist_520094106 = compilergnucvalist_520094372 ## Generated based on /usr/include/stdio.h:53:24
+  structavdictionaryentry_520094108 {.pure, inheritable, bycopy.} = object
     key*: cstring            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:89:16
     value*: cstring
 
-  Avdictionaryentry_520094094 = structavdictionaryentry_520094093 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:92:3
-  Avdictionary_520094096 = structavdictionary ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:94:29
-  structavrational_520094098 {.pure, inheritable, bycopy.} = object
+  Avdictionaryentry_520094110 = structavdictionaryentry_520094109 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:92:3
+  Avdictionary_520094112 = structavdictionary ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:94:29
+  structavrational_520094114 {.pure, inheritable, bycopy.} = object
     num*: cint               ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/rational.h:58:16
     den*: cint
 
-  Avrational_520094100 = structavrational_520094099 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/rational.h:61:3
-  unionavintfloat32_520094106 {.union, bycopy.} = object
+  Avrational_520094116 = structavrational_520094115 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/rational.h:61:3
+  unionavintfloat32_520094122 {.union, bycopy.} = object
     i*: uint32               ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/intfloat.h:27:7
     f*: cfloat
 
-  unionavintfloat64_520094108 {.union, bycopy.} = object
+  unionavintfloat64_520094124 {.union, bycopy.} = object
     i*: uint64               ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/intfloat.h:32:7
     f*: cdouble
 
-  File_520094124 = structiofile_520094374 ## Generated based on /usr/include/bits/types/FILE.h:7:25
-  structavchannelcustom_520094132 {.pure, inheritable, bycopy.} = object
-    id*: enumavchannel_520094127 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:271:16
-    name*: array[16'i64, cschar]
-    opaque*: pointer
-
-  Avchannelcustom_520094134 = structavchannelcustom_520094133 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:275:3
-  structavchannellayout_u_t {.union, bycopy.} = object
-    mask*: uint64
-    map*: ptr Avchannelcustom_520094135
-
-  structavchannellayout_520094143 {.pure, inheritable, bycopy.} = object
-    order*: enumavchannelorder_520094129 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:307:16
-    nbchannels*: cint
-    u*: structavchannellayout_u_t
-    opaque*: pointer
-
-  Avchannellayout_520094145 = structavchannellayout_520094144 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:365:3
-  Avoption_520094151 = structavoption_520094085 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:308:3
+  File_520094147 = structiofile_520094374 ## Generated based on /usr/include/bits/types/FILE.h:7:25
+  Avoption_520094151 = structavoption_520094101 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:308:3
   structavoptionrange_520094153 {.pure, inheritable, bycopy.} = object
     str*: cstring            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:313:16
     valuemin*: cdouble
@@ -1062,7 +1062,7 @@ type
     isrange*: cint
 
   Avoptionrange_520094155 = structavoptionrange_520094154 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:331:3
-  Avoptionranges_520094157 = structavoptionranges_520094087 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:376:3
+  Avoptionranges_520094157 = structavoptionranges_520094103 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:376:3
   structavcomponentdescriptor_520094159 {.pure, inheritable, bycopy.} = object
     plane*: cint             ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/pixdesc.h:30:16
     step*: cint
@@ -1094,7 +1094,7 @@ type
     typefield*: enumavframesidedatatype_520094178 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/frame.h:246:16
     data*: ptr uint8
     size*: csize_t
-    metadata*: ptr Avdictionary_520094097
+    metadata*: ptr Avdictionary_520094113
     buf*: ptr Avbufferref_520094174
 
   Avframesidedata_520094183 = structavframesidedata_520094182 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/frame.h:252:3
@@ -1104,7 +1104,7 @@ type
     bottom*: cint
     left*: cint
     right*: cint
-    qoffset*: Avrational_520094101
+    qoffset*: Avrational_520094117
 
   Avregionofinterest_520094187 = structavregionofinterest_520094186 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/frame.h:308:3
   structavframe_520094189 {.pure, inheritable, bycopy.} = object
@@ -1116,11 +1116,11 @@ type
     nbsamples*: cint
     format*: cint
     keyframe*: cint
-    picttype*: enumavpicturetype_520094105
-    sampleaspectratio*: Avrational_520094101
+    picttype*: enumavpicturetype_520094121
+    sampleaspectratio*: Avrational_520094117
     pts*: int64
     pktdts*: int64
-    timebase*: Avrational_520094101
+    timebase*: Avrational_520094117
     codedpicturenumber*: cint
     displaypicturenumber*: cint
     quality*: cint
@@ -1138,15 +1138,15 @@ type
     sidedata*: ptr ptr Avframesidedata_520094184
     nbsidedata*: cint
     flags*: cint
-    colorrange*: enumavcolorrange_520094121
-    colorprimaries*: enumavcolorprimaries_520094115
-    colortrc*: enumavcolortransfercharacteristic_520094117
-    colorspace*: enumavcolorspace_520094119
-    chromalocation*: enumavchromalocation_520094123
+    colorrange*: enumavcolorrange_520094144
+    colorprimaries*: enumavcolorprimaries_520094131
+    colortrc*: enumavcolortransfercharacteristic_520094133
+    colorspace*: enumavcolorspace_520094142
+    chromalocation*: enumavchromalocation_520094146
     bestefforttimestamp*: int64
     pktpos*: int64
     pktduration*: int64
-    metadata*: ptr Avdictionary_520094097
+    metadata*: ptr Avdictionary_520094113
     decodeerrorflags*: cint
     channels*: cint
     pktsize*: cint
@@ -1157,13 +1157,13 @@ type
     cropleft*: csize_t
     cropright*: csize_t
     privateref*: ptr Avbufferref_520094174
-    chlayout*: Avchannellayout_520094146
+    chlayout*: Avchannellayout_520094091
     duration*: int64
 
   Avframe_520094191 = structavframe_520094190 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/frame.h:808:3
   Avhwdeviceinternal_520094195 = structavhwdeviceinternal ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:42:35
   structavhwdevicecontext_520094197 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:61:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:61:16
     internal*: ptr Avhwdeviceinternal_520094196
     typefield*: enumavhwdevicetype_520094194
     hwctx*: pointer
@@ -1173,7 +1173,7 @@ type
   Avhwdevicecontext_520094199 = structavhwdevicecontext_520094198 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:110:3
   Avhwframesinternal_520094201 = structavhwframesinternal ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:112:35
   structavhwframescontext_520094203 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:124:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:124:16
     internal*: ptr Avhwframesinternal_520094202
     deviceref*: ptr Avbufferref_520094174
     devicectx*: ptr Avhwdevicecontext_520094200
@@ -1182,15 +1182,15 @@ type
     useropaque*: pointer
     pool*: ptr Avbufferpool_520094176
     initialpoolsize*: cint
-    format*: enumavpixelformat_520094113
-    swformat*: enumavpixelformat_520094113
+    format*: enumavpixelformat_520094129
+    swformat*: enumavpixelformat_520094129
     width*: cint
     height*: cint
 
   Avhwframescontext_520094205 = structavhwframescontext_520094204 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:230:3
   structavhwframesconstraints_520094209 {.pure, inheritable, bycopy.} = object
-    validhwformats*: ptr enumavpixelformat_520094113 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:453:16
-    validswformats*: ptr enumavpixelformat_520094113
+    validhwformats*: ptr enumavpixelformat_520094129 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/hwcontext.h:453:16
+    validswformats*: ptr enumavpixelformat_520094129
     minwidth*: cint
     minheight*: cint
     maxwidth*: cint
@@ -1205,23 +1205,23 @@ type
   structavcodec_520094219 {.pure, inheritable, bycopy.} = object
     name*: cstring           ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec.h:187:16
     longname*: cstring
-    typefield*: enumavmediatype_520094103
+    typefield*: enumavmediatype_520094119
     id*: enumavcodecid_520094214
     capabilities*: cint
     maxlowres*: uint8
-    supportedframerates*: ptr Avrational_520094101
-    pixfmts*: ptr enumavpixelformat_520094113
+    supportedframerates*: ptr Avrational_520094117
+    pixfmts*: ptr enumavpixelformat_520094129
     supportedsamplerates*: ptr cint
-    samplefmts*: ptr enumavsampleformat_520094148
+    samplefmts*: ptr enumavsampleformat_520094093
     channellayouts*: ptr uint64
-    privclass*: ptr Avclass_520094089
+    privclass*: ptr Avclass_520094105
     profiles*: ptr Avprofile_520094218
     wrappername*: cstring
-    chlayouts*: ptr Avchannellayout_520094146
+    chlayouts*: ptr Avchannellayout_520094091
 
   Avcodec_520094221 = structavcodec_520094220 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec.h:238:3
   structavcodechwconfig_520094223 {.pure, inheritable, bycopy.} = object
-    pixfmt*: enumavpixelformat_520094113 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec.h:341:16
+    pixfmt*: enumavpixelformat_520094129 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec.h:341:16
     methods*: cint
     devicetype*: enumavhwdevicetype_520094194
 
@@ -1266,7 +1266,7 @@ type
     pos*: int64
     opaque*: pointer
     opaqueref*: ptr Avbufferref_520094174
-    timebase*: Avrational_520094101
+    timebase*: Avrational_520094117
 
   Avpacket_520094253 = structavpacket_520094252 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/packet.h:536:3
   structavpacketlist_520094255 {.pure, inheritable, bycopy.} = object
@@ -1276,7 +1276,7 @@ type
   Avpacketlist_520094257 = structavpacketlist_520094256 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/packet.h:543:3
   structavcodecdescriptor_520094261 {.pure, inheritable, bycopy.} = object
     id*: enumavcodecid_520094214 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec_desc.h:38:16
-    typefield*: enumavmediatype_520094103
+    typefield*: enumavmediatype_520094119
     name*: cstring
     longname*: cstring
     props*: cint
@@ -1285,7 +1285,7 @@ type
 
   Avcodecdescriptor_520094263 = structavcodecdescriptor_520094262 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec_desc.h:66:3
   structavcodecparameters_520094265 {.pure, inheritable, bycopy.} = object
-    codectype*: enumavmediatype_520094103 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec_par.h:47:16
+    codectype*: enumavmediatype_520094119 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/codec_par.h:47:16
     codecid*: enumavcodecid_520094214
     codectag*: uint32
     extradata*: ptr uint8
@@ -1298,13 +1298,13 @@ type
     level*: cint
     width*: cint
     height*: cint
-    sampleaspectratio*: Avrational_520094101
+    sampleaspectratio*: Avrational_520094117
     fieldorder*: enumavfieldorder_520094228
-    colorrange*: enumavcolorrange_520094121
-    colorprimaries*: enumavcolorprimaries_520094115
-    colortrc*: enumavcolortransfercharacteristic_520094117
-    colorspace*: enumavcolorspace_520094119
-    chromalocation*: enumavchromalocation_520094123
+    colorrange*: enumavcolorrange_520094144
+    colorprimaries*: enumavcolorprimaries_520094131
+    colortrc*: enumavcolortransfercharacteristic_520094133
+    colorspace*: enumavcolorspace_520094142
+    chromalocation*: enumavchromalocation_520094146
     videodelay*: cint
     channellayout*: uint64
     channels*: cint
@@ -1314,8 +1314,8 @@ type
     initialpadding*: cint
     trailingpadding*: cint
     seekpreroll*: cint
-    chlayout*: Avchannellayout_520094146
-    framerate*: Avrational_520094101
+    chlayout*: Avchannellayout_520094091
+    framerate*: Avrational_520094117
     codedsidedata*: ptr Avpacketsidedata_520094250
     nbcodedsidedata*: cint
 
@@ -1328,9 +1328,9 @@ type
 
   Rcoverride_520094271 = structrcoverride_520094270 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/avcodec.h:205:3
   structavcodeccontext_520094273 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/avcodec.h:441:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/avcodec.h:441:16
     logleveloffset*: cint
-    codectype*: enumavmediatype_520094103
+    codectype*: enumavmediatype_520094119
     codec*: ptr structavcodec_520094220
     codecid*: enumavcodecid_520094214
     codectag*: cuint
@@ -1345,7 +1345,7 @@ type
     flags2*: cint
     extradata*: ptr uint8
     extradatasize*: cint
-    timebase*: Avrational_520094101
+    timebase*: Avrational_520094117
     ticksperframe*: cint
     delay*: cint
     width*: cint
@@ -1353,12 +1353,12 @@ type
     codedwidth*: cint
     codedheight*: cint
     gopsize*: cint
-    pixfmt*: enumavpixelformat_520094113
+    pixfmt*: enumavpixelformat_520094129
     drawhorizband*: proc (a0: ptr structavcodeccontext_520094274;
                           a1: ptr Avframe_520094192; a2: array[8'i64, cint];
                           a3: cint; a4: cint; a5: cint): void {.cdecl.}
     getformat*: proc (a0: ptr structavcodeccontext_520094274;
-                      a1: ptr enumavpixelformat_520094113): enumavpixelformat_520094113 {.
+                      a1: ptr enumavpixelformat_520094129): enumavpixelformat_520094129 {.
         cdecl.}
     maxbframes*: cint
     bquantfactor*: cfloat
@@ -1373,7 +1373,7 @@ type
     darkmasking*: cfloat
     slicecount*: cint
     sliceoffset*: ptr cint
-    sampleaspectratio*: Avrational_520094101
+    sampleaspectratio*: Avrational_520094117
     mecmp*: cint
     mesubcmp*: cint
     mbcmp*: cint
@@ -1397,16 +1397,16 @@ type
     keyintmin*: cint
     refs*: cint
     mv0threshold*: cint
-    colorprimaries*: enumavcolorprimaries_520094115
-    colortrc*: enumavcolortransfercharacteristic_520094117
-    colorspace*: enumavcolorspace_520094119
-    colorrange*: enumavcolorrange_520094121
-    chromasamplelocation*: enumavchromalocation_520094123
+    colorprimaries*: enumavcolorprimaries_520094131
+    colortrc*: enumavcolortransfercharacteristic_520094133
+    colorspace*: enumavcolorspace_520094142
+    colorrange*: enumavcolorrange_520094144
+    chromasamplelocation*: enumavchromalocation_520094146
     slices*: cint
     fieldorder*: enumavfieldorder_520094228
     samplerate*: cint
     channels*: cint
-    samplefmt*: enumavsampleformat_520094148
+    samplefmt*: enumavsampleformat_520094093
     framesize*: cint
     framenumber*: cint
     blockalign*: cint
@@ -1414,7 +1414,7 @@ type
     channellayout*: uint64
     requestchannellayout*: uint64
     audioservicetype*: enumavaudioservicetype_520094232
-    requestsamplefmt*: enumavsampleformat_520094148
+    requestsamplefmt*: enumavsampleformat_520094093
     getbuffer2*: proc (a0: ptr structavcodeccontext_520094274; a1: ptr Avframe_520094192;
                        a2: cint): cint {.cdecl.}
     qcompress*: cfloat
@@ -1465,9 +1465,9 @@ type
     subtitleheader*: ptr uint8
     subtitleheadersize*: cint
     initialpadding*: cint
-    framerate*: Avrational_520094101
-    swpixfmt*: enumavpixelformat_520094113
-    pkttimebase*: Avrational_520094101
+    framerate*: Avrational_520094117
+    swpixfmt*: enumavpixelformat_520094129
+    pkttimebase*: Avrational_520094117
     codecdescriptor*: ptr structavcodecdescriptor_520094262
     ptscorrectionnumfaultypts*: int64
     ptscorrectionnumfaultydts*: int64
@@ -1495,14 +1495,14 @@ type
     exportsidedata*: cint
     getencodebuffer*: proc (a0: ptr structavcodeccontext_520094274;
                             a1: ptr Avpacket_520094254; a2: cint): cint {.cdecl.}
-    chlayout*: Avchannellayout_520094146
+    chlayout*: Avchannellayout_520094091
     framenum*: int64
 
   structavhwaccel_520094275 {.pure, inheritable, bycopy.} = object
     name*: cstring           ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/avcodec.h:2129:16
-    typefield*: enumavmediatype_520094103
+    typefield*: enumavmediatype_520094119
     id*: enumavcodecid_520094214
-    pixfmt*: enumavpixelformat_520094113
+    pixfmt*: enumavpixelformat_520094129
     capabilities*: cint
 
   Avcodeccontext_520094277 = structavcodeccontext_520094274 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavcodec/avcodec.h:2119:3
@@ -1603,7 +1603,7 @@ type
   
   Aviodircontext_520094313 = structaviodircontext_520094312 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avio.h:107:3
   structaviocontext_520094317 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avio.h:166:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avio.h:166:16
     buffer*: ptr uint8
     buffersize*: cint
     bufptr*: ptr uint8
@@ -1653,7 +1653,7 @@ type
     subtitlecodec*: enumavcodecid_520094214
     flags*: cint
     codectag*: ptr ptr structavcodectag
-    privclass*: ptr Avclass_520094089
+    privclass*: ptr Avclass_520094105
 
   Avoutputformat_520094327 = structavoutputformat_520094326 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:540:3
   structavinputformat_520094329 {.pure, inheritable, bycopy.} = object
@@ -1662,7 +1662,7 @@ type
     flags*: cint
     extensions*: cstring
     codectag*: ptr ptr structavcodectag
-    privclass*: ptr Avclass_520094089
+    privclass*: ptr Avclass_520094105
     mimetype*: cstring
     rawcodecid*: cint
     privdatasize*: cint
@@ -1684,7 +1684,7 @@ type
                           a1: ptr structavdeviceinfolist): cint {.cdecl.}
 
   structavformatcontext_520094331 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1117:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1117:16
     iformat*: ptr structavinputformat_520094330
     oformat*: ptr structavoutputformat_520094326
     privdata*: pointer
@@ -1712,7 +1712,7 @@ type
     maxpicturebuffer*: cuint
     nbchapters*: cuint
     chapters*: ptr ptr Avchapter_520094352
-    metadata*: ptr Avdictionary_520094097
+    metadata*: ptr Avdictionary_520094113
     starttimerealtime*: int64
     fpsprobesize*: cint
     errorrecognition*: cint
@@ -1752,7 +1752,7 @@ type
     protocolwhitelist*: cstring
     ioopen*: proc (a0: ptr structavformatcontext_520094332;
                    a1: ptr ptr Aviocontext_520094320; a2: cstring; a3: cint;
-                   a4: ptr ptr Avdictionary_520094097): cint {.cdecl.}
+                   a4: ptr ptr Avdictionary_520094113): cint {.cdecl.}
     ioclose*: proc (a0: ptr structavformatcontext_520094332; a1: ptr Aviocontext_520094320): void {.
         cdecl.}
     protocolblacklist*: cstring
@@ -1772,25 +1772,25 @@ type
 
   Avindexentry_520094339 = structavindexentry_520094338 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:715:3
   structavstream_520094341 {.pure, inheritable, bycopy.} = object
-    avclass*: ptr Avclass_520094089 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:843:16
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:843:16
     index*: cint
     id*: cint
     codecpar*: ptr Avcodecparameters_520094268
     privdata*: pointer
-    timebase*: Avrational_520094101
+    timebase*: Avrational_520094117
     starttime*: int64
     duration*: int64
     nbframes*: int64
     disposition*: cint
     discardfield*: enumavdiscard_520094230
-    sampleaspectratio*: Avrational_520094101
-    metadata*: ptr Avdictionary_520094097
-    avgframerate*: Avrational_520094101
+    sampleaspectratio*: Avrational_520094117
+    metadata*: ptr Avdictionary_520094113
+    avgframerate*: Avrational_520094117
     attachedpic*: Avpacket_520094254
     sidedata*: ptr Avpacketsidedata_520094250
     nbsidedata*: cint
     eventflags*: cint
-    rframerate*: Avrational_520094101
+    rframerate*: Avrational_520094117
     ptswrapbits*: cint
 
   Avstream_520094343 = structavstream_520094342 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1019:3
@@ -1800,7 +1800,7 @@ type
     discardfield*: enumavdiscard_520094230
     streamindex*: ptr cuint
     nbstreamindexes*: cuint
-    metadata*: ptr Avdictionary_520094097
+    metadata*: ptr Avdictionary_520094113
     programnum*: cint
     pmtpid*: cint
     pcrpid*: cint
@@ -1813,10 +1813,10 @@ type
   Avprogram_520094347 = structavprogram_520094346 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1066:3
   structavchapter_520094349 {.pure, inheritable, bycopy.} = object
     id*: int64               ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1076:16
-    timebase*: Avrational_520094101
+    timebase*: Avrational_520094117
     start*: int64
     endfield*: int64
-    metadata*: ptr Avdictionary_520094097
+    metadata*: ptr Avdictionary_520094113
 
   Avchapter_520094351 = structavchapter_520094350 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1081:3
   avformatcontrolmessage_520094353 = proc (a0: ptr structavformatcontext_520094332;
@@ -1825,7 +1825,7 @@ type
                                    a1: ptr ptr Aviocontext_520094320;
                                    a2: cstring; a3: cint;
                                    a4: ptr Aviointerruptcb_520094304;
-                                   a5: ptr ptr Avdictionary_520094097): cint {.
+                                   a5: ptr ptr Avdictionary_520094113): cint {.
       cdecl.}                ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1090:15
   Avformatcontext_520094359 = structavformatcontext_520094332 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavformat/avformat.h:1729:3
   structswsvector_520094363 {.pure, inheritable, bycopy.} = object
@@ -1926,10 +1926,10 @@ type
     structavframesidedata
    else:
     structavframesidedata_520094181)
-  enumavcolorrange_520094121 = (when declared(enumavcolorrange):
+  enumavcolorrange_520094144 = (when declared(enumavcolorrange):
     enumavcolorrange
    else:
-    enumavcolorrange_520094120)
+    enumavcolorrange_520094143)
   structavpacket_520094252 = (when declared(structavpacket):
     structavpacket
    else:
@@ -1938,14 +1938,14 @@ type
     structaviodircontext
    else:
     structaviodircontext_520094311)
-  Avdictionaryentry_520094095 = (when declared(Avdictionaryentry):
-    Avdictionaryentry
-   else:
-    Avdictionaryentry_520094094)
-  structavchannelcustom_520094133 = (when declared(structavchannelcustom):
+  structavchannelcustom_520094085 = (when declared(structavchannelcustom):
     structavchannelcustom
    else:
-    structavchannelcustom_520094132)
+    structavchannelcustom_520094084)
+  Avdictionaryentry_520094111 = (when declared(Avdictionaryentry):
+    Avdictionaryentry
+   else:
+    Avdictionaryentry_520094110)
   Aviointerruptcb_520094304 = (when declared(Aviointerruptcb):
     Aviointerruptcb
    else:
@@ -1958,10 +1958,10 @@ type
     structswsfilter
    else:
     structswsfilter_520094367)
-  enumavchromalocation_520094123 = (when declared(enumavchromalocation):
+  enumavchromalocation_520094146 = (when declared(enumavchromalocation):
     enumavchromalocation
    else:
-    enumavchromalocation_520094122)
+    enumavchromalocation_520094145)
   structavformatcontext_520094332 = (when declared(structavformatcontext):
     structavformatcontext
    else:
@@ -2000,10 +2000,10 @@ type
     structavpacketsidedata
    else:
     structavpacketsidedata_520094247)
-  enumavclasscategory_520094079 = (when declared(enumavclasscategory):
+  enumavclasscategory_520094095 = (when declared(enumavclasscategory):
     enumavclasscategory
    else:
-    enumavclasscategory_520094078)
+    enumavclasscategory_520094094)
   Avframesidedata_520094184 = (when declared(Avframesidedata):
     Avframesidedata
    else:
@@ -2028,10 +2028,10 @@ type
     Avsubtitlerect
    else:
     Avsubtitlerect_520094285)
-  structavoptionranges_520094087 = (when declared(structavoptionranges):
+  structavoptionranges_520094103 = (when declared(structavoptionranges):
     structavoptionranges
    else:
-    structavoptionranges_520094086)
+    structavoptionranges_520094102)
   enumavhwframetransferdirection_520094208 = (when declared(
       enumavhwframetransferdirection):
     enumavhwframetransferdirection
@@ -2045,22 +2045,22 @@ type
     structavprobedata
    else:
     structavprobedata_520094321)
-  enumavmatrixencoding_520094131 = (when declared(enumavmatrixencoding):
+  enumavmatrixencoding_520094083 = (when declared(enumavmatrixencoding):
     enumavmatrixencoding
    else:
-    enumavmatrixencoding_520094130)
+    enumavmatrixencoding_520094082)
   Avpacket_520094254 = (when declared(Avpacket):
     Avpacket
    else:
     Avpacket_520094253)
-  valist_520094091 = (when declared(valist):
+  valist_520094107 = (when declared(valist):
     valist
    else:
-    valist_520094090)
-  unionavintfloat64_520094109 = (when declared(unionavintfloat64):
+    valist_520094106)
+  unionavintfloat64_520094125 = (when declared(unionavintfloat64):
     unionavintfloat64
    else:
-    unionavintfloat64_520094108)
+    unionavintfloat64_520094124)
   enumavfieldorder_520094228 = (when declared(enumavfieldorder):
     enumavfieldorder
    else:
@@ -2077,10 +2077,10 @@ type
     compilergnucvalist
    else:
     compilergnucvalist_520094371)
-  Avchannelcustom_520094135 = (when declared(Avchannelcustom):
+  Avchannelcustom_520094087 = (when declared(Avchannelcustom):
     Avchannelcustom
    else:
-    Avchannelcustom_520094134)
+    Avchannelcustom_520094086)
   structavcomponentdescriptor_520094160 = (when declared(
       structavcomponentdescriptor):
     structavcomponentdescriptor
@@ -2098,10 +2098,10 @@ type
     Avoutputformat
    else:
     Avoutputformat_520094327)
-  structavchannellayout_520094144 = (when declared(structavchannellayout):
+  structavchannellayout_520094089 = (when declared(structavchannellayout):
     structavchannellayout
    else:
-    structavchannellayout_520094143)
+    structavchannellayout_520094088)
   Avchapter_520094352 = (when declared(Avchapter):
     Avchapter
    else:
@@ -2110,10 +2110,10 @@ type
     structaviodirentry
    else:
     structaviodirentry_520094307)
-  structavrational_520094099 = (when declared(structavrational):
+  structavrational_520094115 = (when declared(structavrational):
     structavrational
    else:
-    structavrational_520094098)
+    structavrational_520094114)
   enumavhwdevicetype_520094194 = (when declared(enumavhwdevicetype):
     enumavhwdevicetype
    else:
@@ -2126,15 +2126,15 @@ type
     structavcodecparser
    else:
     structavcodecparser_520094295)
-  unionavintfloat32_520094107 = (when declared(unionavintfloat32):
+  unionavintfloat32_520094123 = (when declared(unionavintfloat32):
     unionavintfloat32
    else:
-    unionavintfloat32_520094106)
-  enumavcolortransfercharacteristic_520094117 = (when declared(
+    unionavintfloat32_520094122)
+  enumavcolortransfercharacteristic_520094133 = (when declared(
       enumavcolortransfercharacteristic):
     enumavcolortransfercharacteristic
    else:
-    enumavcolortransfercharacteristic_520094116)
+    enumavcolortransfercharacteristic_520094132)
   Rcoverride_520094272 = (when declared(Rcoverride):
     Rcoverride
    else:
@@ -2148,14 +2148,14 @@ type
     structavsubtitle
    else:
     structavsubtitle_520094287)
-  enumavchannel_520094127 = (when declared(enumavchannel):
+  enumavchannel_520094079 = (when declared(enumavchannel):
     enumavchannel
    else:
-    enumavchannel_520094126)
-  enumavpixelformat_520094113 = (when declared(enumavpixelformat):
+    enumavchannel_520094078)
+  enumavpixelformat_520094129 = (when declared(enumavpixelformat):
     enumavpixelformat
    else:
-    enumavpixelformat_520094112)
+    enumavpixelformat_520094128)
   enumavpicturestructure_520094292 = (when declared(enumavpicturestructure):
     enumavpicturestructure
    else:
@@ -2168,10 +2168,10 @@ type
     structavprofile
    else:
     structavprofile_520094215)
-  enumavcolorspace_520094119 = (when declared(enumavcolorspace):
+  enumavcolorspace_520094142 = (when declared(enumavcolorspace):
     enumavcolorspace
    else:
-    enumavcolorspace_520094118)
+    enumavcolorspace_520094141)
   Avhwframesconstraints_520094212 = (when declared(Avhwframesconstraints):
     Avhwframesconstraints
    else:
@@ -2180,38 +2180,38 @@ type
     Avindexentry
    else:
     Avindexentry_520094339)
-  Avdictionary_520094097 = (when declared(Avdictionary):
+  Avdictionary_520094113 = (when declared(Avdictionary):
     Avdictionary
    else:
-    Avdictionary_520094096)
-  structavclass_520094083 = (when declared(structavclass):
+    Avdictionary_520094112)
+  structavclass_520094099 = (when declared(structavclass):
     structavclass
    else:
-    structavclass_520094082)
+    structavclass_520094098)
   structavchapter_520094350 = (when declared(structavchapter):
     structavchapter
    else:
     structavchapter_520094349)
-  enumavchannelorder_520094129 = (when declared(enumavchannelorder):
+  enumavchannelorder_520094081 = (when declared(enumavchannelorder):
     enumavchannelorder
    else:
-    enumavchannelorder_520094128)
-  enumavpicturetype_520094105 = (when declared(enumavpicturetype):
+    enumavchannelorder_520094080)
+  enumavpicturetype_520094121 = (when declared(enumavpicturetype):
     enumavpicturetype
    else:
-    enumavpicturetype_520094104)
-  enumavcolorprimaries_520094115 = (when declared(enumavcolorprimaries):
+    enumavpicturetype_520094120)
+  enumavcolorprimaries_520094131 = (when declared(enumavcolorprimaries):
     enumavcolorprimaries
    else:
-    enumavcolorprimaries_520094114)
+    enumavcolorprimaries_520094130)
   Avcodeccontext_520094278 = (when declared(Avcodeccontext):
     Avcodeccontext
    else:
     Avcodeccontext_520094277)
-  enumavrounding_520094111 = (when declared(enumavrounding):
+  enumavrounding_520094127 = (when declared(enumavrounding):
     enumavrounding
    else:
-    enumavrounding_520094110)
+    enumavrounding_520094126)
   enumavsubtitletype_520094282 = (when declared(enumavsubtitletype):
     enumavsubtitletype
    else:
@@ -2236,18 +2236,18 @@ type
     structavprogram
    else:
     structavprogram_520094345)
-  enumavsampleformat_520094148 = (when declared(enumavsampleformat):
+  enumavsampleformat_520094093 = (when declared(enumavsampleformat):
     enumavsampleformat
    else:
-    enumavsampleformat_520094147)
+    enumavsampleformat_520094092)
   structavhwdevicecontext_520094198 = (when declared(structavhwdevicecontext):
     structavhwdevicecontext
    else:
     structavhwdevicecontext_520094197)
-  Avclasscategory_520094081 = (when declared(Avclasscategory):
+  Avclasscategory_520094097 = (when declared(Avclasscategory):
     Avclasscategory
    else:
-    Avclasscategory_520094080)
+    Avclasscategory_520094096)
   Swsvector_520094366 = (when declared(Swsvector):
     Swsvector
    else:
@@ -2260,10 +2260,10 @@ type
     compilerofft
    else:
     compilerofft_520094375)
-  Avclass_520094089 = (when declared(Avclass):
+  Avclass_520094105 = (when declared(Avclass):
     Avclass
    else:
-    Avclass_520094088)
+    Avclass_520094104)
   Avprobedata_520094324 = (when declared(Avprobedata):
     Avprobedata
    else:
@@ -2284,10 +2284,10 @@ type
     structavoutputformat
    else:
     structavoutputformat_520094325)
-  structavdictionaryentry_520094093 = (when declared(structavdictionaryentry):
+  structavdictionaryentry_520094109 = (when declared(structavdictionaryentry):
     structavdictionaryentry
    else:
-    structavdictionaryentry_520094092)
+    structavdictionaryentry_520094108)
   Avsubtitle_520094290 = (when declared(Avsubtitle):
     Avsubtitle
    else:
@@ -2300,10 +2300,10 @@ type
     Avcodecparser
    else:
     Avcodecparser_520094299)
-  structavoption_520094085 = (when declared(structavoption):
+  structavoption_520094101 = (when declared(structavoption):
     structavoption
    else:
-    structavoption_520094084)
+    structavoption_520094100)
   enumavoptiontype_520094150 = (when declared(enumavoptiontype):
     enumavoptiontype
    else:
@@ -2329,10 +2329,10 @@ type
     Swsfilter
    else:
     Swsfilter_520094369)
-  Avrational_520094101 = (when declared(Avrational):
+  Avrational_520094117 = (when declared(Avrational):
     Avrational
    else:
-    Avrational_520094100)
+    Avrational_520094116)
   Avprogram_520094348 = (when declared(Avprogram):
     Avprogram
    else:
@@ -2369,10 +2369,10 @@ type
     structavbufferref
    else:
     structavbufferref_520094171)
-  enumavmediatype_520094103 = (when declared(enumavmediatype):
+  enumavmediatype_520094119 = (when declared(enumavmediatype):
     enumavmediatype
    else:
-    enumavmediatype_520094102)
+    enumavmediatype_520094118)
   Avoptionranges_520094158 = (when declared(Avoptionranges):
     Avoptionranges
    else:
@@ -2385,10 +2385,10 @@ type
     Avbuffer
    else:
     Avbuffer_520094169)
-  File_520094125 = (when declared(File):
+  File_520094148 = (when declared(File):
     File
    else:
-    File_520094124)
+    File_520094147)
   structavpacketlist_520094256 = (when declared(structavpacketlist):
     structavpacketlist
    else:
@@ -2397,10 +2397,10 @@ type
     Avcodecparsercontext
    else:
     Avcodecparsercontext_520094297)
-  Avchannellayout_520094146 = (when declared(Avchannellayout):
+  Avchannellayout_520094091 = (when declared(Avchannellayout):
     Avchannellayout
    else:
-    Avchannellayout_520094145)
+    Avchannellayout_520094090)
   structavcodecparsercontext_520094294 = (when declared(
       structavcodecparsercontext):
     structavcodecparsercontext
@@ -2566,19 +2566,19 @@ else:
   static :
     hint("Declaration of " & "structaviodircontext" &
         " already exists, not redeclaring")
-when not declared(Avdictionaryentry):
-  type
-    Avdictionaryentry* = Avdictionaryentry_520094094
-else:
-  static :
-    hint("Declaration of " & "Avdictionaryentry" &
-        " already exists, not redeclaring")
 when not declared(structavchannelcustom):
   type
-    structavchannelcustom* = structavchannelcustom_520094132
+    structavchannelcustom* = structavchannelcustom_520094084
 else:
   static :
     hint("Declaration of " & "structavchannelcustom" &
+        " already exists, not redeclaring")
+when not declared(Avdictionaryentry):
+  type
+    Avdictionaryentry* = Avdictionaryentry_520094110
+else:
+  static :
+    hint("Declaration of " & "Avdictionaryentry" &
         " already exists, not redeclaring")
 when not declared(Aviointerruptcb):
   type
@@ -2699,7 +2699,7 @@ else:
         " already exists, not redeclaring")
 when not declared(structavoptionranges):
   type
-    structavoptionranges* = structavoptionranges_520094086
+    structavoptionranges* = structavoptionranges_520094102
 else:
   static :
     hint("Declaration of " & "structavoptionranges" &
@@ -2719,13 +2719,13 @@ else:
     hint("Declaration of " & "Avpacket" & " already exists, not redeclaring")
 when not declared(valist):
   type
-    valist* = valist_520094090
+    valist* = valist_520094106
 else:
   static :
     hint("Declaration of " & "valist" & " already exists, not redeclaring")
 when not declared(unionavintfloat64):
   type
-    unionavintfloat64* = unionavintfloat64_520094108
+    unionavintfloat64* = unionavintfloat64_520094124
 else:
   static :
     hint("Declaration of " & "unionavintfloat64" &
@@ -2752,7 +2752,7 @@ else:
         " already exists, not redeclaring")
 when not declared(Avchannelcustom):
   type
-    Avchannelcustom* = Avchannelcustom_520094134
+    Avchannelcustom* = Avchannelcustom_520094086
 else:
   static :
     hint("Declaration of " & "Avchannelcustom" &
@@ -2773,7 +2773,7 @@ else:
         " already exists, not redeclaring")
 when not declared(structavchannellayout):
   type
-    structavchannellayout* = structavchannellayout_520094143
+    structavchannellayout* = structavchannellayout_520094088
 else:
   static :
     hint("Declaration of " & "structavchannellayout" &
@@ -2793,7 +2793,7 @@ else:
         " already exists, not redeclaring")
 when not declared(structavrational):
   type
-    structavrational* = structavrational_520094098
+    structavrational* = structavrational_520094114
 else:
   static :
     hint("Declaration of " & "structavrational" &
@@ -2814,7 +2814,7 @@ else:
         " already exists, not redeclaring")
 when not declared(unionavintfloat32):
   type
-    unionavintfloat32* = unionavintfloat32_520094106
+    unionavintfloat32* = unionavintfloat32_520094122
 else:
   static :
     hint("Declaration of " & "unionavintfloat32" &
@@ -2860,13 +2860,13 @@ else:
     hint("Declaration of " & "Avindexentry" & " already exists, not redeclaring")
 when not declared(Avdictionary):
   type
-    Avdictionary* = Avdictionary_520094096
+    Avdictionary* = Avdictionary_520094112
 else:
   static :
     hint("Declaration of " & "Avdictionary" & " already exists, not redeclaring")
 when not declared(structavclass):
   type
-    structavclass* = structavclass_520094082
+    structavclass* = structavclass_520094098
 else:
   static :
     hint("Declaration of " & "structavclass" &
@@ -2920,7 +2920,7 @@ else:
         " already exists, not redeclaring")
 when not declared(Avclasscategory):
   type
-    Avclasscategory* = Avclasscategory_520094080
+    Avclasscategory* = Avclasscategory_520094096
 else:
   static :
     hint("Declaration of " & "Avclasscategory" &
@@ -2946,7 +2946,7 @@ else:
     hint("Declaration of " & "compilerofft" & " already exists, not redeclaring")
 when not declared(Avclass):
   type
-    Avclass* = Avclass_520094088
+    Avclass* = Avclass_520094104
 else:
   static :
     hint("Declaration of " & "Avclass" & " already exists, not redeclaring")
@@ -2986,7 +2986,7 @@ else:
         " already exists, not redeclaring")
 when not declared(structavdictionaryentry):
   type
-    structavdictionaryentry* = structavdictionaryentry_520094092
+    structavdictionaryentry* = structavdictionaryentry_520094108
 else:
   static :
     hint("Declaration of " & "structavdictionaryentry" &
@@ -3006,7 +3006,7 @@ else:
         " already exists, not redeclaring")
 when not declared(structavoption):
   type
-    structavoption* = structavoption_520094084
+    structavoption* = structavoption_520094100
 else:
   static :
     hint("Declaration of " & "structavoption" &
@@ -3046,7 +3046,7 @@ else:
     hint("Declaration of " & "Swsfilter" & " already exists, not redeclaring")
 when not declared(Avrational):
   type
-    Avrational* = Avrational_520094100
+    Avrational* = Avrational_520094116
 else:
   static :
     hint("Declaration of " & "Avrational" & " already exists, not redeclaring")
@@ -3132,7 +3132,7 @@ else:
     hint("Declaration of " & "Avbuffer" & " already exists, not redeclaring")
 when not declared(File):
   type
-    File* = File_520094124
+    File* = File_520094147
 else:
   static :
     hint("Declaration of " & "File" & " already exists, not redeclaring")
@@ -3152,7 +3152,7 @@ else:
         " already exists, not redeclaring")
 when not declared(Avchannellayout):
   type
-    Avchannellayout* = Avchannellayout_520094145
+    Avchannellayout* = Avchannellayout_520094090
 else:
   static :
     hint("Declaration of " & "Avchannellayout" &
@@ -3246,6 +3246,16 @@ else:
   static :
     hint("Declaration of " & "structavframe" &
         " already exists, not redeclaring")
+when not declared(Averrormaxstringsize):
+  when 64 is static:
+    const
+      Averrormaxstringsize* = 64 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/error.h:85:9
+  else:
+    let Averrormaxstringsize* = 64 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/error.h:85:9
+else:
+  static :
+    hint("Declaration of " & "Averrormaxstringsize" &
+        " already exists, not redeclaring")
 when not declared(Libavutilversionmajor):
   when 58 is static:
     const
@@ -3275,6 +3285,16 @@ when not declared(Libavutilversionmicro):
 else:
   static :
     hint("Declaration of " & "Libavutilversionmicro" &
+        " already exists, not redeclaring")
+when not declared(Avchlayoutnative):
+  when cast[culonglong](-9223372036854775808'i64) is static:
+    const
+      Avchlayoutnative* = cast[culonglong](-9223372036854775808'i64) ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:202:9
+  else:
+    let Avchlayoutnative* = cast[culonglong](-9223372036854775808'i64) ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:202:9
+else:
+  static :
+    hint("Declaration of " & "Avchlayoutnative" &
         " already exists, not redeclaring")
 when not declared(Avlogquiet):
   when -8 is static:
@@ -3474,16 +3494,6 @@ when not declared(Avtimebase):
 else:
   static :
     hint("Declaration of " & "Avtimebase" & " already exists, not redeclaring")
-when not declared(Averrormaxstringsize):
-  when 64 is static:
-    const
-      Averrormaxstringsize* = 64 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/error.h:85:9
-  else:
-    let Averrormaxstringsize* = 64 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/error.h:85:9
-else:
-  static :
-    hint("Declaration of " & "Averrormaxstringsize" &
-        " already exists, not redeclaring")
 when not declared(Mef):
   when 2.718281828459045 is static:
     const
@@ -3648,16 +3658,6 @@ when not declared(Avfourccmaxstringsize):
 else:
   static :
     hint("Declaration of " & "Avfourccmaxstringsize" &
-        " already exists, not redeclaring")
-when not declared(Avchlayoutnative):
-  when cast[culonglong](-9223372036854775808'i64) is static:
-    const
-      Avchlayoutnative* = cast[culonglong](-9223372036854775808'i64) ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:202:9
-  else:
-    let Avchlayoutnative* = cast[culonglong](-9223372036854775808'i64) ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:202:9
-else:
-  static :
-    hint("Declaration of " & "Avchlayoutnative" &
         " already exists, not redeclaring")
 when not declared(Avoptflagencodingparam):
   when 1 is static:
@@ -7963,6 +7963,360 @@ when not declared(Swscsbt2020):
 else:
   static :
     hint("Declaration of " & "Swscsbt2020" & " already exists, not redeclaring")
+when not declared(avstrerror):
+  proc avstrerror*(errnum: cint; errbuf: cstring; errbufsize: csize_t): cint {.
+      cdecl, importc: "av_strerror".}
+else:
+  static :
+    hint("Declaration of " & "avstrerror" & " already exists, not redeclaring")
+when not declared(avgetchannellayout):
+  proc avgetchannellayout*(name: cstring): uint64 {.cdecl,
+      importc: "av_get_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avgetchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avgetextendedchannellayout):
+  proc avgetextendedchannellayout*(name: cstring; channellayout: ptr uint64;
+                                   nbchannels: ptr cint): cint {.cdecl,
+      importc: "av_get_extended_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avgetextendedchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avgetchannellayoutstring):
+  proc avgetchannellayoutstring*(buf: cstring; bufsize: cint; nbchannels: cint;
+                                 channellayout: uint64): void {.cdecl,
+      importc: "av_get_channel_layout_string".}
+else:
+  static :
+    hint("Declaration of " & "avgetchannellayoutstring" &
+        " already exists, not redeclaring")
+when not declared(avbprintchannellayout):
+  proc avbprintchannellayout*(bp: ptr structavbprint; nbchannels: cint;
+                              channellayout: uint64): void {.cdecl,
+      importc: "av_bprint_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avbprintchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avgetchannellayoutnbchannels):
+  proc avgetchannellayoutnbchannels*(channellayout: uint64): cint {.cdecl,
+      importc: "av_get_channel_layout_nb_channels".}
+else:
+  static :
+    hint("Declaration of " & "avgetchannellayoutnbchannels" &
+        " already exists, not redeclaring")
+when not declared(avgetdefaultchannellayout):
+  proc avgetdefaultchannellayout*(nbchannels: cint): int64 {.cdecl,
+      importc: "av_get_default_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avgetdefaultchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avgetchannellayoutchannelindex):
+  proc avgetchannellayoutchannelindex*(channellayout: uint64; channel: uint64): cint {.
+      cdecl, importc: "av_get_channel_layout_channel_index".}
+else:
+  static :
+    hint("Declaration of " & "avgetchannellayoutchannelindex" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutextractchannel):
+  proc avchannellayoutextractchannel*(channellayout: uint64; index: cint): uint64 {.
+      cdecl, importc: "av_channel_layout_extract_channel".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutextractchannel" &
+        " already exists, not redeclaring")
+when not declared(avgetchannelname):
+  proc avgetchannelname*(channel: uint64): cstring {.cdecl,
+      importc: "av_get_channel_name".}
+else:
+  static :
+    hint("Declaration of " & "avgetchannelname" &
+        " already exists, not redeclaring")
+when not declared(avgetchanneldescription):
+  proc avgetchanneldescription*(channel: uint64): cstring {.cdecl,
+      importc: "av_get_channel_description".}
+else:
+  static :
+    hint("Declaration of " & "avgetchanneldescription" &
+        " already exists, not redeclaring")
+when not declared(avgetstandardchannellayout):
+  proc avgetstandardchannellayout*(index: cuint; layout: ptr uint64;
+                                   name: ptr cstring): cint {.cdecl,
+      importc: "av_get_standard_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avgetstandardchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avchannelname):
+  proc avchannelname*(buf: cstring; bufsize: csize_t; channel: enumavchannel_520094079): cint {.
+      cdecl, importc: "av_channel_name".}
+else:
+  static :
+    hint("Declaration of " & "avchannelname" &
+        " already exists, not redeclaring")
+when not declared(avchannelnamebprint):
+  proc avchannelnamebprint*(bp: ptr structavbprint; channelid: enumavchannel_520094079): void {.
+      cdecl, importc: "av_channel_name_bprint".}
+else:
+  static :
+    hint("Declaration of " & "avchannelnamebprint" &
+        " already exists, not redeclaring")
+when not declared(avchanneldescription):
+  proc avchanneldescription*(buf: cstring; bufsize: csize_t;
+                             channel: enumavchannel_520094079): cint {.cdecl,
+      importc: "av_channel_description".}
+else:
+  static :
+    hint("Declaration of " & "avchanneldescription" &
+        " already exists, not redeclaring")
+when not declared(avchanneldescriptionbprint):
+  proc avchanneldescriptionbprint*(bp: ptr structavbprint;
+                                   channelid: enumavchannel_520094079): void {.
+      cdecl, importc: "av_channel_description_bprint".}
+else:
+  static :
+    hint("Declaration of " & "avchanneldescriptionbprint" &
+        " already exists, not redeclaring")
+when not declared(avchannelfromstring):
+  proc avchannelfromstring*(name: cstring): enumavchannel_520094079 {.cdecl,
+      importc: "av_channel_from_string".}
+else:
+  static :
+    hint("Declaration of " & "avchannelfromstring" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutfrommask):
+  proc avchannellayoutfrommask*(channellayout: ptr Avchannellayout_520094091;
+                                mask: uint64): cint {.cdecl,
+      importc: "av_channel_layout_from_mask".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutfrommask" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutfromstring):
+  proc avchannellayoutfromstring*(channellayout: ptr Avchannellayout_520094091;
+                                  str: cstring): cint {.cdecl,
+      importc: "av_channel_layout_from_string".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutfromstring" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutdefault):
+  proc avchannellayoutdefault*(chlayout: ptr Avchannellayout_520094091;
+                               nbchannels: cint): void {.cdecl,
+      importc: "av_channel_layout_default".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutdefault" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutstandard):
+  proc avchannellayoutstandard*(opaque: ptr pointer): ptr Avchannellayout_520094091 {.
+      cdecl, importc: "av_channel_layout_standard".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutstandard" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutuninit):
+  proc avchannellayoutuninit*(channellayout: ptr Avchannellayout_520094091): void {.
+      cdecl, importc: "av_channel_layout_uninit".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutuninit" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutcopy):
+  proc avchannellayoutcopy*(dst: ptr Avchannellayout_520094091;
+                            src: ptr Avchannellayout_520094091): cint {.cdecl,
+      importc: "av_channel_layout_copy".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutcopy" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutdescribe):
+  proc avchannellayoutdescribe*(channellayout: ptr Avchannellayout_520094091;
+                                buf: cstring; bufsize: csize_t): cint {.cdecl,
+      importc: "av_channel_layout_describe".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutdescribe" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutdescribebprint):
+  proc avchannellayoutdescribebprint*(channellayout: ptr Avchannellayout_520094091;
+                                      bp: ptr structavbprint): cint {.cdecl,
+      importc: "av_channel_layout_describe_bprint".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutdescribebprint" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutchannelfromindex):
+  proc avchannellayoutchannelfromindex*(channellayout: ptr Avchannellayout_520094091;
+                                        idx: cuint): enumavchannel_520094079 {.
+      cdecl, importc: "av_channel_layout_channel_from_index".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutchannelfromindex" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutindexfromchannel):
+  proc avchannellayoutindexfromchannel*(channellayout: ptr Avchannellayout_520094091;
+                                        channel: enumavchannel_520094079): cint {.
+      cdecl, importc: "av_channel_layout_index_from_channel".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutindexfromchannel" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutindexfromstring):
+  proc avchannellayoutindexfromstring*(channellayout: ptr Avchannellayout_520094091;
+                                       name: cstring): cint {.cdecl,
+      importc: "av_channel_layout_index_from_string".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutindexfromstring" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutchannelfromstring):
+  proc avchannellayoutchannelfromstring*(channellayout: ptr Avchannellayout_520094091;
+      name: cstring): enumavchannel_520094079 {.cdecl,
+      importc: "av_channel_layout_channel_from_string".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutchannelfromstring" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutsubset):
+  proc avchannellayoutsubset*(channellayout: ptr Avchannellayout_520094091;
+                              mask: uint64): uint64 {.cdecl,
+      importc: "av_channel_layout_subset".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutsubset" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutcheck):
+  proc avchannellayoutcheck*(channellayout: ptr Avchannellayout_520094091): cint {.
+      cdecl, importc: "av_channel_layout_check".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutcheck" &
+        " already exists, not redeclaring")
+when not declared(avchannellayoutcompare):
+  proc avchannellayoutcompare*(chl: ptr Avchannellayout_520094091;
+                               chl1: ptr Avchannellayout_520094091): cint {.
+      cdecl, importc: "av_channel_layout_compare".}
+else:
+  static :
+    hint("Declaration of " & "avchannellayoutcompare" &
+        " already exists, not redeclaring")
+when not declared(avgetsamplefmtname):
+  proc avgetsamplefmtname*(samplefmt: enumavsampleformat_520094093): cstring {.
+      cdecl, importc: "av_get_sample_fmt_name".}
+else:
+  static :
+    hint("Declaration of " & "avgetsamplefmtname" &
+        " already exists, not redeclaring")
+when not declared(avgetsamplefmt):
+  proc avgetsamplefmt*(name: cstring): enumavsampleformat_520094093 {.cdecl,
+      importc: "av_get_sample_fmt".}
+else:
+  static :
+    hint("Declaration of " & "avgetsamplefmt" &
+        " already exists, not redeclaring")
+when not declared(avgetaltsamplefmt):
+  proc avgetaltsamplefmt*(samplefmt: enumavsampleformat_520094093; planar: cint): enumavsampleformat_520094093 {.
+      cdecl, importc: "av_get_alt_sample_fmt".}
+else:
+  static :
+    hint("Declaration of " & "avgetaltsamplefmt" &
+        " already exists, not redeclaring")
+when not declared(avgetpackedsamplefmt):
+  proc avgetpackedsamplefmt*(samplefmt: enumavsampleformat_520094093): enumavsampleformat_520094093 {.
+      cdecl, importc: "av_get_packed_sample_fmt".}
+else:
+  static :
+    hint("Declaration of " & "avgetpackedsamplefmt" &
+        " already exists, not redeclaring")
+when not declared(avgetplanarsamplefmt):
+  proc avgetplanarsamplefmt*(samplefmt: enumavsampleformat_520094093): enumavsampleformat_520094093 {.
+      cdecl, importc: "av_get_planar_sample_fmt".}
+else:
+  static :
+    hint("Declaration of " & "avgetplanarsamplefmt" &
+        " already exists, not redeclaring")
+when not declared(avgetsamplefmtstring):
+  proc avgetsamplefmtstring*(buf: cstring; bufsize: cint;
+                             samplefmt: enumavsampleformat_520094093): cstring {.
+      cdecl, importc: "av_get_sample_fmt_string".}
+else:
+  static :
+    hint("Declaration of " & "avgetsamplefmtstring" &
+        " already exists, not redeclaring")
+when not declared(avgetbytespersample):
+  proc avgetbytespersample*(samplefmt: enumavsampleformat_520094093): cint {.
+      cdecl, importc: "av_get_bytes_per_sample".}
+else:
+  static :
+    hint("Declaration of " & "avgetbytespersample" &
+        " already exists, not redeclaring")
+when not declared(avsamplefmtisplanar):
+  proc avsamplefmtisplanar*(samplefmt: enumavsampleformat_520094093): cint {.
+      cdecl, importc: "av_sample_fmt_is_planar".}
+else:
+  static :
+    hint("Declaration of " & "avsamplefmtisplanar" &
+        " already exists, not redeclaring")
+when not declared(avsamplesgetbuffersize):
+  proc avsamplesgetbuffersize*(linesize: ptr cint; nbchannels: cint;
+                               nbsamples: cint; samplefmt: enumavsampleformat_520094093;
+                               align: cint): cint {.cdecl,
+      importc: "av_samples_get_buffer_size".}
+else:
+  static :
+    hint("Declaration of " & "avsamplesgetbuffersize" &
+        " already exists, not redeclaring")
+when not declared(avsamplesfillarrays):
+  proc avsamplesfillarrays*(audiodata: ptr ptr uint8; linesize: ptr cint;
+                            buf: ptr uint8; nbchannels: cint; nbsamples: cint;
+                            samplefmt: enumavsampleformat_520094093; align: cint): cint {.
+      cdecl, importc: "av_samples_fill_arrays".}
+else:
+  static :
+    hint("Declaration of " & "avsamplesfillarrays" &
+        " already exists, not redeclaring")
+when not declared(avsamplesalloc):
+  proc avsamplesalloc*(audiodata: ptr ptr uint8; linesize: ptr cint;
+                       nbchannels: cint; nbsamples: cint;
+                       samplefmt: enumavsampleformat_520094093; align: cint): cint {.
+      cdecl, importc: "av_samples_alloc".}
+else:
+  static :
+    hint("Declaration of " & "avsamplesalloc" &
+        " already exists, not redeclaring")
+when not declared(avsamplesallocarrayandsamples):
+  proc avsamplesallocarrayandsamples*(audiodata: ptr ptr ptr uint8;
+                                      linesize: ptr cint; nbchannels: cint;
+                                      nbsamples: cint;
+                                      samplefmt: enumavsampleformat_520094093;
+                                      align: cint): cint {.cdecl,
+      importc: "av_samples_alloc_array_and_samples".}
+else:
+  static :
+    hint("Declaration of " & "avsamplesallocarrayandsamples" &
+        " already exists, not redeclaring")
+when not declared(avsamplescopy):
+  proc avsamplescopy*(dst: ptr ptr uint8; src: ptr ptr uint8; dstoffset: cint;
+                      srcoffset: cint; nbsamples: cint; nbchannels: cint;
+                      samplefmt: enumavsampleformat_520094093): cint {.cdecl,
+      importc: "av_samples_copy".}
+else:
+  static :
+    hint("Declaration of " & "avsamplescopy" &
+        " already exists, not redeclaring")
+when not declared(avsamplessetsilence):
+  proc avsamplessetsilence*(audiodata: ptr ptr uint8; offset: cint;
+                            nbsamples: cint; nbchannels: cint;
+                            samplefmt: enumavsampleformat_520094093): cint {.
+      cdecl, importc: "av_samples_set_silence".}
+else:
+  static :
+    hint("Declaration of " & "avsamplessetsilence" &
+        " already exists, not redeclaring")
 when not declared(avlog):
   proc avlog*(avcl: pointer; level: cint; fmt: cstring): void {.cdecl, varargs,
       importc: "av_log".}
@@ -8016,14 +8370,14 @@ else:
     hint("Declaration of " & "avdefaultitemname" &
         " already exists, not redeclaring")
 when not declared(avdefaultgetcategory):
-  proc avdefaultgetcategory*(ptrarg: pointer): Avclasscategory_520094081 {.
+  proc avdefaultgetcategory*(ptrarg: pointer): Avclasscategory_520094097 {.
       cdecl, importc: "av_default_get_category".}
 else:
   static :
     hint("Declaration of " & "avdefaultgetcategory" &
         " already exists, not redeclaring")
 when not declared(avlogformatline):
-  proc avlogformatline*(ptrarg: pointer; level: cint; fmt: cstring; vl: valist_520094091;
+  proc avlogformatline*(ptrarg: pointer; level: cint; fmt: cstring; vl: valist_520094107;
                         line: cstring; linesize: cint; printprefix: ptr cint): void {.
       cdecl, importc: "av_log_format_line".}
 else:
@@ -8031,7 +8385,7 @@ else:
     hint("Declaration of " & "avlogformatline" &
         " already exists, not redeclaring")
 when not declared(avlogformatline2):
-  proc avlogformatline2*(ptrarg: pointer; level: cint; fmt: cstring; vl: valist_520094091;
+  proc avlogformatline2*(ptrarg: pointer; level: cint; fmt: cstring; vl: valist_520094107;
                          line: cstring; linesize: cint; printprefix: ptr cint): cint {.
       cdecl, importc: "av_log_format_line2".}
 else:
@@ -8051,41 +8405,41 @@ else:
     hint("Declaration of " & "avloggetflags" &
         " already exists, not redeclaring")
 when not declared(avdictget):
-  proc avdictget*(m: ptr Avdictionary_520094097; key: cstring;
-                  prev: ptr Avdictionaryentry_520094095; flags: cint): ptr Avdictionaryentry_520094095 {.
+  proc avdictget*(m: ptr Avdictionary_520094113; key: cstring;
+                  prev: ptr Avdictionaryentry_520094111; flags: cint): ptr Avdictionaryentry_520094111 {.
       cdecl, importc: "av_dict_get".}
 else:
   static :
     hint("Declaration of " & "avdictget" & " already exists, not redeclaring")
 when not declared(avdictiterate):
-  proc avdictiterate*(m: ptr Avdictionary_520094097; prev: ptr Avdictionaryentry_520094095): ptr Avdictionaryentry_520094095 {.
+  proc avdictiterate*(m: ptr Avdictionary_520094113; prev: ptr Avdictionaryentry_520094111): ptr Avdictionaryentry_520094111 {.
       cdecl, importc: "av_dict_iterate".}
 else:
   static :
     hint("Declaration of " & "avdictiterate" &
         " already exists, not redeclaring")
 when not declared(avdictcount):
-  proc avdictcount*(m: ptr Avdictionary_520094097): cint {.cdecl,
+  proc avdictcount*(m: ptr Avdictionary_520094113): cint {.cdecl,
       importc: "av_dict_count".}
 else:
   static :
     hint("Declaration of " & "avdictcount" & " already exists, not redeclaring")
 when not declared(avdictset):
-  proc avdictset*(pm: ptr ptr Avdictionary_520094097; key: cstring;
+  proc avdictset*(pm: ptr ptr Avdictionary_520094113; key: cstring;
                   value: cstring; flags: cint): cint {.cdecl,
       importc: "av_dict_set".}
 else:
   static :
     hint("Declaration of " & "avdictset" & " already exists, not redeclaring")
 when not declared(avdictsetint):
-  proc avdictsetint*(pm: ptr ptr Avdictionary_520094097; key: cstring;
+  proc avdictsetint*(pm: ptr ptr Avdictionary_520094113; key: cstring;
                      value: int64; flags: cint): cint {.cdecl,
       importc: "av_dict_set_int".}
 else:
   static :
     hint("Declaration of " & "avdictsetint" & " already exists, not redeclaring")
 when not declared(avdictparsestring):
-  proc avdictparsestring*(pm: ptr ptr Avdictionary_520094097; str: cstring;
+  proc avdictparsestring*(pm: ptr ptr Avdictionary_520094113; str: cstring;
                           keyvalsep: cstring; pairssep: cstring; flags: cint): cint {.
       cdecl, importc: "av_dict_parse_string".}
 else:
@@ -8093,19 +8447,19 @@ else:
     hint("Declaration of " & "avdictparsestring" &
         " already exists, not redeclaring")
 when not declared(avdictcopy):
-  proc avdictcopy*(dst: ptr ptr Avdictionary_520094097; src: ptr Avdictionary_520094097;
+  proc avdictcopy*(dst: ptr ptr Avdictionary_520094113; src: ptr Avdictionary_520094113;
                    flags: cint): cint {.cdecl, importc: "av_dict_copy".}
 else:
   static :
     hint("Declaration of " & "avdictcopy" & " already exists, not redeclaring")
 when not declared(avdictfree):
-  proc avdictfree*(m: ptr ptr Avdictionary_520094097): void {.cdecl,
+  proc avdictfree*(m: ptr ptr Avdictionary_520094113): void {.cdecl,
       importc: "av_dict_free".}
 else:
   static :
     hint("Declaration of " & "avdictfree" & " already exists, not redeclaring")
 when not declared(avdictgetstring):
-  proc avdictgetstring*(m: ptr Avdictionary_520094097; buffer: ptr cstring;
+  proc avdictgetstring*(m: ptr Avdictionary_520094113; buffer: ptr cstring;
                         keyvalsep: cschar; pairssep: cschar): cint {.cdecl,
       importc: "av_dict_get_string".}
 else:
@@ -8119,58 +8473,58 @@ else:
   static :
     hint("Declaration of " & "avreduce" & " already exists, not redeclaring")
 when not declared(avmulq):
-  proc avmulq*(b: Avrational_520094101; c: Avrational_520094101): Avrational_520094101 {.
+  proc avmulq*(b: Avrational_520094117; c: Avrational_520094117): Avrational_520094117 {.
       cdecl, importc: "av_mul_q".}
 else:
   static :
     hint("Declaration of " & "avmulq" & " already exists, not redeclaring")
 when not declared(avdivq):
-  proc avdivq*(b: Avrational_520094101; c: Avrational_520094101): Avrational_520094101 {.
+  proc avdivq*(b: Avrational_520094117; c: Avrational_520094117): Avrational_520094117 {.
       cdecl, importc: "av_div_q".}
 else:
   static :
     hint("Declaration of " & "avdivq" & " already exists, not redeclaring")
 when not declared(avaddq):
-  proc avaddq*(b: Avrational_520094101; c: Avrational_520094101): Avrational_520094101 {.
+  proc avaddq*(b: Avrational_520094117; c: Avrational_520094117): Avrational_520094117 {.
       cdecl, importc: "av_add_q".}
 else:
   static :
     hint("Declaration of " & "avaddq" & " already exists, not redeclaring")
 when not declared(avsubq):
-  proc avsubq*(b: Avrational_520094101; c: Avrational_520094101): Avrational_520094101 {.
+  proc avsubq*(b: Avrational_520094117; c: Avrational_520094117): Avrational_520094117 {.
       cdecl, importc: "av_sub_q".}
 else:
   static :
     hint("Declaration of " & "avsubq" & " already exists, not redeclaring")
 when not declared(avd2q):
-  proc avd2q*(d: cdouble; max: cint): Avrational_520094101 {.cdecl,
+  proc avd2q*(d: cdouble; max: cint): Avrational_520094117 {.cdecl,
       importc: "av_d2q".}
 else:
   static :
     hint("Declaration of " & "avd2q" & " already exists, not redeclaring")
 when not declared(avnearerq):
-  proc avnearerq*(q: Avrational_520094101; q1: Avrational_520094101;
-                  q2: Avrational_520094101): cint {.cdecl,
+  proc avnearerq*(q: Avrational_520094117; q1: Avrational_520094117;
+                  q2: Avrational_520094117): cint {.cdecl,
       importc: "av_nearer_q".}
 else:
   static :
     hint("Declaration of " & "avnearerq" & " already exists, not redeclaring")
 when not declared(avfindnearestqidx):
-  proc avfindnearestqidx*(q: Avrational_520094101; qlist: ptr Avrational_520094101): cint {.
+  proc avfindnearestqidx*(q: Avrational_520094117; qlist: ptr Avrational_520094117): cint {.
       cdecl, importc: "av_find_nearest_q_idx".}
 else:
   static :
     hint("Declaration of " & "avfindnearestqidx" &
         " already exists, not redeclaring")
 when not declared(avq2intfloat):
-  proc avq2intfloat*(q: Avrational_520094101): uint32 {.cdecl,
+  proc avq2intfloat*(q: Avrational_520094117): uint32 {.cdecl,
       importc: "av_q2intfloat".}
 else:
   static :
     hint("Declaration of " & "avq2intfloat" & " already exists, not redeclaring")
 when not declared(avgcdq):
-  proc avgcdq*(a: Avrational_520094101; b: Avrational_520094101; maxden: cint;
-               def: Avrational_520094101): Avrational_520094101 {.cdecl,
+  proc avgcdq*(a: Avrational_520094117; b: Avrational_520094117; maxden: cint;
+               def: Avrational_520094117): Avrational_520094117 {.cdecl,
       importc: "av_gcd_q".}
 else:
   static :
@@ -8200,25 +8554,19 @@ else:
     hint("Declaration of " & "avutillicense" &
         " already exists, not redeclaring")
 when not declared(avgetmediatypestring):
-  proc avgetmediatypestring*(mediatype: enumavmediatype_520094103): cstring {.
+  proc avgetmediatypestring*(mediatype: enumavmediatype_520094119): cstring {.
       cdecl, importc: "av_get_media_type_string".}
 else:
   static :
     hint("Declaration of " & "avgetmediatypestring" &
         " already exists, not redeclaring")
 when not declared(avgetpicturetypechar):
-  proc avgetpicturetypechar*(picttype: enumavpicturetype_520094105): cschar {.
+  proc avgetpicturetypechar*(picttype: enumavpicturetype_520094121): cschar {.
       cdecl, importc: "av_get_picture_type_char".}
 else:
   static :
     hint("Declaration of " & "avgetpicturetypechar" &
         " already exists, not redeclaring")
-when not declared(avstrerror):
-  proc avstrerror*(errnum: cint; errbuf: cstring; errbufsize: csize_t): cint {.
-      cdecl, importc: "av_strerror".}
-else:
-  static :
-    hint("Declaration of " & "avstrerror" & " already exists, not redeclaring")
 when not declared(avlog2):
   proc avlog2*(v: cuint): cint {.cdecl, importc: "av_log2".}
 else:
@@ -8383,28 +8731,28 @@ else:
   static :
     hint("Declaration of " & "avrescale" & " already exists, not redeclaring")
 when not declared(avrescalernd):
-  proc avrescalernd*(a: int64; b: int64; c: int64; rnd: enumavrounding_520094111): int64 {.
+  proc avrescalernd*(a: int64; b: int64; c: int64; rnd: enumavrounding_520094127): int64 {.
       cdecl, importc: "av_rescale_rnd".}
 else:
   static :
     hint("Declaration of " & "avrescalernd" & " already exists, not redeclaring")
 when not declared(avrescaleq):
-  proc avrescaleq*(a: int64; bq: Avrational_520094101; cq: Avrational_520094101): int64 {.
+  proc avrescaleq*(a: int64; bq: Avrational_520094117; cq: Avrational_520094117): int64 {.
       cdecl, importc: "av_rescale_q".}
 else:
   static :
     hint("Declaration of " & "avrescaleq" & " already exists, not redeclaring")
 when not declared(avrescaleqrnd):
-  proc avrescaleqrnd*(a: int64; bq: Avrational_520094101; cq: Avrational_520094101;
-                      rnd: enumavrounding_520094111): int64 {.cdecl,
+  proc avrescaleqrnd*(a: int64; bq: Avrational_520094117; cq: Avrational_520094117;
+                      rnd: enumavrounding_520094127): int64 {.cdecl,
       importc: "av_rescale_q_rnd".}
 else:
   static :
     hint("Declaration of " & "avrescaleqrnd" &
         " already exists, not redeclaring")
 when not declared(avcomparets):
-  proc avcomparets*(tsa: int64; tba: Avrational_520094101; tsb: int64;
-                    tbb: Avrational_520094101): cint {.cdecl,
+  proc avcomparets*(tsa: int64; tba: Avrational_520094117; tsb: int64;
+                    tbb: Avrational_520094117): cint {.cdecl,
       importc: "av_compare_ts".}
 else:
   static :
@@ -8416,16 +8764,16 @@ else:
   static :
     hint("Declaration of " & "avcomparemod" & " already exists, not redeclaring")
 when not declared(avrescaledelta):
-  proc avrescaledelta*(intb: Avrational_520094101; ints: int64;
-                       fstb: Avrational_520094101; duration: cint;
-                       last: ptr int64; outtb: Avrational_520094101): int64 {.
+  proc avrescaledelta*(intb: Avrational_520094117; ints: int64;
+                       fstb: Avrational_520094117; duration: cint;
+                       last: ptr int64; outtb: Avrational_520094117): int64 {.
       cdecl, importc: "av_rescale_delta".}
 else:
   static :
     hint("Declaration of " & "avrescaledelta" &
         " already exists, not redeclaring")
 when not declared(avaddstable):
-  proc avaddstable*(tstb: Avrational_520094101; ts: int64; inctb: Avrational_520094101;
+  proc avaddstable*(tstb: Avrational_520094117; ts: int64; inctb: Avrational_520094117;
                     inc: int64): int64 {.cdecl, importc: "av_add_stable".}
 else:
   static :
@@ -8443,13 +8791,13 @@ else:
     hint("Declaration of " & "avintlistlengthforsize" &
         " already exists, not redeclaring")
 when not declared(avfopenutf8):
-  proc avfopenutf8*(path: cstring; mode: cstring): ptr File_520094125 {.cdecl,
+  proc avfopenutf8*(path: cstring; mode: cstring): ptr File_520094148 {.cdecl,
       importc: "av_fopen_utf8".}
 else:
   static :
     hint("Declaration of " & "avfopenutf8" & " already exists, not redeclaring")
 when not declared(avgettimebaseq):
-  proc avgettimebaseq*(): Avrational_520094101 {.cdecl,
+  proc avgettimebaseq*(): Avrational_520094117 {.cdecl,
       importc: "av_get_time_base_q".}
 else:
   static :
@@ -8461,354 +8809,6 @@ when not declared(avfourccmakestring):
 else:
   static :
     hint("Declaration of " & "avfourccmakestring" &
-        " already exists, not redeclaring")
-when not declared(avgetchannellayout):
-  proc avgetchannellayout*(name: cstring): uint64 {.cdecl,
-      importc: "av_get_channel_layout".}
-else:
-  static :
-    hint("Declaration of " & "avgetchannellayout" &
-        " already exists, not redeclaring")
-when not declared(avgetextendedchannellayout):
-  proc avgetextendedchannellayout*(name: cstring; channellayout: ptr uint64;
-                                   nbchannels: ptr cint): cint {.cdecl,
-      importc: "av_get_extended_channel_layout".}
-else:
-  static :
-    hint("Declaration of " & "avgetextendedchannellayout" &
-        " already exists, not redeclaring")
-when not declared(avgetchannellayoutstring):
-  proc avgetchannellayoutstring*(buf: cstring; bufsize: cint; nbchannels: cint;
-                                 channellayout: uint64): void {.cdecl,
-      importc: "av_get_channel_layout_string".}
-else:
-  static :
-    hint("Declaration of " & "avgetchannellayoutstring" &
-        " already exists, not redeclaring")
-when not declared(avbprintchannellayout):
-  proc avbprintchannellayout*(bp: ptr structavbprint; nbchannels: cint;
-                              channellayout: uint64): void {.cdecl,
-      importc: "av_bprint_channel_layout".}
-else:
-  static :
-    hint("Declaration of " & "avbprintchannellayout" &
-        " already exists, not redeclaring")
-when not declared(avgetchannellayoutnbchannels):
-  proc avgetchannellayoutnbchannels*(channellayout: uint64): cint {.cdecl,
-      importc: "av_get_channel_layout_nb_channels".}
-else:
-  static :
-    hint("Declaration of " & "avgetchannellayoutnbchannels" &
-        " already exists, not redeclaring")
-when not declared(avgetdefaultchannellayout):
-  proc avgetdefaultchannellayout*(nbchannels: cint): int64 {.cdecl,
-      importc: "av_get_default_channel_layout".}
-else:
-  static :
-    hint("Declaration of " & "avgetdefaultchannellayout" &
-        " already exists, not redeclaring")
-when not declared(avgetchannellayoutchannelindex):
-  proc avgetchannellayoutchannelindex*(channellayout: uint64; channel: uint64): cint {.
-      cdecl, importc: "av_get_channel_layout_channel_index".}
-else:
-  static :
-    hint("Declaration of " & "avgetchannellayoutchannelindex" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutextractchannel):
-  proc avchannellayoutextractchannel*(channellayout: uint64; index: cint): uint64 {.
-      cdecl, importc: "av_channel_layout_extract_channel".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutextractchannel" &
-        " already exists, not redeclaring")
-when not declared(avgetchannelname):
-  proc avgetchannelname*(channel: uint64): cstring {.cdecl,
-      importc: "av_get_channel_name".}
-else:
-  static :
-    hint("Declaration of " & "avgetchannelname" &
-        " already exists, not redeclaring")
-when not declared(avgetchanneldescription):
-  proc avgetchanneldescription*(channel: uint64): cstring {.cdecl,
-      importc: "av_get_channel_description".}
-else:
-  static :
-    hint("Declaration of " & "avgetchanneldescription" &
-        " already exists, not redeclaring")
-when not declared(avgetstandardchannellayout):
-  proc avgetstandardchannellayout*(index: cuint; layout: ptr uint64;
-                                   name: ptr cstring): cint {.cdecl,
-      importc: "av_get_standard_channel_layout".}
-else:
-  static :
-    hint("Declaration of " & "avgetstandardchannellayout" &
-        " already exists, not redeclaring")
-when not declared(avchannelname):
-  proc avchannelname*(buf: cstring; bufsize: csize_t; channel: enumavchannel_520094127): cint {.
-      cdecl, importc: "av_channel_name".}
-else:
-  static :
-    hint("Declaration of " & "avchannelname" &
-        " already exists, not redeclaring")
-when not declared(avchannelnamebprint):
-  proc avchannelnamebprint*(bp: ptr structavbprint; channelid: enumavchannel_520094127): void {.
-      cdecl, importc: "av_channel_name_bprint".}
-else:
-  static :
-    hint("Declaration of " & "avchannelnamebprint" &
-        " already exists, not redeclaring")
-when not declared(avchanneldescription):
-  proc avchanneldescription*(buf: cstring; bufsize: csize_t;
-                             channel: enumavchannel_520094127): cint {.cdecl,
-      importc: "av_channel_description".}
-else:
-  static :
-    hint("Declaration of " & "avchanneldescription" &
-        " already exists, not redeclaring")
-when not declared(avchanneldescriptionbprint):
-  proc avchanneldescriptionbprint*(bp: ptr structavbprint;
-                                   channelid: enumavchannel_520094127): void {.
-      cdecl, importc: "av_channel_description_bprint".}
-else:
-  static :
-    hint("Declaration of " & "avchanneldescriptionbprint" &
-        " already exists, not redeclaring")
-when not declared(avchannelfromstring):
-  proc avchannelfromstring*(name: cstring): enumavchannel_520094127 {.cdecl,
-      importc: "av_channel_from_string".}
-else:
-  static :
-    hint("Declaration of " & "avchannelfromstring" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutfrommask):
-  proc avchannellayoutfrommask*(channellayout: ptr Avchannellayout_520094146;
-                                mask: uint64): cint {.cdecl,
-      importc: "av_channel_layout_from_mask".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutfrommask" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutfromstring):
-  proc avchannellayoutfromstring*(channellayout: ptr Avchannellayout_520094146;
-                                  str: cstring): cint {.cdecl,
-      importc: "av_channel_layout_from_string".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutfromstring" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutdefault):
-  proc avchannellayoutdefault*(chlayout: ptr Avchannellayout_520094146;
-                               nbchannels: cint): void {.cdecl,
-      importc: "av_channel_layout_default".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutdefault" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutstandard):
-  proc avchannellayoutstandard*(opaque: ptr pointer): ptr Avchannellayout_520094146 {.
-      cdecl, importc: "av_channel_layout_standard".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutstandard" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutuninit):
-  proc avchannellayoutuninit*(channellayout: ptr Avchannellayout_520094146): void {.
-      cdecl, importc: "av_channel_layout_uninit".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutuninit" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutcopy):
-  proc avchannellayoutcopy*(dst: ptr Avchannellayout_520094146;
-                            src: ptr Avchannellayout_520094146): cint {.cdecl,
-      importc: "av_channel_layout_copy".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutcopy" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutdescribe):
-  proc avchannellayoutdescribe*(channellayout: ptr Avchannellayout_520094146;
-                                buf: cstring; bufsize: csize_t): cint {.cdecl,
-      importc: "av_channel_layout_describe".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutdescribe" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutdescribebprint):
-  proc avchannellayoutdescribebprint*(channellayout: ptr Avchannellayout_520094146;
-                                      bp: ptr structavbprint): cint {.cdecl,
-      importc: "av_channel_layout_describe_bprint".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutdescribebprint" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutchannelfromindex):
-  proc avchannellayoutchannelfromindex*(channellayout: ptr Avchannellayout_520094146;
-                                        idx: cuint): enumavchannel_520094127 {.
-      cdecl, importc: "av_channel_layout_channel_from_index".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutchannelfromindex" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutindexfromchannel):
-  proc avchannellayoutindexfromchannel*(channellayout: ptr Avchannellayout_520094146;
-                                        channel: enumavchannel_520094127): cint {.
-      cdecl, importc: "av_channel_layout_index_from_channel".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutindexfromchannel" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutindexfromstring):
-  proc avchannellayoutindexfromstring*(channellayout: ptr Avchannellayout_520094146;
-                                       name: cstring): cint {.cdecl,
-      importc: "av_channel_layout_index_from_string".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutindexfromstring" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutchannelfromstring):
-  proc avchannellayoutchannelfromstring*(channellayout: ptr Avchannellayout_520094146;
-      name: cstring): enumavchannel_520094127 {.cdecl,
-      importc: "av_channel_layout_channel_from_string".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutchannelfromstring" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutsubset):
-  proc avchannellayoutsubset*(channellayout: ptr Avchannellayout_520094146;
-                              mask: uint64): uint64 {.cdecl,
-      importc: "av_channel_layout_subset".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutsubset" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutcheck):
-  proc avchannellayoutcheck*(channellayout: ptr Avchannellayout_520094146): cint {.
-      cdecl, importc: "av_channel_layout_check".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutcheck" &
-        " already exists, not redeclaring")
-when not declared(avchannellayoutcompare):
-  proc avchannellayoutcompare*(chl: ptr Avchannellayout_520094146;
-                               chl1: ptr Avchannellayout_520094146): cint {.
-      cdecl, importc: "av_channel_layout_compare".}
-else:
-  static :
-    hint("Declaration of " & "avchannellayoutcompare" &
-        " already exists, not redeclaring")
-when not declared(avgetsamplefmtname):
-  proc avgetsamplefmtname*(samplefmt: enumavsampleformat_520094148): cstring {.
-      cdecl, importc: "av_get_sample_fmt_name".}
-else:
-  static :
-    hint("Declaration of " & "avgetsamplefmtname" &
-        " already exists, not redeclaring")
-when not declared(avgetsamplefmt):
-  proc avgetsamplefmt*(name: cstring): enumavsampleformat_520094148 {.cdecl,
-      importc: "av_get_sample_fmt".}
-else:
-  static :
-    hint("Declaration of " & "avgetsamplefmt" &
-        " already exists, not redeclaring")
-when not declared(avgetaltsamplefmt):
-  proc avgetaltsamplefmt*(samplefmt: enumavsampleformat_520094148; planar: cint): enumavsampleformat_520094148 {.
-      cdecl, importc: "av_get_alt_sample_fmt".}
-else:
-  static :
-    hint("Declaration of " & "avgetaltsamplefmt" &
-        " already exists, not redeclaring")
-when not declared(avgetpackedsamplefmt):
-  proc avgetpackedsamplefmt*(samplefmt: enumavsampleformat_520094148): enumavsampleformat_520094148 {.
-      cdecl, importc: "av_get_packed_sample_fmt".}
-else:
-  static :
-    hint("Declaration of " & "avgetpackedsamplefmt" &
-        " already exists, not redeclaring")
-when not declared(avgetplanarsamplefmt):
-  proc avgetplanarsamplefmt*(samplefmt: enumavsampleformat_520094148): enumavsampleformat_520094148 {.
-      cdecl, importc: "av_get_planar_sample_fmt".}
-else:
-  static :
-    hint("Declaration of " & "avgetplanarsamplefmt" &
-        " already exists, not redeclaring")
-when not declared(avgetsamplefmtstring):
-  proc avgetsamplefmtstring*(buf: cstring; bufsize: cint;
-                             samplefmt: enumavsampleformat_520094148): cstring {.
-      cdecl, importc: "av_get_sample_fmt_string".}
-else:
-  static :
-    hint("Declaration of " & "avgetsamplefmtstring" &
-        " already exists, not redeclaring")
-when not declared(avgetbytespersample):
-  proc avgetbytespersample*(samplefmt: enumavsampleformat_520094148): cint {.
-      cdecl, importc: "av_get_bytes_per_sample".}
-else:
-  static :
-    hint("Declaration of " & "avgetbytespersample" &
-        " already exists, not redeclaring")
-when not declared(avsamplefmtisplanar):
-  proc avsamplefmtisplanar*(samplefmt: enumavsampleformat_520094148): cint {.
-      cdecl, importc: "av_sample_fmt_is_planar".}
-else:
-  static :
-    hint("Declaration of " & "avsamplefmtisplanar" &
-        " already exists, not redeclaring")
-when not declared(avsamplesgetbuffersize):
-  proc avsamplesgetbuffersize*(linesize: ptr cint; nbchannels: cint;
-                               nbsamples: cint; samplefmt: enumavsampleformat_520094148;
-                               align: cint): cint {.cdecl,
-      importc: "av_samples_get_buffer_size".}
-else:
-  static :
-    hint("Declaration of " & "avsamplesgetbuffersize" &
-        " already exists, not redeclaring")
-when not declared(avsamplesfillarrays):
-  proc avsamplesfillarrays*(audiodata: ptr ptr uint8; linesize: ptr cint;
-                            buf: ptr uint8; nbchannels: cint; nbsamples: cint;
-                            samplefmt: enumavsampleformat_520094148; align: cint): cint {.
-      cdecl, importc: "av_samples_fill_arrays".}
-else:
-  static :
-    hint("Declaration of " & "avsamplesfillarrays" &
-        " already exists, not redeclaring")
-when not declared(avsamplesalloc):
-  proc avsamplesalloc*(audiodata: ptr ptr uint8; linesize: ptr cint;
-                       nbchannels: cint; nbsamples: cint;
-                       samplefmt: enumavsampleformat_520094148; align: cint): cint {.
-      cdecl, importc: "av_samples_alloc".}
-else:
-  static :
-    hint("Declaration of " & "avsamplesalloc" &
-        " already exists, not redeclaring")
-when not declared(avsamplesallocarrayandsamples):
-  proc avsamplesallocarrayandsamples*(audiodata: ptr ptr ptr uint8;
-                                      linesize: ptr cint; nbchannels: cint;
-                                      nbsamples: cint;
-                                      samplefmt: enumavsampleformat_520094148;
-                                      align: cint): cint {.cdecl,
-      importc: "av_samples_alloc_array_and_samples".}
-else:
-  static :
-    hint("Declaration of " & "avsamplesallocarrayandsamples" &
-        " already exists, not redeclaring")
-when not declared(avsamplescopy):
-  proc avsamplescopy*(dst: ptr ptr uint8; src: ptr ptr uint8; dstoffset: cint;
-                      srcoffset: cint; nbsamples: cint; nbchannels: cint;
-                      samplefmt: enumavsampleformat_520094148): cint {.cdecl,
-      importc: "av_samples_copy".}
-else:
-  static :
-    hint("Declaration of " & "avsamplescopy" &
-        " already exists, not redeclaring")
-when not declared(avsamplessetsilence):
-  proc avsamplessetsilence*(audiodata: ptr ptr uint8; offset: cint;
-                            nbsamples: cint; nbchannels: cint;
-                            samplefmt: enumavsampleformat_520094148): cint {.
-      cdecl, importc: "av_samples_set_silence".}
-else:
-  static :
-    hint("Declaration of " & "avsamplessetsilence" &
         " already exists, not redeclaring")
 when not declared(avoptshow2):
   proc avoptshow2*(obj: pointer; avlogobj: pointer; reqflags: cint;
@@ -8921,7 +8921,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptevalq):
   proc avoptevalq*(obj: pointer; o: ptr Avoption_520094152; val: cstring;
-                   qout: ptr Avrational_520094101): cint {.cdecl,
+                   qout: ptr Avrational_520094117): cint {.cdecl,
       importc: "av_opt_eval_q".}
 else:
   static :
@@ -8954,7 +8954,7 @@ else:
     hint("Declaration of " & "avoptchildnext" &
         " already exists, not redeclaring")
 when not declared(avoptchildclassiterate):
-  proc avoptchildclassiterate*(parent: ptr Avclass_520094089; iter: ptr pointer): ptr Avclass_520094089 {.
+  proc avoptchildclassiterate*(parent: ptr Avclass_520094105; iter: ptr pointer): ptr Avclass_520094105 {.
       cdecl, importc: "av_opt_child_class_iterate".}
 else:
   static :
@@ -8981,7 +8981,7 @@ else:
     hint("Declaration of " & "avoptsetdouble" &
         " already exists, not redeclaring")
 when not declared(avoptsetq):
-  proc avoptsetq*(obj: pointer; name: cstring; val: Avrational_520094101;
+  proc avoptsetq*(obj: pointer; name: cstring; val: Avrational_520094117;
                   searchflags: cint): cint {.cdecl, importc: "av_opt_set_q".}
 else:
   static :
@@ -9001,7 +9001,7 @@ else:
     hint("Declaration of " & "avoptsetimagesize" &
         " already exists, not redeclaring")
 when not declared(avoptsetpixelfmt):
-  proc avoptsetpixelfmt*(obj: pointer; name: cstring; fmt: enumavpixelformat_520094113;
+  proc avoptsetpixelfmt*(obj: pointer; name: cstring; fmt: enumavpixelformat_520094129;
                          searchflags: cint): cint {.cdecl,
       importc: "av_opt_set_pixel_fmt".}
 else:
@@ -9009,7 +9009,7 @@ else:
     hint("Declaration of " & "avoptsetpixelfmt" &
         " already exists, not redeclaring")
 when not declared(avoptsetsamplefmt):
-  proc avoptsetsamplefmt*(obj: pointer; name: cstring; fmt: enumavsampleformat_520094148;
+  proc avoptsetsamplefmt*(obj: pointer; name: cstring; fmt: enumavsampleformat_520094093;
                           searchflags: cint): cint {.cdecl,
       importc: "av_opt_set_sample_fmt".}
 else:
@@ -9017,7 +9017,7 @@ else:
     hint("Declaration of " & "avoptsetsamplefmt" &
         " already exists, not redeclaring")
 when not declared(avoptsetvideorate):
-  proc avoptsetvideorate*(obj: pointer; name: cstring; val: Avrational_520094101;
+  proc avoptsetvideorate*(obj: pointer; name: cstring; val: Avrational_520094117;
                           searchflags: cint): cint {.cdecl,
       importc: "av_opt_set_video_rate".}
 else:
@@ -9034,7 +9034,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptsetchlayout):
   proc avoptsetchlayout*(obj: pointer; name: cstring;
-                         layout: ptr Avchannellayout_520094146;
+                         layout: ptr Avchannellayout_520094091;
                          searchflags: cint): cint {.cdecl,
       importc: "av_opt_set_chlayout".}
 else:
@@ -9042,7 +9042,7 @@ else:
     hint("Declaration of " & "avoptsetchlayout" &
         " already exists, not redeclaring")
 when not declared(avoptsetdictval):
-  proc avoptsetdictval*(obj: pointer; name: cstring; val: ptr Avdictionary_520094097;
+  proc avoptsetdictval*(obj: pointer; name: cstring; val: ptr Avdictionary_520094113;
                         searchflags: cint): cint {.cdecl,
       importc: "av_opt_set_dict_val".}
 else:
@@ -9071,7 +9071,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetq):
   proc avoptgetq*(obj: pointer; name: cstring; searchflags: cint;
-                  outval: ptr Avrational_520094101): cint {.cdecl,
+                  outval: ptr Avrational_520094117): cint {.cdecl,
       importc: "av_opt_get_q".}
 else:
   static :
@@ -9086,7 +9086,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetpixelfmt):
   proc avoptgetpixelfmt*(obj: pointer; name: cstring; searchflags: cint;
-                         outfmt: ptr enumavpixelformat_520094113): cint {.cdecl,
+                         outfmt: ptr enumavpixelformat_520094129): cint {.cdecl,
       importc: "av_opt_get_pixel_fmt".}
 else:
   static :
@@ -9094,7 +9094,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetsamplefmt):
   proc avoptgetsamplefmt*(obj: pointer; name: cstring; searchflags: cint;
-                          outfmt: ptr enumavsampleformat_520094148): cint {.
+                          outfmt: ptr enumavsampleformat_520094093): cint {.
       cdecl, importc: "av_opt_get_sample_fmt".}
 else:
   static :
@@ -9102,7 +9102,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetvideorate):
   proc avoptgetvideorate*(obj: pointer; name: cstring; searchflags: cint;
-                          outval: ptr Avrational_520094101): cint {.cdecl,
+                          outval: ptr Avrational_520094117): cint {.cdecl,
       importc: "av_opt_get_video_rate".}
 else:
   static :
@@ -9118,7 +9118,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetchlayout):
   proc avoptgetchlayout*(obj: pointer; name: cstring; searchflags: cint;
-                         layout: ptr Avchannellayout_520094146): cint {.cdecl,
+                         layout: ptr Avchannellayout_520094091): cint {.cdecl,
       importc: "av_opt_get_chlayout".}
 else:
   static :
@@ -9126,14 +9126,14 @@ else:
         " already exists, not redeclaring")
 when not declared(avoptgetdictval):
   proc avoptgetdictval*(obj: pointer; name: cstring; searchflags: cint;
-                        outval: ptr ptr Avdictionary_520094097): cint {.cdecl,
+                        outval: ptr ptr Avdictionary_520094113): cint {.cdecl,
       importc: "av_opt_get_dict_val".}
 else:
   static :
     hint("Declaration of " & "avoptgetdictval" &
         " already exists, not redeclaring")
 when not declared(avoptptr):
-  proc avoptptr*(avclass: ptr Avclass_520094089; obj: pointer; name: cstring): pointer {.
+  proc avoptptr*(avclass: ptr Avclass_520094105; obj: pointer; name: cstring): pointer {.
       cdecl, importc: "av_opt_ptr".}
 else:
   static :
@@ -9204,7 +9204,7 @@ else:
     hint("Declaration of " & "avgetpaddedbitsperpixel" &
         " already exists, not redeclaring")
 when not declared(avpixfmtdescget):
-  proc avpixfmtdescget*(pixfmt: enumavpixelformat_520094113): ptr Avpixfmtdescriptor_520094166 {.
+  proc avpixfmtdescget*(pixfmt: enumavpixelformat_520094129): ptr Avpixfmtdescriptor_520094166 {.
       cdecl, importc: "av_pix_fmt_desc_get".}
 else:
   static :
@@ -9218,14 +9218,14 @@ else:
     hint("Declaration of " & "avpixfmtdescnext" &
         " already exists, not redeclaring")
 when not declared(avpixfmtdescgetid):
-  proc avpixfmtdescgetid*(desc: ptr Avpixfmtdescriptor_520094166): enumavpixelformat_520094113 {.
+  proc avpixfmtdescgetid*(desc: ptr Avpixfmtdescriptor_520094166): enumavpixelformat_520094129 {.
       cdecl, importc: "av_pix_fmt_desc_get_id".}
 else:
   static :
     hint("Declaration of " & "avpixfmtdescgetid" &
         " already exists, not redeclaring")
 when not declared(avpixfmtgetchromasubsample):
-  proc avpixfmtgetchromasubsample*(pixfmt: enumavpixelformat_520094113;
+  proc avpixfmtgetchromasubsample*(pixfmt: enumavpixelformat_520094129;
                                    hshift: ptr cint; vshift: ptr cint): cint {.
       cdecl, importc: "av_pix_fmt_get_chroma_sub_sample".}
 else:
@@ -9233,14 +9233,14 @@ else:
     hint("Declaration of " & "avpixfmtgetchromasubsample" &
         " already exists, not redeclaring")
 when not declared(avpixfmtcountplanes):
-  proc avpixfmtcountplanes*(pixfmt: enumavpixelformat_520094113): cint {.cdecl,
+  proc avpixfmtcountplanes*(pixfmt: enumavpixelformat_520094129): cint {.cdecl,
       importc: "av_pix_fmt_count_planes".}
 else:
   static :
     hint("Declaration of " & "avpixfmtcountplanes" &
         " already exists, not redeclaring")
 when not declared(avcolorrangename):
-  proc avcolorrangename*(range: enumavcolorrange_520094121): cstring {.cdecl,
+  proc avcolorrangename*(range: enumavcolorrange_520094144): cstring {.cdecl,
       importc: "av_color_range_name".}
 else:
   static :
@@ -9254,7 +9254,7 @@ else:
     hint("Declaration of " & "avcolorrangefromname" &
         " already exists, not redeclaring")
 when not declared(avcolorprimariesname):
-  proc avcolorprimariesname*(primaries: enumavcolorprimaries_520094115): cstring {.
+  proc avcolorprimariesname*(primaries: enumavcolorprimaries_520094131): cstring {.
       cdecl, importc: "av_color_primaries_name".}
 else:
   static :
@@ -9268,7 +9268,7 @@ else:
     hint("Declaration of " & "avcolorprimariesfromname" &
         " already exists, not redeclaring")
 when not declared(avcolortransfername):
-  proc avcolortransfername*(transfer: enumavcolortransfercharacteristic_520094117): cstring {.
+  proc avcolortransfername*(transfer: enumavcolortransfercharacteristic_520094133): cstring {.
       cdecl, importc: "av_color_transfer_name".}
 else:
   static :
@@ -9282,7 +9282,7 @@ else:
     hint("Declaration of " & "avcolortransferfromname" &
         " already exists, not redeclaring")
 when not declared(avcolorspacename):
-  proc avcolorspacename*(space: enumavcolorspace_520094119): cstring {.cdecl,
+  proc avcolorspacename*(space: enumavcolorspace_520094142): cstring {.cdecl,
       importc: "av_color_space_name".}
 else:
   static :
@@ -9296,7 +9296,7 @@ else:
     hint("Declaration of " & "avcolorspacefromname" &
         " already exists, not redeclaring")
 when not declared(avchromalocationname):
-  proc avchromalocationname*(location: enumavchromalocation_520094123): cstring {.
+  proc avchromalocationname*(location: enumavchromalocation_520094146): cstring {.
       cdecl, importc: "av_chroma_location_name".}
 else:
   static :
@@ -9311,34 +9311,34 @@ else:
         " already exists, not redeclaring")
 when not declared(avchromalocationenumtopos):
   proc avchromalocationenumtopos*(xpos: ptr cint; ypos: ptr cint;
-                                  pos: enumavchromalocation_520094123): cint {.
+                                  pos: enumavchromalocation_520094146): cint {.
       cdecl, importc: "av_chroma_location_enum_to_pos".}
 else:
   static :
     hint("Declaration of " & "avchromalocationenumtopos" &
         " already exists, not redeclaring")
 when not declared(avchromalocationpostoenum):
-  proc avchromalocationpostoenum*(xpos: cint; ypos: cint): enumavchromalocation_520094123 {.
+  proc avchromalocationpostoenum*(xpos: cint; ypos: cint): enumavchromalocation_520094146 {.
       cdecl, importc: "av_chroma_location_pos_to_enum".}
 else:
   static :
     hint("Declaration of " & "avchromalocationpostoenum" &
         " already exists, not redeclaring")
 when not declared(avgetpixfmt):
-  proc avgetpixfmt*(name: cstring): enumavpixelformat_520094113 {.cdecl,
+  proc avgetpixfmt*(name: cstring): enumavpixelformat_520094129 {.cdecl,
       importc: "av_get_pix_fmt".}
 else:
   static :
     hint("Declaration of " & "avgetpixfmt" & " already exists, not redeclaring")
 when not declared(avgetpixfmtname):
-  proc avgetpixfmtname*(pixfmt: enumavpixelformat_520094113): cstring {.cdecl,
+  proc avgetpixfmtname*(pixfmt: enumavpixelformat_520094129): cstring {.cdecl,
       importc: "av_get_pix_fmt_name".}
 else:
   static :
     hint("Declaration of " & "avgetpixfmtname" &
         " already exists, not redeclaring")
 when not declared(avgetpixfmtstring):
-  proc avgetpixfmtstring*(buf: cstring; bufsize: cint; pixfmt: enumavpixelformat_520094113): cstring {.
+  proc avgetpixfmtstring*(buf: cstring; bufsize: cint; pixfmt: enumavpixelformat_520094129): cstring {.
       cdecl, importc: "av_get_pix_fmt_string".}
 else:
   static :
@@ -9386,25 +9386,25 @@ else:
     hint("Declaration of " & "avwriteimageline" &
         " already exists, not redeclaring")
 when not declared(avpixfmtswapendianness):
-  proc avpixfmtswapendianness*(pixfmt: enumavpixelformat_520094113): enumavpixelformat_520094113 {.
+  proc avpixfmtswapendianness*(pixfmt: enumavpixelformat_520094129): enumavpixelformat_520094129 {.
       cdecl, importc: "av_pix_fmt_swap_endianness".}
 else:
   static :
     hint("Declaration of " & "avpixfmtswapendianness" &
         " already exists, not redeclaring")
 when not declared(avgetpixfmtloss):
-  proc avgetpixfmtloss*(dstpixfmt: enumavpixelformat_520094113;
-                        srcpixfmt: enumavpixelformat_520094113; hasalpha: cint): cint {.
+  proc avgetpixfmtloss*(dstpixfmt: enumavpixelformat_520094129;
+                        srcpixfmt: enumavpixelformat_520094129; hasalpha: cint): cint {.
       cdecl, importc: "av_get_pix_fmt_loss".}
 else:
   static :
     hint("Declaration of " & "avgetpixfmtloss" &
         " already exists, not redeclaring")
 when not declared(avfindbestpixfmtof2):
-  proc avfindbestpixfmtof2*(dstpixfmt1: enumavpixelformat_520094113;
-                            dstpixfmt2: enumavpixelformat_520094113;
-                            srcpixfmt: enumavpixelformat_520094113;
-                            hasalpha: cint; lossptr: ptr cint): enumavpixelformat_520094113 {.
+  proc avfindbestpixfmtof2*(dstpixfmt1: enumavpixelformat_520094129;
+                            dstpixfmt2: enumavpixelformat_520094129;
+                            srcpixfmt: enumavpixelformat_520094129;
+                            hasalpha: cint; lossptr: ptr cint): enumavpixelformat_520094129 {.
       cdecl, importc: "av_find_best_pix_fmt_of_2".}
 else:
   static :
@@ -9420,7 +9420,7 @@ else:
     hint("Declaration of " & "avimagefillmaxpixsteps" &
         " already exists, not redeclaring")
 when not declared(avimagegetlinesize):
-  proc avimagegetlinesize*(pixfmt: enumavpixelformat_520094113; width: cint;
+  proc avimagegetlinesize*(pixfmt: enumavpixelformat_520094129; width: cint;
                            plane: cint): cint {.cdecl,
       importc: "av_image_get_linesize".}
 else:
@@ -9429,7 +9429,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avimagefilllinesizes):
   proc avimagefilllinesizes*(linesizes: array[4'i64, cint];
-                             pixfmt: enumavpixelformat_520094113; width: cint): cint {.
+                             pixfmt: enumavpixelformat_520094129; width: cint): cint {.
       cdecl, importc: "av_image_fill_linesizes".}
 else:
   static :
@@ -9437,7 +9437,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avimagefillplanesizes):
   proc avimagefillplanesizes*(size: array[4'i64, csize_t];
-                              pixfmt: enumavpixelformat_520094113; height: cint;
+                              pixfmt: enumavpixelformat_520094129; height: cint;
                               linesizes: array[4'i64, ptrdifft_520094168]): cint {.
       cdecl, importc: "av_image_fill_plane_sizes".}
 else:
@@ -9446,7 +9446,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avimagefillpointers):
   proc avimagefillpointers*(data: array[4'i64, ptr uint8];
-                            pixfmt: enumavpixelformat_520094113; height: cint;
+                            pixfmt: enumavpixelformat_520094129; height: cint;
                             ptrarg: ptr uint8; linesizes: array[4'i64, cint]): cint {.
       cdecl, importc: "av_image_fill_pointers".}
 else:
@@ -9456,7 +9456,7 @@ else:
 when not declared(avimagealloc):
   proc avimagealloc*(pointers: array[4'i64, ptr uint8];
                      linesizes: array[4'i64, cint]; w: cint; h: cint;
-                     pixfmt: enumavpixelformat_520094113; align: cint): cint {.
+                     pixfmt: enumavpixelformat_520094129; align: cint): cint {.
       cdecl, importc: "av_image_alloc".}
 else:
   static :
@@ -9482,7 +9482,7 @@ when not declared(avimagecopy):
   proc avimagecopy*(dstdata: array[4'i64, ptr uint8];
                     dstlinesizes: array[4'i64, cint];
                     srcdata: array[4'i64, ptr uint8];
-                    srclinesizes: array[4'i64, cint]; pixfmt: enumavpixelformat_520094113;
+                    srclinesizes: array[4'i64, cint]; pixfmt: enumavpixelformat_520094129;
                     width: cint; height: cint): void {.cdecl,
       importc: "av_image_copy".}
 else:
@@ -9493,7 +9493,7 @@ when not declared(avimagecopyucfrom):
                           dstlinesizes: array[4'i64, ptrdifft_520094168];
                           srcdata: array[4'i64, ptr uint8];
                           srclinesizes: array[4'i64, ptrdifft_520094168];
-                          pixfmt: enumavpixelformat_520094113; width: cint;
+                          pixfmt: enumavpixelformat_520094129; width: cint;
                           height: cint): void {.cdecl,
       importc: "av_image_copy_uc_from".}
 else:
@@ -9503,7 +9503,7 @@ else:
 when not declared(avimagefillarrays):
   proc avimagefillarrays*(dstdata: array[4'i64, ptr uint8];
                           dstlinesize: array[4'i64, cint]; src: ptr uint8;
-                          pixfmt: enumavpixelformat_520094113; width: cint;
+                          pixfmt: enumavpixelformat_520094129; width: cint;
                           height: cint; align: cint): cint {.cdecl,
       importc: "av_image_fill_arrays".}
 else:
@@ -9511,7 +9511,7 @@ else:
     hint("Declaration of " & "avimagefillarrays" &
         " already exists, not redeclaring")
 when not declared(avimagegetbuffersize):
-  proc avimagegetbuffersize*(pixfmt: enumavpixelformat_520094113; width: cint;
+  proc avimagegetbuffersize*(pixfmt: enumavpixelformat_520094129; width: cint;
                              height: cint; align: cint): cint {.cdecl,
       importc: "av_image_get_buffer_size".}
 else:
@@ -9522,7 +9522,7 @@ when not declared(avimagecopytobuffer):
   proc avimagecopytobuffer*(dst: ptr uint8; dstsize: cint;
                             srcdata: array[4'i64, ptr uint8];
                             srclinesize: array[4'i64, cint];
-                            pixfmt: enumavpixelformat_520094113; width: cint;
+                            pixfmt: enumavpixelformat_520094129; width: cint;
                             height: cint; align: cint): cint {.cdecl,
       importc: "av_image_copy_to_buffer".}
 else:
@@ -9538,7 +9538,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avimagechecksize2):
   proc avimagechecksize2*(w: cuint; h: cuint; maxpixels: int64;
-                          pixfmt: enumavpixelformat_520094113; logoffset: cint;
+                          pixfmt: enumavpixelformat_520094129; logoffset: cint;
                           logctx: pointer): cint {.cdecl,
       importc: "av_image_check_size2".}
 else:
@@ -9546,7 +9546,7 @@ else:
     hint("Declaration of " & "avimagechecksize2" &
         " already exists, not redeclaring")
 when not declared(avimagechecksar):
-  proc avimagechecksar*(w: cuint; h: cuint; sar: Avrational_520094101): cint {.
+  proc avimagechecksar*(w: cuint; h: cuint; sar: Avrational_520094117): cint {.
       cdecl, importc: "av_image_check_sar".}
 else:
   static :
@@ -9555,8 +9555,8 @@ else:
 when not declared(avimagefillblack):
   proc avimagefillblack*(dstdata: array[4'i64, ptr uint8];
                          dstlinesize: array[4'i64, ptrdifft_520094168];
-                         pixfmt: enumavpixelformat_520094113;
-                         range: enumavcolorrange_520094121; width: cint;
+                         pixfmt: enumavpixelformat_520094129;
+                         range: enumavcolorrange_520094144; width: cint;
                          height: cint): cint {.cdecl,
       importc: "av_image_fill_black".}
 else:
@@ -9857,7 +9857,7 @@ else:
 when not declared(avhwdevicectxcreate):
   proc avhwdevicectxcreate*(devicectx: ptr ptr Avbufferref_520094174;
                             typearg: enumavhwdevicetype_520094194;
-                            device: cstring; opts: ptr Avdictionary_520094097;
+                            device: cstring; opts: ptr Avdictionary_520094113;
                             flags: cint): cint {.cdecl,
       importc: "av_hwdevice_ctx_create".}
 else:
@@ -9878,7 +9878,7 @@ when not declared(avhwdevicectxcreatederivedopts):
   proc avhwdevicectxcreatederivedopts*(dstctx: ptr ptr Avbufferref_520094174;
                                        typearg: enumavhwdevicetype_520094194;
                                        srcctx: ptr Avbufferref_520094174;
-                                       options: ptr Avdictionary_520094097;
+                                       options: ptr Avdictionary_520094113;
                                        flags: cint): cint {.cdecl,
       importc: "av_hwdevice_ctx_create_derived_opts".}
 else:
@@ -9918,7 +9918,7 @@ else:
 when not declared(avhwframetransfergetformats):
   proc avhwframetransfergetformats*(hwframectx: ptr Avbufferref_520094174;
                                     dir: enumavhwframetransferdirection_520094208;
-                                    formats: ptr ptr enumavpixelformat_520094113;
+                                    formats: ptr ptr enumavpixelformat_520094129;
                                     flags: cint): cint {.cdecl,
       importc: "av_hwframe_transfer_get_formats".}
 else:
@@ -9955,7 +9955,7 @@ else:
     hint("Declaration of " & "avhwframemap" & " already exists, not redeclaring")
 when not declared(avhwframectxcreatederived):
   proc avhwframectxcreatederived*(derivedframectx: ptr ptr Avbufferref_520094174;
-                                  format: enumavpixelformat_520094113;
+                                  format: enumavpixelformat_520094129;
                                   deriveddevicectx: ptr Avbufferref_520094174;
                                   sourceframectx: ptr Avbufferref_520094174;
                                   flags: cint): cint {.cdecl,
@@ -9965,7 +9965,7 @@ else:
     hint("Declaration of " & "avhwframectxcreatederived" &
         " already exists, not redeclaring")
 when not declared(avcodecgettype):
-  proc avcodecgettype*(codecid: enumavcodecid_520094214): enumavmediatype_520094103 {.
+  proc avcodecgettype*(codecid: enumavcodecid_520094214): enumavmediatype_520094119 {.
       cdecl, importc: "avcodec_get_type".}
 else:
   static :
@@ -10000,7 +10000,7 @@ else:
     hint("Declaration of " & "avcodecprofilename" &
         " already exists, not redeclaring")
 when not declared(avgetpcmcodec):
-  proc avgetpcmcodec*(fmt: enumavsampleformat_520094148; be: cint): enumavcodecid_520094214 {.
+  proc avgetpcmcodec*(fmt: enumavsampleformat_520094093; be: cint): enumavcodecid_520094214 {.
       cdecl, importc: "av_get_pcm_codec".}
 else:
   static :
@@ -10221,7 +10221,7 @@ else:
     hint("Declaration of " & "avpacketgetsidedata" &
         " already exists, not redeclaring")
 when not declared(avpacketpackdictionary):
-  proc avpacketpackdictionary*(dict: ptr Avdictionary_520094097;
+  proc avpacketpackdictionary*(dict: ptr Avdictionary_520094113;
                                size: ptr csize_t): ptr uint8 {.cdecl,
       importc: "av_packet_pack_dictionary".}
 else:
@@ -10230,7 +10230,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avpacketunpackdictionary):
   proc avpacketunpackdictionary*(data: ptr uint8; size: csize_t;
-                                 dict: ptr ptr Avdictionary_520094097): cint {.
+                                 dict: ptr ptr Avdictionary_520094113): cint {.
       cdecl, importc: "av_packet_unpack_dictionary".}
 else:
   static :
@@ -10285,8 +10285,8 @@ else:
     hint("Declaration of " & "avpacketmakewritable" &
         " already exists, not redeclaring")
 when not declared(avpacketrescalets):
-  proc avpacketrescalets*(pkt: ptr Avpacket_520094254; tbsrc: Avrational_520094101;
-                          tbdst: Avrational_520094101): void {.cdecl,
+  proc avpacketrescalets*(pkt: ptr Avpacket_520094254; tbsrc: Avrational_520094117;
+                          tbdst: Avrational_520094117): void {.cdecl,
       importc: "av_packet_rescale_ts".}
 else:
   static :
@@ -10377,14 +10377,14 @@ else:
     hint("Declaration of " & "avcodecfreecontext" &
         " already exists, not redeclaring")
 when not declared(avcodecgetclass):
-  proc avcodecgetclass*(): ptr Avclass_520094089 {.cdecl,
+  proc avcodecgetclass*(): ptr Avclass_520094105 {.cdecl,
       importc: "avcodec_get_class".}
 else:
   static :
     hint("Declaration of " & "avcodecgetclass" &
         " already exists, not redeclaring")
 when not declared(avcodecgetsubtitlerectclass):
-  proc avcodecgetsubtitlerectclass*(): ptr Avclass_520094089 {.cdecl,
+  proc avcodecgetsubtitlerectclass*(): ptr Avclass_520094105 {.cdecl,
       importc: "avcodec_get_subtitle_rect_class".}
 else:
   static :
@@ -10408,7 +10408,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avcodecopen2):
   proc avcodecopen2*(avctx: ptr Avcodeccontext_520094278; codec: ptr Avcodec_520094222;
-                     options: ptr ptr Avdictionary_520094097): cint {.cdecl,
+                     options: ptr ptr Avdictionary_520094113): cint {.cdecl,
       importc: "avcodec_open2".}
 else:
   static :
@@ -10461,14 +10461,14 @@ else:
         " already exists, not redeclaring")
 when not declared(avcodecenumtochromapos):
   proc avcodecenumtochromapos*(xpos: ptr cint; ypos: ptr cint;
-                               pos: enumavchromalocation_520094123): cint {.
+                               pos: enumavchromalocation_520094146): cint {.
       cdecl, importc: "avcodec_enum_to_chroma_pos".}
 else:
   static :
     hint("Declaration of " & "avcodecenumtochromapos" &
         " already exists, not redeclaring")
 when not declared(avcodecchromapostoenum):
-  proc avcodecchromapostoenum*(xpos: cint; ypos: cint): enumavchromalocation_520094123 {.
+  proc avcodecchromapostoenum*(xpos: cint; ypos: cint): enumavchromalocation_520094146 {.
       cdecl, importc: "avcodec_chroma_pos_to_enum".}
 else:
   static :
@@ -10517,7 +10517,7 @@ else:
 when not declared(avcodecgethwframesparameters):
   proc avcodecgethwframesparameters*(avctx: ptr Avcodeccontext_520094278;
                                      deviceref: ptr Avbufferref_520094174;
-                                     hwpixfmt: enumavpixelformat_520094113;
+                                     hwpixfmt: enumavpixelformat_520094129;
                                      outframesref: ptr ptr Avbufferref_520094174): cint {.
       cdecl, importc: "avcodec_get_hw_frames_parameters".}
 else:
@@ -10563,16 +10563,16 @@ else:
     hint("Declaration of " & "avcodecencodesubtitle" &
         " already exists, not redeclaring")
 when not declared(avcodecpixfmttocodectag):
-  proc avcodecpixfmttocodectag*(pixfmt: enumavpixelformat_520094113): cuint {.
+  proc avcodecpixfmttocodectag*(pixfmt: enumavpixelformat_520094129): cuint {.
       cdecl, importc: "avcodec_pix_fmt_to_codec_tag".}
 else:
   static :
     hint("Declaration of " & "avcodecpixfmttocodectag" &
         " already exists, not redeclaring")
 when not declared(avcodecfindbestpixfmtoflist):
-  proc avcodecfindbestpixfmtoflist*(pixfmtlist: ptr enumavpixelformat_520094113;
-                                    srcpixfmt: enumavpixelformat_520094113;
-                                    hasalpha: cint; lossptr: ptr cint): enumavpixelformat_520094113 {.
+  proc avcodecfindbestpixfmtoflist*(pixfmtlist: ptr enumavpixelformat_520094129;
+                                    srcpixfmt: enumavpixelformat_520094129;
+                                    hasalpha: cint; lossptr: ptr cint): enumavpixelformat_520094129 {.
       cdecl, importc: "avcodec_find_best_pix_fmt_of_list".}
 else:
   static :
@@ -10580,7 +10580,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avcodecdefaultgetformat):
   proc avcodecdefaultgetformat*(s: ptr structavcodeccontext_520094274;
-                                fmt: ptr enumavpixelformat_520094113): enumavpixelformat_520094113 {.
+                                fmt: ptr enumavpixelformat_520094129): enumavpixelformat_520094129 {.
       cdecl, importc: "avcodec_default_get_format".}
 else:
   static :
@@ -10614,7 +10614,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avcodecfillaudioframe):
   proc avcodecfillaudioframe*(frame: ptr Avframe_520094192; nbchannels: cint;
-                              samplefmt: enumavsampleformat_520094148;
+                              samplefmt: enumavsampleformat_520094093;
                               buf: ptr uint8; bufsize: cint; align: cint): cint {.
       cdecl, importc: "avcodec_fill_audio_frame".}
 else:
@@ -10672,7 +10672,7 @@ else:
     hint("Declaration of " & "aviocheck" & " already exists, not redeclaring")
 when not declared(avioopendir):
   proc avioopendir*(s: ptr ptr Aviodircontext_520094314; url: cstring;
-                    options: ptr ptr Avdictionary_520094097): cint {.cdecl,
+                    options: ptr ptr Avdictionary_520094113): cint {.cdecl,
       importc: "avio_open_dir".}
 else:
   static :
@@ -10943,7 +10943,7 @@ else:
 when not declared(avioopen2):
   proc avioopen2*(s: ptr ptr Aviocontext_520094320; url: cstring; flags: cint;
                   intcb: ptr Aviointerruptcb_520094304;
-                  options: ptr ptr Avdictionary_520094097): cint {.cdecl,
+                  options: ptr ptr Avdictionary_520094113): cint {.cdecl,
       importc: "avio_open2".}
 else:
   static :
@@ -10989,7 +10989,7 @@ else:
     hint("Declaration of " & "avioenumprotocols" &
         " already exists, not redeclaring")
 when not declared(avioprotocolgetclass):
-  proc avioprotocolgetclass*(name: cstring): ptr Avclass_520094089 {.cdecl,
+  proc avioprotocolgetclass*(name: cstring): ptr Avclass_520094105 {.cdecl,
       importc: "avio_protocol_get_class".}
 else:
   static :
@@ -11145,14 +11145,14 @@ else:
     hint("Declaration of " & "avformatfreecontext" &
         " already exists, not redeclaring")
 when not declared(avformatgetclass):
-  proc avformatgetclass*(): ptr Avclass_520094089 {.cdecl,
+  proc avformatgetclass*(): ptr Avclass_520094105 {.cdecl,
       importc: "avformat_get_class".}
 else:
   static :
     hint("Declaration of " & "avformatgetclass" &
         " already exists, not redeclaring")
 when not declared(avstreamgetclass):
-  proc avstreamgetclass*(): ptr Avclass_520094089 {.cdecl,
+  proc avstreamgetclass*(): ptr Avclass_520094105 {.cdecl,
       importc: "av_stream_get_class".}
 else:
   static :
@@ -11258,7 +11258,7 @@ else:
 when not declared(avformatopeninput):
   proc avformatopeninput*(ps: ptr ptr Avformatcontext_520094360; url: cstring;
                           fmt: ptr Avinputformat_520094334;
-                          options: ptr ptr Avdictionary_520094097): cint {.
+                          options: ptr ptr Avdictionary_520094113): cint {.
       cdecl, importc: "avformat_open_input".}
 else:
   static :
@@ -11266,7 +11266,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avformatfindstreaminfo):
   proc avformatfindstreaminfo*(ic: ptr Avformatcontext_520094360;
-                               options: ptr ptr Avdictionary_520094097): cint {.
+                               options: ptr ptr Avdictionary_520094113): cint {.
       cdecl, importc: "avformat_find_stream_info".}
 else:
   static :
@@ -11290,7 +11290,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avfindbeststream):
   proc avfindbeststream*(ic: ptr Avformatcontext_520094360;
-                         typearg: enumavmediatype_520094103;
+                         typearg: enumavmediatype_520094119;
                          wantedstreamnb: cint; relatedstream: cint;
                          decoderret: ptr ptr structavcodec_520094220;
                          flags: cint): cint {.cdecl,
@@ -11348,7 +11348,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avformatwriteheader):
   proc avformatwriteheader*(s: ptr Avformatcontext_520094360;
-                            options: ptr ptr Avdictionary_520094097): cint {.
+                            options: ptr ptr Avdictionary_520094113): cint {.
       cdecl, importc: "avformat_write_header".}
 else:
   static :
@@ -11356,7 +11356,7 @@ else:
         " already exists, not redeclaring")
 when not declared(avformatinitoutput):
   proc avformatinitoutput*(s: ptr Avformatcontext_520094360;
-                           options: ptr ptr Avdictionary_520094097): cint {.
+                           options: ptr ptr Avdictionary_520094113): cint {.
       cdecl, importc: "avformat_init_output".}
 else:
   static :
@@ -11418,7 +11418,7 @@ else:
 when not declared(avguesscodec):
   proc avguesscodec*(fmt: ptr Avoutputformat_520094328; shortname: cstring;
                      filename: cstring; mimetype: cstring;
-                     typearg: enumavmediatype_520094103): enumavcodecid_520094214 {.
+                     typearg: enumavmediatype_520094119): enumavcodecid_520094214 {.
       cdecl, importc: "av_guess_codec".}
 else:
   static :
@@ -11432,7 +11432,7 @@ else:
     hint("Declaration of " & "avgetoutputtimestamp" &
         " already exists, not redeclaring")
 when not declared(avhexdump):
-  proc avhexdump*(f: ptr File_520094125; buf: ptr uint8; size: cint): void {.
+  proc avhexdump*(f: ptr File_520094148; buf: ptr uint8; size: cint): void {.
       cdecl, importc: "av_hex_dump".}
 else:
   static :
@@ -11444,7 +11444,7 @@ else:
   static :
     hint("Declaration of " & "avhexdumplog" & " already exists, not redeclaring")
 when not declared(avpktdump2):
-  proc avpktdump2*(f: ptr File_520094125; pkt: ptr Avpacket_520094254;
+  proc avpktdump2*(f: ptr File_520094148; pkt: ptr Avpacket_520094254;
                    dumppayload: cint; st: ptr Avstream_520094344): void {.cdecl,
       importc: "av_pkt_dump2".}
 else:
@@ -11616,7 +11616,7 @@ else:
 when not declared(avguesssampleaspectratio):
   proc avguesssampleaspectratio*(format: ptr Avformatcontext_520094360;
                                  stream: ptr Avstream_520094344;
-                                 frame: ptr structavframe_520094190): Avrational_520094101 {.
+                                 frame: ptr structavframe_520094190): Avrational_520094117 {.
       cdecl, importc: "av_guess_sample_aspect_ratio".}
 else:
   static :
@@ -11625,7 +11625,7 @@ else:
 when not declared(avguessframerate):
   proc avguessframerate*(ctx: ptr Avformatcontext_520094360;
                          stream: ptr Avstream_520094344;
-                         frame: ptr structavframe_520094190): Avrational_520094101 {.
+                         frame: ptr structavframe_520094190): Avrational_520094117 {.
       cdecl, importc: "av_guess_frame_rate".}
 else:
   static :
@@ -11656,7 +11656,7 @@ else:
     hint("Declaration of " & "avformattransferinternalstreamtiminginfo" &
         " already exists, not redeclaring")
 when not declared(avstreamgetcodectimebase):
-  proc avstreamgetcodectimebase*(st: ptr Avstream_520094344): Avrational_520094101 {.
+  proc avstreamgetcodectimebase*(st: ptr Avstream_520094344): Avrational_520094117 {.
       cdecl, importc: "av_stream_get_codec_timebase".}
 else:
   static :
@@ -11689,21 +11689,21 @@ else:
     hint("Declaration of " & "swsgetcoefficients" &
         " already exists, not redeclaring")
 when not declared(swsissupportedinput):
-  proc swsissupportedinput*(pixfmt: enumavpixelformat_520094113): cint {.cdecl,
+  proc swsissupportedinput*(pixfmt: enumavpixelformat_520094129): cint {.cdecl,
       importc: "sws_isSupportedInput".}
 else:
   static :
     hint("Declaration of " & "swsissupportedinput" &
         " already exists, not redeclaring")
 when not declared(swsissupportedoutput):
-  proc swsissupportedoutput*(pixfmt: enumavpixelformat_520094113): cint {.cdecl,
+  proc swsissupportedoutput*(pixfmt: enumavpixelformat_520094129): cint {.cdecl,
       importc: "sws_isSupportedOutput".}
 else:
   static :
     hint("Declaration of " & "swsissupportedoutput" &
         " already exists, not redeclaring")
 when not declared(swsissupportedendiannessconversion):
-  proc swsissupportedendiannessconversion*(pixfmt: enumavpixelformat_520094113): cint {.
+  proc swsissupportedendiannessconversion*(pixfmt: enumavpixelformat_520094129): cint {.
       cdecl, importc: "sws_isSupportedEndiannessConversion".}
 else:
   static :
@@ -11733,8 +11733,8 @@ else:
     hint("Declaration of " & "swsfreecontext" &
         " already exists, not redeclaring")
 when not declared(swsgetcontext):
-  proc swsgetcontext*(srcw: cint; srch: cint; srcformat: enumavpixelformat_520094113;
-                      dstw: cint; dsth: cint; dstformat: enumavpixelformat_520094113;
+  proc swsgetcontext*(srcw: cint; srch: cint; srcformat: enumavpixelformat_520094129;
+                      dstw: cint; dsth: cint; dstformat: enumavpixelformat_520094129;
                       flags: cint; srcfilter: ptr Swsfilter_520094370;
                       dstfilter: ptr Swsfilter_520094370; param: ptr cdouble): ptr structswscontext {.
       cdecl, importc: "sws_getContext".}
@@ -11868,9 +11868,9 @@ else:
         " already exists, not redeclaring")
 when not declared(swsgetcachedcontext):
   proc swsgetcachedcontext*(context: ptr structswscontext; srcw: cint;
-                            srch: cint; srcformat: enumavpixelformat_520094113;
+                            srch: cint; srcformat: enumavpixelformat_520094129;
                             dstw: cint; dsth: cint;
-                            dstformat: enumavpixelformat_520094113; flags: cint;
+                            dstformat: enumavpixelformat_520094129; flags: cint;
                             srcfilter: ptr Swsfilter_520094370;
                             dstfilter: ptr Swsfilter_520094370;
                             param: ptr cdouble): ptr structswscontext {.cdecl,
@@ -11896,7 +11896,7 @@ else:
     hint("Declaration of " & "swsconvertpalette8topacked24" &
         " already exists, not redeclaring")
 when not declared(swsgetclass):
-  proc swsgetclass*(): ptr Avclass_520094089 {.cdecl, importc: "sws_get_class".}
+  proc swsgetclass*(): ptr Avclass_520094105 {.cdecl, importc: "sws_get_class".}
 else:
   static :
     hint("Declaration of " & "swsgetclass" & " already exists, not redeclaring")

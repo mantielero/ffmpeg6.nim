@@ -88,16 +88,7 @@ For example:
   c.handle.pix_fmt = enumavpixelformat(0) #AV_PIX_FMT_YUV420P 
   #c.handle.pix_fmt = avcodec.enumavpixelformat(AV_PIX_FMT_YUV420P)#.enumavpixelformat
   echo c.handle.pix_fmt.int
-#[
-  found avcodec.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavcodec/avcodec.nim(127, 5)]
-  found opt.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavutil/opt.nim(59, 5)]
-  found frame.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavutil/frame.nim(59, 5)]
-  found swscale.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libswscale/swscale.nim(59, 5)]
-  found avutil.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavutil/avutil.nim(52, 5)]
-  found imgutils.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavutil/imgutils.nim(6, 5)]
-  found avformat.enumavpixelformat [type declared in /home/jose/src/nimlang/ffmpeg.nim/src/wrapper/libavformat/avformat.nim(137, 5)]
 
-]#
 
   echo codec.id  # Avcodecidh264
   if codec.id == AV_CODEC_ID_H264:

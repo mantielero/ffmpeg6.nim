@@ -44,3 +44,19 @@ export packet,codec,parser_context
 
 import lib/avformat/[avformat, formatcontext]
 export avformat, formatcontext
+
+# template AV_CHANNEL_LAYOUT_MASK*(nb, m: untyped): untyped =
+#   [AV_CHANNEL_ORDER_NATIVE.cint, nb.cint, m.cint, nil.cint]
+
+# const
+#   AV_CH_FRONT_LEFT* = (1'u64 shl AV_CHAN_FRONT_LEFT.uint64)
+#   AV_CH_FRONT_RIGHT* = (1'u64 shl AV_CHAN_FRONT_RIGHT.uint64)
+#   AV_CH_FRONT_CENTER* = (1'u64 shl AV_CHAN_FRONT_CENTER.uint64)  
+
+# const
+#   AV_CH_LAYOUT_MONO* = (AV_CH_FRONT_CENTER)
+#   AV_CH_LAYOUT_STEREO* = (AV_CH_FRONT_LEFT or AV_CH_FRONT_RIGHT)
+
+# const
+#   AV_CHANNEL_LAYOUT_MONO* = AV_CHANNEL_LAYOUT_MASK(1, AV_CH_LAYOUT_MONO)
+#   AV_CHANNEL_LAYOUT_STEREO* = AV_CHANNEL_LAYOUT_MASK(2, AV_CH_LAYOUT_STEREO)

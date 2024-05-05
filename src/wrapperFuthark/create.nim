@@ -11,6 +11,9 @@ importc:
   #"libavutil/thread.h"   
   #"libavutil/buffer_internal.h"   
   #"libavutil/buffer.h" 
+  "libavutil/error.h"
+  "libavutil/channel_layout.h"
+  "libavutil/samplefmt.h"  
   "libavutil/log.h"  
   #"libavutil/dict_internal.h"  
   "libavutil/dict.h"
@@ -33,3 +36,6 @@ importc:
 
   # libswscale:
   "libswscale/swscale.h"
+
+# FIX
+# sed -i 's/structavchannellayout_u_t\ {/structavchannellayout_u_t\*\ {/' libav.nim 
