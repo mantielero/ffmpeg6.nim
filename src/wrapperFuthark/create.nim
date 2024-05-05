@@ -37,5 +37,9 @@ importc:
   # libswscale:
   "libswscale/swscale.h"
 
+  # libavfilter:
+  "libavfilter/buffersink.h"
+  "libavfilter/buffersrc.h"
+  
 # FIX
 # sed -i 's/structavchannellayout_u_t\ {/structavchannellayout_u_t\*\ {/' libav.nim 

@@ -71,6 +71,41 @@ else:
   static :
     hint("Declaration of " & "Avcodechwconfigmethodadhoc" &
         " already exists, not redeclaring")
+when not declared(Avfilterautoconvertall):
+  const
+    Avfilterautoconvertall* = cint(0)
+else:
+  static :
+    hint("Declaration of " & "Avfilterautoconvertall" &
+        " already exists, not redeclaring")
+when not declared(Avfilterautoconvertnone):
+  const
+    Avfilterautoconvertnone* = cint(-1)
+else:
+  static :
+    hint("Declaration of " & "Avfilterautoconvertnone" &
+        " already exists, not redeclaring")
+when not declared(Avbuffersrcflagnocheckformat):
+  const
+    Avbuffersrcflagnocheckformat* = cuint(1)
+else:
+  static :
+    hint("Declaration of " & "Avbuffersrcflagnocheckformat" &
+        " already exists, not redeclaring")
+when not declared(Avbuffersrcflagpush):
+  const
+    Avbuffersrcflagpush* = cuint(4)
+else:
+  static :
+    hint("Declaration of " & "Avbuffersrcflagpush" &
+        " already exists, not redeclaring")
+when not declared(Avbuffersrcflagkeepref):
+  const
+    Avbuffersrcflagkeepref* = cuint(8)
+else:
+  static :
+    hint("Declaration of " & "Avbuffersrcflagkeepref" &
+        " already exists, not redeclaring")
 when not declared(enumavchannel):
   type
     enumavchannel* {.size: sizeof(cint).} = enum
@@ -800,12 +835,27 @@ else:
   static :
     hint("Declaration of " & "enumavtimebasesource" &
         " already exists, not redeclaring")
+when not declared(structavfilterlinkanon0t):
+  type
+    structavfilterlinkanon0t* {.size: sizeof(cuint).} = enum
+      Avlinkuninit = 0, Avlinkstartinit = 1, Avlinkinit = 2
+else:
+  static :
+    hint("Declaration of " & "structavfilterlinkanon0t" &
+        " already exists, not redeclaring")
 when not declared(structavdeviceinfolist):
   type
     structavdeviceinfolist* = distinct object
 else:
   static :
     hint("Declaration of " & "structavdeviceinfolist" &
+        " already exists, not redeclaring")
+when not declared(structavfilterchannellayouts):
+  type
+    structavfilterchannellayouts* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfilterchannellayouts" &
         " already exists, not redeclaring")
 when not declared(structavhwdeviceinternal):
   type
@@ -821,6 +871,19 @@ else:
   static :
     hint("Declaration of " & "structavbprint" &
         " already exists, not redeclaring")
+when not declared(structavfilterpad):
+  type
+    structavfilterpad* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfilterpad" &
+        " already exists, not redeclaring")
+when not declared(enum21395):
+  type
+    enum21395* = distinct object
+else:
+  static :
+    hint("Declaration of " & "enum21395" & " already exists, not redeclaring")
 when not declared(structurlcontext):
   type
     structurlcontext* = distinct object
@@ -834,6 +897,13 @@ when not declared(structavbufferpool):
 else:
   static :
     hint("Declaration of " & "structavbufferpool" &
+        " already exists, not redeclaring")
+when not declared(structavfilterinternal):
+  type
+    structavfilterinternal* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfilterinternal" &
         " already exists, not redeclaring")
 when not declared(structiowidedata):
   type
@@ -883,6 +953,13 @@ else:
   static :
     hint("Declaration of " & "structavcodecinternal" &
         " already exists, not redeclaring")
+when not declared(structavfiltercommand):
+  type
+    structavfiltercommand* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfiltercommand" &
+        " already exists, not redeclaring")
 when not declared(Avchlayout5point1point2back):
   type
     Avchlayout5point1point2back* = distinct object
@@ -918,6 +995,13 @@ else:
   static :
     hint("Declaration of " & "structiocodecvt" &
         " already exists, not redeclaring")
+when not declared(Libavfilterversionint):
+  type
+    Libavfilterversionint* = distinct object
+else:
+  static :
+    hint("Declaration of " & "Libavfilterversionint" &
+        " already exists, not redeclaring")
 when not declared(Avchfrontcenter):
   type
     Avchfrontcenter* = distinct object
@@ -932,6 +1016,13 @@ else:
   static :
     hint("Declaration of " & "Libavformatversionint" &
         " already exists, not redeclaring")
+when not declared(structavfiltergraphinternal):
+  type
+    structavfiltergraphinternal* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfiltergraphinternal" &
+        " already exists, not redeclaring")
 when not declared(structavbuffer):
   type
     structavbuffer* = distinct object
@@ -945,6 +1036,13 @@ when not declared(structswscontext):
 else:
   static :
     hint("Declaration of " & "structswscontext" &
+        " already exists, not redeclaring")
+when not declared(structavfilterformats):
+  type
+    structavfilterformats* = distinct object
+else:
+  static :
+    hint("Declaration of " & "structavfilterformats" &
         " already exists, not redeclaring")
 when not declared(structavhwframesinternal):
   type
@@ -981,7 +1079,7 @@ type
     opaque*: pointer
 
   Avchannelcustom_520094086 = structavchannelcustom_520094085 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:275:3
-  structavchannellayout_u_t* {.union, bycopy.} = object
+  structavchannellayout_u_t {.union, bycopy.} = object
     mask*: uint64
     map*: ptr Avchannelcustom_520094087
 
@@ -1031,7 +1129,7 @@ type
     nbcomponents*: cint
 
   Avclass_520094104 = structavclass_520094099 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/log.h:147:3
-  valist_520094106 = compilergnucvalist_520094372 ## Generated based on /usr/include/stdio.h:53:24
+  valist_520094106 = compilergnucvalist_520094430 ## Generated based on /usr/include/stdio.h:53:24
   structavdictionaryentry_520094108 {.pure, inheritable, bycopy.} = object
     key*: cstring            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/dict.h:89:16
     value*: cstring
@@ -1051,7 +1149,7 @@ type
     i*: uint64               ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/intfloat.h:32:7
     f*: cdouble
 
-  File_520094147 = structiofile_520094374 ## Generated based on /usr/include/bits/types/FILE.h:7:25
+  File_520094147 = structiofile_520094432 ## Generated based on /usr/include/bits/types/FILE.h:7:25
   Avoption_520094151 = structavoption_520094101 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:308:3
   structavoptionrange_520094153 {.pure, inheritable, bycopy.} = object
     str*: cstring            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/opt.h:313:16
@@ -1140,7 +1238,7 @@ type
     flags*: cint
     colorrange*: enumavcolorrange_520094144
     colorprimaries*: enumavcolorprimaries_520094131
-    colortrc*: enumavcolortransfercharacteristic_520094133
+    colortrc*: enumavcolortransfercharacteristic_520094140
     colorspace*: enumavcolorspace_520094142
     chromalocation*: enumavchromalocation_520094146
     bestefforttimestamp*: int64
@@ -1302,7 +1400,7 @@ type
     fieldorder*: enumavfieldorder_520094228
     colorrange*: enumavcolorrange_520094144
     colorprimaries*: enumavcolorprimaries_520094131
-    colortrc*: enumavcolortransfercharacteristic_520094133
+    colortrc*: enumavcolortransfercharacteristic_520094140
     colorspace*: enumavcolorspace_520094142
     chromalocation*: enumavchromalocation_520094146
     videodelay*: cint
@@ -1398,7 +1496,7 @@ type
     refs*: cint
     mv0threshold*: cint
     colorprimaries*: enumavcolorprimaries_520094131
-    colortrc*: enumavcolortransfercharacteristic_520094133
+    colortrc*: enumavcolortransfercharacteristic_520094140
     colorspace*: enumavcolorspace_520094142
     colorrange*: enumavcolorrange_520094144
     chromasamplelocation*: enumavchromalocation_520094146
@@ -1840,8 +1938,178 @@ type
     chrv*: ptr Swsvector_520094366
 
   Swsfilter_520094369 = structswsfilter_520094368 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libswscale/swscale.h:127:3
-  compilergnucvalist_520094371 = compilerbuiltinvalist ## Generated based on /usr/lib/clang/17/include/stdarg.h:14:27
-  structiofile_520094373 {.pure, inheritable, bycopy.} = object
+  Avfiltercontext_520094371 = structavfiltercontext_520094374 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:73:32
+  structavfiltercontext_520094373 {.pure, inheritable, bycopy.} = object
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:397:8
+    filter*: ptr Avfilter_520094388
+    name*: cstring
+    inputpads*: ptr Avfilterpad_520094380
+    inputs*: ptr ptr Avfilterlink_520094376
+    nbinputs*: cuint
+    outputpads*: ptr Avfilterpad_520094380
+    outputs*: ptr ptr Avfilterlink_520094376
+    nboutputs*: cuint
+    priv*: pointer
+    graph*: ptr structavfiltergraph_520094392
+    threadtype*: cint
+    internal*: ptr Avfilterinternal_520094390
+    commandqueue*: ptr structavfiltercommand
+    enablestr*: cstring
+    enable*: pointer
+    varvalues*: ptr cdouble
+    isdisabled*: cint
+    hwdevicectx*: ptr Avbufferref_520094174
+    nbthreads*: cint
+    ready*: cuint
+    extrahwframes*: cint
+
+  Avfilterlink_520094375 = structavfilterlink_520094378 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:74:32
+  structavfilterlink_520094377 {.pure, inheritable, bycopy.} = object
+    src*: ptr Avfiltercontext_520094372 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:531:8
+    srcpad*: ptr Avfilterpad_520094380
+    dst*: ptr Avfiltercontext_520094372
+    dstpad*: ptr Avfilterpad_520094380
+    typefield*: enumavmediatype_520094119
+    w*: cint
+    h*: cint
+    sampleaspectratio*: Avrational_520094117
+    channellayout*: uint64
+    samplerate*: cint
+    format*: cint
+    timebase*: Avrational_520094117
+    chlayout*: Avchannellayout_520094091
+    incfg*: Avfilterformatsconfig_520094396
+    outcfg*: Avfilterformatsconfig_520094396
+    anon0*: structavfilterlink_anon0_t
+    initstate*: enum21395
+    graph*: ptr structavfiltergraph_520094392
+    currentpts*: int64
+    currentptsus*: int64
+    ageindex*: cint
+    framerate*: Avrational_520094117
+    minsamples*: cint
+    maxsamples*: cint
+    framecountin*: int64
+    framecountout*: int64
+    samplecountin*: int64
+    samplecountout*: int64
+    framepool*: pointer
+    framewantedout*: cint
+    hwframesctx*: ptr Avbufferref_520094174
+    reserved*: array[61440'i64, cschar]
+
+  Avfilterpad_520094379 = structavfilterpad ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:75:32
+  Avfilterformats_520094381 = structavfilterformats ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:76:32
+  Avfilterchannellayouts_520094383 = structavfilterchannellayouts ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:77:39
+  structavfilter_formats_t {.union, bycopy.} = object
+    queryfunc*: proc (a0: ptr Avfiltercontext_520094372): cint {.cdecl.}
+    pixelslist*: ptr enumavpixelformat_520094129
+    sampleslist*: ptr enumavsampleformat_520094093
+    pixfmt*: enumavpixelformat_520094129
+    samplefmt*: enumavsampleformat_520094093
+
+  structavfilter_520094385 {.pure, inheritable, bycopy.} = object
+    name*: cstring           ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:166:16
+    description*: cstring
+    inputs*: ptr Avfilterpad_520094380
+    outputs*: ptr Avfilterpad_520094380
+    privclass*: ptr Avclass_520094105
+    flags*: cint
+    nbinputs*: uint8
+    nboutputs*: uint8
+    formatsstate*: uint8
+    preinit*: proc (a0: ptr Avfiltercontext_520094372): cint {.cdecl.}
+    init*: proc (a0: ptr Avfiltercontext_520094372): cint {.cdecl.}
+    uninit*: proc (a0: ptr Avfiltercontext_520094372): void {.cdecl.}
+    formats*: structavfilter_formats_t
+    privsize*: cint
+    flagsinternal*: cint
+    processcommand*: proc (a0: ptr Avfiltercontext_520094372; a1: cstring;
+                           a2: cstring; a3: cstring; a4: cint; a5: cint): cint {.
+        cdecl.}
+    activate*: proc (a0: ptr Avfiltercontext_520094372): cint {.cdecl.}
+
+  Avfilter_520094387 = structavfilter_520094386 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:382:3
+  Avfilterinternal_520094389 = structavfilterinternal ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:394:33
+  structavfiltergraph_520094391 {.pure, inheritable, bycopy.} = object
+    avclass*: ptr Avclass_520094105 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:864:16
+    filters*: ptr ptr Avfiltercontext_520094372
+    nbfilters*: cuint
+    scaleswsopts*: cstring
+    threadtype*: cint
+    nbthreads*: cint
+    internal*: ptr Avfiltergraphinternal_520094398
+    opaque*: pointer
+    execute*: avfilterexecutefunc_520094402
+    aresampleswropts*: cstring
+    sinklinks*: ptr ptr Avfilterlink_520094376
+    sinklinkscount*: cint
+    disableautoconvert*: cuint
+
+  structavfilterformatsconfig_520094393 {.pure, inheritable, bycopy.} = object
+    formats*: ptr Avfilterformats_520094382 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:500:16
+    samplerates*: ptr Avfilterformats_520094382
+    channellayouts*: ptr Avfilterchannellayouts_520094384
+
+  Avfilterformatsconfig_520094395 = structavfilterformatsconfig_520094394 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:517:3
+  Avfiltergraphinternal_520094397 = structavfiltergraphinternal ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:833:38
+  avfilteractionfunc_520094399 = proc (a0: ptr Avfiltercontext_520094372;
+                                       a1: pointer; a2: cint; a3: cint): cint {.
+      cdecl.}                ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:847:14
+  avfilterexecutefunc_520094401 = proc (a0: ptr Avfiltercontext_520094372;
+                                        a1: avfilteractionfunc_520094400;
+                                        a2: pointer; a3: ptr cint; a4: cint): cint {.
+      cdecl.}                ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:861:14
+  Avfiltergraph_520094403 = structavfiltergraph_520094392 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:931:3
+  structavfilterinout_520094405 {.pure, inheritable, bycopy.} = object
+    name*: cstring           ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1024:16
+    filterctx*: ptr Avfiltercontext_520094372
+    padidx*: cint
+    next*: ptr structavfilterinout_520094406
+
+  Avfilterinout_520094407 = structavfilterinout_520094406 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1036:3
+  structavfilterpadparams_520094409 {.pure, inheritable, bycopy.} = object
+    label*: cstring          ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1126:16
+  
+  Avfilterpadparams_520094411 = structavfilterpadparams_520094410 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1135:3
+  structavfilterparams_520094413 {.pure, inheritable, bycopy.} = object
+    filter*: ptr Avfiltercontext_520094372 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1143:16
+    filtername*: cstring
+    instancename*: cstring
+    opts*: ptr Avdictionary_520094113
+    inputs*: ptr ptr Avfilterpadparams_520094412
+    nbinputs*: cuint
+    outputs*: ptr ptr Avfilterpadparams_520094412
+    nboutputs*: cuint
+
+  Avfilterparams_520094415 = structavfilterparams_520094414 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1202:3
+  structavfilterchain_520094417 {.pure, inheritable, bycopy.} = object
+    filters*: ptr ptr Avfilterparams_520094416 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1210:16
+    nbfilters*: csize_t
+
+  Avfilterchain_520094419 = structavfilterchain_520094418 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1213:3
+  structavfiltergraphsegment_520094421 {.pure, inheritable, bycopy.} = object
+    graph*: ptr Avfiltergraph_520094404 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1224:16
+    chains*: ptr ptr Avfilterchain_520094420
+    nbchains*: csize_t
+    scaleswsopts*: cstring
+
+  Avfiltergraphsegment_520094423 = structavfiltergraphsegment_520094422 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:1247:3
+  structavbuffersrcparameters_520094425 {.pure, inheritable, bycopy.} = object
+    format*: cint            ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersrc.h:73:16
+    timebase*: Avrational_520094117
+    width*: cint
+    height*: cint
+    sampleaspectratio*: Avrational_520094117
+    framerate*: Avrational_520094117
+    hwframesctx*: ptr Avbufferref_520094174
+    samplerate*: cint
+    channellayout*: uint64
+    chlayout*: Avchannellayout_520094091
+
+  Avbuffersrcparameters_520094427 = structavbuffersrcparameters_520094426 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersrc.h:126:3
+  compilergnucvalist_520094429 = compilerbuiltinvalist ## Generated based on /usr/lib/clang/17/include/stdarg.h:14:27
+  structiofile_520094431 {.pure, inheritable, bycopy.} = object
     internalflags*: cint     ## Generated based on /usr/include/bits/types/struct_FILE.h:49:8
     internalioreadptr*: cstring
     internalioreadend*: cstring
@@ -1855,57 +2123,37 @@ type
     internaliobackupbase*: cstring
     internaliosaveend*: cstring
     internalmarkers*: ptr structiomarker
-    internalchain*: ptr structiofile_520094374
+    internalchain*: ptr structiofile_520094432
     internalfileno*: cint
     internalflags2*: cint
-    internaloldoffset*: compilerofft_520094376
+    internaloldoffset*: compilerofft_520094434
     internalcurcolumn*: cushort
     internalvtableoffset*: cschar
     internalshortbuf*: array[1'i64, cschar]
     internallock*: pointer
-    internaloffset*: compileroff64t_520094380
+    internaloffset*: compileroff64t_520094438
     internalcodecvt*: ptr structiocodecvt
     internalwidedata*: ptr structiowidedata
-    internalfreereslist*: ptr structiofile_520094374
+    internalfreereslist*: ptr structiofile_520094432
     internalfreeresbuf*: pointer
     compilerpad5*: csize_t
     internalmode*: cint
     internalunused2*: array[20'i64, cschar]
 
-  compilerofft_520094375 = clong ## Generated based on /usr/include/bits/types.h:152:25
-  compileroff64t_520094379 = clong ## Generated based on /usr/include/bits/types.h:153:27
+  compilerofft_520094433 = clong ## Generated based on /usr/include/bits/types.h:152:25
+  compileroff64t_520094437 = clong ## Generated based on /usr/include/bits/types.h:153:27
   structavregionofinterest_520094186 = (when declared(structavregionofinterest):
     structavregionofinterest
    else:
     structavregionofinterest_520094185)
-  Avhwdevicecontext_520094200 = (when declared(Avhwdevicecontext):
-    Avhwdevicecontext
-   else:
-    Avhwdevicecontext_520094199)
-  Avcodecdescriptor_520094264 = (when declared(Avcodecdescriptor):
-    Avcodecdescriptor
-   else:
-    Avcodecdescriptor_520094263)
-  structaviointerruptcb_520094302 = (when declared(structaviointerruptcb):
-    structaviointerruptcb
-   else:
-    structaviointerruptcb_520094301)
-  structrcoverride_520094270 = (when declared(structrcoverride):
-    structrcoverride
-   else:
-    structrcoverride_520094269)
   structavinputformat_520094330 = (when declared(structavinputformat):
     structavinputformat
    else:
     structavinputformat_520094329)
-  Avcpbproperties_520094240 = (when declared(Avcpbproperties):
-    Avcpbproperties
-   else:
-    Avcpbproperties_520094239)
-  structiofile_520094374 = (when declared(structiofile):
+  structiofile_520094432 = (when declared(structiofile):
     structiofile
    else:
-    structiofile_520094373)
+    structiofile_520094431)
   Avoption_520094152 = (when declared(Avoption):
     Avoption
    else:
@@ -1914,58 +2162,18 @@ type
     structavstream
    else:
     structavstream_520094341)
-  Avcodec_520094222 = (when declared(Avcodec):
-    Avcodec
-   else:
-    Avcodec_520094221)
-  enumavframesidedatatype_520094178 = (when declared(enumavframesidedatatype):
-    enumavframesidedatatype
-   else:
-    enumavframesidedatatype_520094177)
-  structavframesidedata_520094182 = (when declared(structavframesidedata):
-    structavframesidedata
-   else:
-    structavframesidedata_520094181)
   enumavcolorrange_520094144 = (when declared(enumavcolorrange):
     enumavcolorrange
    else:
     enumavcolorrange_520094143)
-  structavpacket_520094252 = (when declared(structavpacket):
-    structavpacket
-   else:
-    structavpacket_520094251)
-  structaviodircontext_520094312 = (when declared(structaviodircontext):
-    structaviodircontext
-   else:
-    structaviodircontext_520094311)
   structavchannelcustom_520094085 = (when declared(structavchannelcustom):
     structavchannelcustom
    else:
     structavchannelcustom_520094084)
-  Avdictionaryentry_520094111 = (when declared(Avdictionaryentry):
-    Avdictionaryentry
-   else:
-    Avdictionaryentry_520094110)
   Aviointerruptcb_520094304 = (when declared(Aviointerruptcb):
     Aviointerruptcb
    else:
     Aviointerruptcb_520094303)
-  Aviodircontext_520094314 = (when declared(Aviodircontext):
-    Aviodircontext
-   else:
-    Aviodircontext_520094313)
-  structswsfilter_520094368 = (when declared(structswsfilter):
-    structswsfilter
-   else:
-    structswsfilter_520094367)
-  enumavchromalocation_520094146 = (when declared(enumavchromalocation):
-    enumavchromalocation
-   else:
-    enumavchromalocation_520094145)
-  structavformatcontext_520094332 = (when declared(structavformatcontext):
-    structavformatcontext
-   else:
-    structavformatcontext_520094331)
   structswsvector_520094364 = (when declared(structswsvector):
     structswsvector
    else:
@@ -1979,15 +2187,15 @@ type
     enumavdurationestimationmethod
    else:
     enumavdurationestimationmethod_520094357)
-  compileroff64t_520094380 = (when declared(compileroff64t):
-    compileroff64t
-   else:
-    compileroff64t_520094379)
   structavproducerreferencetime_520094242 = (when declared(
       structavproducerreferencetime):
     structavproducerreferencetime
    else:
     structavproducerreferencetime_520094241)
+  structavfilterlink_520094378 = (when declared(structavfilterlink):
+    structavfilterlink
+   else:
+    structavfilterlink_520094377)
   structavcpbproperties_520094238 = (when declared(structavcpbproperties):
     structavcpbproperties
    else:
@@ -2008,14 +2216,6 @@ type
     Avframesidedata
    else:
     Avframesidedata_520094183)
-  structavcodec_520094220 = (when declared(structavcodec):
-    structavcodec
-   else:
-    structavcodec_520094219)
-  Avinputformat_520094334 = (when declared(Avinputformat):
-    Avinputformat
-   else:
-    Avinputformat_520094333)
   Avcodechwconfig_520094226 = (when declared(Avcodechwconfig):
     Avcodechwconfig
    else:
@@ -2024,6 +2224,376 @@ type
     Avproducerreferencetime
    else:
     Avproducerreferencetime_520094243)
+  structavprobedata_520094322 = (when declared(structavprobedata):
+    structavprobedata
+   else:
+    structavprobedata_520094321)
+  enumavhwframetransferdirection_520094208 = (when declared(
+      enumavhwframetransferdirection):
+    enumavhwframetransferdirection
+   else:
+    enumavhwframetransferdirection_520094207)
+  Avfilterinout_520094408 = (when declared(Avfilterinout):
+    Avfilterinout
+   else:
+    Avfilterinout_520094407)
+  enumavmatrixencoding_520094083 = (when declared(enumavmatrixencoding):
+    enumavmatrixencoding
+   else:
+    enumavmatrixencoding_520094082)
+  Avfilterpad_520094380 = (when declared(Avfilterpad):
+    Avfilterpad
+   else:
+    Avfilterpad_520094379)
+  unionavintfloat64_520094125 = (when declared(unionavintfloat64):
+    unionavintfloat64
+   else:
+    unionavintfloat64_520094124)
+  Avprofile_520094218 = (when declared(Avprofile):
+    Avprofile
+   else:
+    Avprofile_520094217)
+  structavfiltergraphsegment_520094422 = (when declared(
+      structavfiltergraphsegment):
+    structavfiltergraphsegment
+   else:
+    structavfiltergraphsegment_520094421)
+  compilergnucvalist_520094430 = (when declared(compilergnucvalist):
+    compilergnucvalist
+   else:
+    compilergnucvalist_520094429)
+  Avfilterchain_520094420 = (when declared(Avfilterchain):
+    Avfilterchain
+   else:
+    Avfilterchain_520094419)
+  structavchannellayout_520094089 = (when declared(structavchannellayout):
+    structavchannellayout
+   else:
+    structavchannellayout_520094088)
+  structaviodirentry_520094308 = (when declared(structaviodirentry):
+    structaviodirentry
+   else:
+    structaviodirentry_520094307)
+  structavrational_520094115 = (when declared(structavrational):
+    structavrational
+   else:
+    structavrational_520094114)
+  structavcodecparser_520094296 = (when declared(structavcodecparser):
+    structavcodecparser
+   else:
+    structavcodecparser_520094295)
+  Avfiltergraphinternal_520094398 = (when declared(Avfiltergraphinternal):
+    Avfiltergraphinternal
+   else:
+    Avfiltergraphinternal_520094397)
+  unionavintfloat32_520094123 = (when declared(unionavintfloat32):
+    unionavintfloat32
+   else:
+    unionavintfloat32_520094122)
+  enumavcolortransfercharacteristic_520094140 = (when declared(
+      enumavcolortransfercharacteristic):
+    enumavcolortransfercharacteristic
+   else:
+    enumavcolortransfercharacteristic_520094139)
+  Rcoverride_520094272 = (when declared(Rcoverride):
+    Rcoverride
+   else:
+    Rcoverride_520094271)
+  enumavsidedataparamchangeflags_520094260 = (when declared(
+      enumavsidedataparamchangeflags):
+    enumavsidedataparamchangeflags
+   else:
+    enumavsidedataparamchangeflags_520094259)
+  Avfiltercontext_520094372 = (when declared(Avfiltercontext):
+    Avfiltercontext
+   else:
+    Avfiltercontext_520094371)
+  enumavpicturestructure_520094292 = (when declared(enumavpicturestructure):
+    enumavpicturestructure
+   else:
+    enumavpicturestructure_520094291)
+  enumavpixelformat_520094129 = (when declared(enumavpixelformat):
+    enumavpixelformat
+   else:
+    enumavpixelformat_520094128)
+  structavfiltergraph_520094392 = (when declared(structavfiltergraph):
+    structavfiltergraph
+   else:
+    structavfiltergraph_520094391)
+  Avhwframesconstraints_520094212 = (when declared(Avhwframesconstraints):
+    Avhwframesconstraints
+   else:
+    Avhwframesconstraints_520094211)
+  Avindexentry_520094340 = (when declared(Avindexentry):
+    Avindexentry
+   else:
+    Avindexentry_520094339)
+  structavclass_520094099 = (when declared(structavclass):
+    structavclass
+   else:
+    structavclass_520094098)
+  enumavchannelorder_520094081 = (when declared(enumavchannelorder):
+    enumavchannelorder
+   else:
+    enumavchannelorder_520094080)
+  enumavcolorprimaries_520094131 = (when declared(enumavcolorprimaries):
+    enumavcolorprimaries
+   else:
+    enumavcolorprimaries_520094130)
+  enumavrounding_520094127 = (when declared(enumavrounding):
+    enumavrounding
+   else:
+    enumavrounding_520094126)
+  enumavsubtitletype_520094282 = (when declared(enumavsubtitletype):
+    enumavsubtitletype
+   else:
+    enumavsubtitletype_520094281)
+  Avstream_520094344 = (when declared(Avstream):
+    Avstream
+   else:
+    Avstream_520094343)
+  Avpacketlist_520094258 = (when declared(Avpacketlist):
+    Avpacketlist
+   else:
+    Avpacketlist_520094257)
+  Avpacketsidedata_520094250 = (when declared(Avpacketsidedata):
+    Avpacketsidedata
+   else:
+    Avpacketsidedata_520094249)
+  enumavsampleformat_520094093 = (when declared(enumavsampleformat):
+    enumavsampleformat
+   else:
+    enumavsampleformat_520094092)
+  Avclasscategory_520094097 = (when declared(Avclasscategory):
+    Avclasscategory
+   else:
+    Avclasscategory_520094096)
+  Swsvector_520094366 = (when declared(Swsvector):
+    Swsvector
+   else:
+    Swsvector_520094365)
+  Avhwframesinternal_520094202 = (when declared(Avhwframesinternal):
+    Avhwframesinternal
+   else:
+    Avhwframesinternal_520094201)
+  compilerofft_520094434 = (when declared(compilerofft):
+    compilerofft
+   else:
+    compilerofft_520094433)
+  Avclass_520094105 = (when declared(Avclass):
+    Avclass
+   else:
+    Avclass_520094104)
+  Avprobedata_520094324 = (when declared(Avprobedata):
+    Avprobedata
+   else:
+    Avprobedata_520094323)
+  structavhwframescontext_520094204 = (when declared(structavhwframescontext):
+    structavhwframescontext
+   else:
+    structavhwframescontext_520094203)
+  structavfiltercontext_520094374 = (when declared(structavfiltercontext):
+    structavfiltercontext
+   else:
+    structavfiltercontext_520094373)
+  Avfilterchannellayouts_520094384 = (when declared(Avfilterchannellayouts):
+    Avfilterchannellayouts
+   else:
+    Avfilterchannellayouts_520094383)
+  structavdictionaryentry_520094109 = (when declared(structavdictionaryentry):
+    structavdictionaryentry
+   else:
+    structavdictionaryentry_520094108)
+  Avsubtitle_520094290 = (when declared(Avsubtitle):
+    Avsubtitle
+   else:
+    Avsubtitle_520094289)
+  Avcodecparser_520094300 = (when declared(Avcodecparser):
+    Avcodecparser
+   else:
+    Avcodecparser_520094299)
+  structavoption_520094101 = (when declared(structavoption):
+    structavoption
+   else:
+    structavoption_520094100)
+  structavhwframesconstraints_520094210 = (when declared(
+      structavhwframesconstraints):
+    structavhwframesconstraints
+   else:
+    structavhwframesconstraints_520094209)
+  Avbufferpool_520094176 = (when declared(Avbufferpool):
+    Avbufferpool
+   else:
+    Avbufferpool_520094175)
+  structavpixfmtdescriptor_520094164 = (when declared(structavpixfmtdescriptor):
+    structavpixfmtdescriptor
+   else:
+    structavpixfmtdescriptor_520094163)
+  Avhwaccel_520094280 = (when declared(Avhwaccel):
+    Avhwaccel
+   else:
+    Avhwaccel_520094279)
+  Avcodecparameters_520094268 = (when declared(Avcodecparameters):
+    Avcodecparameters
+   else:
+    Avcodecparameters_520094267)
+  Avhwdeviceinternal_520094196 = (when declared(Avhwdeviceinternal):
+    Avhwdeviceinternal
+   else:
+    Avhwdeviceinternal_520094195)
+  structavsubtitlerect_520094284 = (when declared(structavsubtitlerect):
+    structavsubtitlerect
+   else:
+    structavsubtitlerect_520094283)
+  enumavmediatype_520094119 = (when declared(enumavmediatype):
+    enumavmediatype
+   else:
+    enumavmediatype_520094118)
+  Avpixfmtdescriptor_520094166 = (when declared(Avpixfmtdescriptor):
+    Avpixfmtdescriptor
+   else:
+    Avpixfmtdescriptor_520094165)
+  structavpacketlist_520094256 = (when declared(structavpacketlist):
+    structavpacketlist
+   else:
+    structavpacketlist_520094255)
+  Avcodecparsercontext_520094298 = (when declared(Avcodecparsercontext):
+    Avcodecparsercontext
+   else:
+    Avcodecparsercontext_520094297)
+  Avchannellayout_520094091 = (when declared(Avchannellayout):
+    Avchannellayout
+   else:
+    Avchannellayout_520094090)
+  structavcodecparsercontext_520094294 = (when declared(
+      structavcodecparsercontext):
+    structavcodecparsercontext
+   else:
+    structavcodecparsercontext_520094293)
+  structavindexentry_520094338 = (when declared(structavindexentry):
+    structavindexentry
+   else:
+    structavindexentry_520094337)
+  Avpanscan_520094236 = (when declared(Avpanscan):
+    Avpanscan
+   else:
+    Avpanscan_520094235)
+  enumaviodatamarkertype_520094316 = (when declared(enumaviodatamarkertype):
+    enumaviodatamarkertype
+   else:
+    enumaviodatamarkertype_520094315)
+  structavfilter_520094386 = (when declared(structavfilter):
+    structavfilter
+   else:
+    structavfilter_520094385)
+  enumavdiscard_520094230 = (when declared(enumavdiscard):
+    enumavdiscard
+   else:
+    enumavdiscard_520094229)
+  avfilteractionfunc_520094400 = (when declared(avfilteractionfunc):
+    avfilteractionfunc
+   else:
+    avfilteractionfunc_520094399)
+  structavoptionrange_520094154 = (when declared(structavoptionrange):
+    structavoptionrange
+   else:
+    structavoptionrange_520094153)
+  structavcodecparameters_520094266 = (when declared(structavcodecparameters):
+    structavcodecparameters
+   else:
+    structavcodecparameters_520094265)
+  Avfiltergraphsegment_520094424 = (when declared(Avfiltergraphsegment):
+    Avfiltergraphsegment
+   else:
+    Avfiltergraphsegment_520094423)
+  structavcodeccontext_520094274 = (when declared(structavcodeccontext):
+    structavcodeccontext
+   else:
+    structavcodeccontext_520094273)
+  Avhwdevicecontext_520094200 = (when declared(Avhwdevicecontext):
+    Avhwdevicecontext
+   else:
+    Avhwdevicecontext_520094199)
+  Avcodecdescriptor_520094264 = (when declared(Avcodecdescriptor):
+    Avcodecdescriptor
+   else:
+    Avcodecdescriptor_520094263)
+  structaviointerruptcb_520094302 = (when declared(structaviointerruptcb):
+    structaviointerruptcb
+   else:
+    structaviointerruptcb_520094301)
+  structrcoverride_520094270 = (when declared(structrcoverride):
+    structrcoverride
+   else:
+    structrcoverride_520094269)
+  Avcpbproperties_520094240 = (when declared(Avcpbproperties):
+    Avcpbproperties
+   else:
+    Avcpbproperties_520094239)
+  Avfilterformatsconfig_520094396 = (when declared(Avfilterformatsconfig):
+    Avfilterformatsconfig
+   else:
+    Avfilterformatsconfig_520094395)
+  avfilterexecutefunc_520094402 = (when declared(avfilterexecutefunc):
+    avfilterexecutefunc
+   else:
+    avfilterexecutefunc_520094401)
+  Avcodec_520094222 = (when declared(Avcodec):
+    Avcodec
+   else:
+    Avcodec_520094221)
+  enumavframesidedatatype_520094178 = (when declared(enumavframesidedatatype):
+    enumavframesidedatatype
+   else:
+    enumavframesidedatatype_520094177)
+  structavframesidedata_520094182 = (when declared(structavframesidedata):
+    structavframesidedata
+   else:
+    structavframesidedata_520094181)
+  Aviodircontext_520094314 = (when declared(Aviodircontext):
+    Aviodircontext
+   else:
+    Aviodircontext_520094313)
+  structavpacket_520094252 = (when declared(structavpacket):
+    structavpacket
+   else:
+    structavpacket_520094251)
+  structaviodircontext_520094312 = (when declared(structaviodircontext):
+    structaviodircontext
+   else:
+    structaviodircontext_520094311)
+  Avdictionaryentry_520094111 = (when declared(Avdictionaryentry):
+    Avdictionaryentry
+   else:
+    Avdictionaryentry_520094110)
+  structswsfilter_520094368 = (when declared(structswsfilter):
+    structswsfilter
+   else:
+    structswsfilter_520094367)
+  enumavchromalocation_520094146 = (when declared(enumavchromalocation):
+    enumavchromalocation
+   else:
+    enumavchromalocation_520094145)
+  structavformatcontext_520094332 = (when declared(structavformatcontext):
+    structavformatcontext
+   else:
+    structavformatcontext_520094331)
+  Avfiltergraph_520094404 = (when declared(Avfiltergraph):
+    Avfiltergraph
+   else:
+    Avfiltergraph_520094403)
+  compileroff64t_520094438 = (when declared(compileroff64t):
+    compileroff64t
+   else:
+    compileroff64t_520094437)
+  structavcodec_520094220 = (when declared(structavcodec):
+    structavcodec
+   else:
+    structavcodec_520094219)
+  Avinputformat_520094334 = (when declared(Avinputformat):
+    Avinputformat
+   else:
+    Avinputformat_520094333)
   Avsubtitlerect_520094286 = (when declared(Avsubtitlerect):
     Avsubtitlerect
    else:
@@ -2032,23 +2602,10 @@ type
     structavoptionranges
    else:
     structavoptionranges_520094102)
-  enumavhwframetransferdirection_520094208 = (when declared(
-      enumavhwframetransferdirection):
-    enumavhwframetransferdirection
-   else:
-    enumavhwframetransferdirection_520094207)
   enumavaudioservicetype_520094232 = (when declared(enumavaudioservicetype):
     enumavaudioservicetype
    else:
     enumavaudioservicetype_520094231)
-  structavprobedata_520094322 = (when declared(structavprobedata):
-    structavprobedata
-   else:
-    structavprobedata_520094321)
-  enumavmatrixencoding_520094083 = (when declared(enumavmatrixencoding):
-    enumavmatrixencoding
-   else:
-    enumavmatrixencoding_520094082)
   Avpacket_520094254 = (when declared(Avpacket):
     Avpacket
    else:
@@ -2057,10 +2614,6 @@ type
     valist
    else:
     valist_520094106)
-  unionavintfloat64_520094125 = (when declared(unionavintfloat64):
-    unionavintfloat64
-   else:
-    unionavintfloat64_520094124)
   enumavfieldorder_520094228 = (when declared(enumavfieldorder):
     enumavfieldorder
    else:
@@ -2069,14 +2622,10 @@ type
     structaviocontext
    else:
     structaviocontext_520094317)
-  Avprofile_520094218 = (when declared(Avprofile):
-    Avprofile
+  structavfilterpadparams_520094410 = (when declared(structavfilterpadparams):
+    structavfilterpadparams
    else:
-    Avprofile_520094217)
-  compilergnucvalist_520094372 = (when declared(compilergnucvalist):
-    compilergnucvalist
-   else:
-    compilergnucvalist_520094371)
+    structavfilterpadparams_520094409)
   Avchannelcustom_520094087 = (when declared(Avchannelcustom):
     Avchannelcustom
    else:
@@ -2098,52 +2647,22 @@ type
     Avoutputformat
    else:
     Avoutputformat_520094327)
-  structavchannellayout_520094089 = (when declared(structavchannellayout):
-    structavchannellayout
-   else:
-    structavchannellayout_520094088)
   Avchapter_520094352 = (when declared(Avchapter):
     Avchapter
    else:
     Avchapter_520094351)
-  structaviodirentry_520094308 = (when declared(structaviodirentry):
-    structaviodirentry
+  Avbuffersrcparameters_520094428 = (when declared(Avbuffersrcparameters):
+    Avbuffersrcparameters
    else:
-    structaviodirentry_520094307)
-  structavrational_520094115 = (when declared(structavrational):
-    structavrational
-   else:
-    structavrational_520094114)
-  enumavhwdevicetype_520094194 = (when declared(enumavhwdevicetype):
-    enumavhwdevicetype
-   else:
-    enumavhwdevicetype_520094193)
+    Avbuffersrcparameters_520094427)
   structavhwaccel_520094276 = (when declared(structavhwaccel):
     structavhwaccel
    else:
     structavhwaccel_520094275)
-  structavcodecparser_520094296 = (when declared(structavcodecparser):
-    structavcodecparser
+  enumavhwdevicetype_520094194 = (when declared(enumavhwdevicetype):
+    enumavhwdevicetype
    else:
-    structavcodecparser_520094295)
-  unionavintfloat32_520094123 = (when declared(unionavintfloat32):
-    unionavintfloat32
-   else:
-    unionavintfloat32_520094122)
-  enumavcolortransfercharacteristic_520094133 = (when declared(
-      enumavcolortransfercharacteristic):
-    enumavcolortransfercharacteristic
-   else:
-    enumavcolortransfercharacteristic_520094132)
-  Rcoverride_520094272 = (when declared(Rcoverride):
-    Rcoverride
-   else:
-    Rcoverride_520094271)
-  enumavsidedataparamchangeflags_520094260 = (when declared(
-      enumavsidedataparamchangeflags):
-    enumavsidedataparamchangeflags
-   else:
-    enumavsidedataparamchangeflags_520094259)
+    enumavhwdevicetype_520094193)
   structavsubtitle_520094288 = (when declared(structavsubtitle):
     structavsubtitle
    else:
@@ -2152,14 +2671,10 @@ type
     enumavchannel
    else:
     enumavchannel_520094078)
-  enumavpixelformat_520094129 = (when declared(enumavpixelformat):
-    enumavpixelformat
+  Avfilter_520094388 = (when declared(Avfilter):
+    Avfilter
    else:
-    enumavpixelformat_520094128)
-  enumavpicturestructure_520094292 = (when declared(enumavpicturestructure):
-    enumavpicturestructure
-   else:
-    enumavpicturestructure_520094291)
+    Avfilter_520094387)
   Aviodirentry_520094310 = (when declared(Aviodirentry):
     Aviodirentry
    else:
@@ -2172,106 +2687,42 @@ type
     enumavcolorspace
    else:
     enumavcolorspace_520094141)
-  Avhwframesconstraints_520094212 = (when declared(Avhwframesconstraints):
-    Avhwframesconstraints
-   else:
-    Avhwframesconstraints_520094211)
-  Avindexentry_520094340 = (when declared(Avindexentry):
-    Avindexentry
-   else:
-    Avindexentry_520094339)
   Avdictionary_520094113 = (when declared(Avdictionary):
     Avdictionary
    else:
     Avdictionary_520094112)
-  structavclass_520094099 = (when declared(structavclass):
-    structavclass
-   else:
-    structavclass_520094098)
   structavchapter_520094350 = (when declared(structavchapter):
     structavchapter
    else:
     structavchapter_520094349)
-  enumavchannelorder_520094081 = (when declared(enumavchannelorder):
-    enumavchannelorder
+  Avfilterinternal_520094390 = (when declared(Avfilterinternal):
+    Avfilterinternal
    else:
-    enumavchannelorder_520094080)
+    Avfilterinternal_520094389)
+  structavfilterinout_520094406 = (when declared(structavfilterinout):
+    structavfilterinout
+   else:
+    structavfilterinout_520094405)
   enumavpicturetype_520094121 = (when declared(enumavpicturetype):
     enumavpicturetype
    else:
     enumavpicturetype_520094120)
-  enumavcolorprimaries_520094131 = (when declared(enumavcolorprimaries):
-    enumavcolorprimaries
-   else:
-    enumavcolorprimaries_520094130)
   Avcodeccontext_520094278 = (when declared(Avcodeccontext):
     Avcodeccontext
    else:
     Avcodeccontext_520094277)
-  enumavrounding_520094127 = (when declared(enumavrounding):
-    enumavrounding
-   else:
-    enumavrounding_520094126)
-  enumavsubtitletype_520094282 = (when declared(enumavsubtitletype):
-    enumavsubtitletype
-   else:
-    enumavsubtitletype_520094281)
   enumavstreamparsetype_520094336 = (when declared(enumavstreamparsetype):
     enumavstreamparsetype
    else:
     enumavstreamparsetype_520094335)
-  Avstream_520094344 = (when declared(Avstream):
-    Avstream
-   else:
-    Avstream_520094343)
-  Avpacketlist_520094258 = (when declared(Avpacketlist):
-    Avpacketlist
-   else:
-    Avpacketlist_520094257)
-  Avpacketsidedata_520094250 = (when declared(Avpacketsidedata):
-    Avpacketsidedata
-   else:
-    Avpacketsidedata_520094249)
   structavprogram_520094346 = (when declared(structavprogram):
     structavprogram
    else:
     structavprogram_520094345)
-  enumavsampleformat_520094093 = (when declared(enumavsampleformat):
-    enumavsampleformat
-   else:
-    enumavsampleformat_520094092)
   structavhwdevicecontext_520094198 = (when declared(structavhwdevicecontext):
     structavhwdevicecontext
    else:
     structavhwdevicecontext_520094197)
-  Avclasscategory_520094097 = (when declared(Avclasscategory):
-    Avclasscategory
-   else:
-    Avclasscategory_520094096)
-  Swsvector_520094366 = (when declared(Swsvector):
-    Swsvector
-   else:
-    Swsvector_520094365)
-  Avhwframesinternal_520094202 = (when declared(Avhwframesinternal):
-    Avhwframesinternal
-   else:
-    Avhwframesinternal_520094201)
-  compilerofft_520094376 = (when declared(compilerofft):
-    compilerofft
-   else:
-    compilerofft_520094375)
-  Avclass_520094105 = (when declared(Avclass):
-    Avclass
-   else:
-    Avclass_520094104)
-  Avprobedata_520094324 = (when declared(Avprobedata):
-    Avprobedata
-   else:
-    Avprobedata_520094323)
-  structavhwframescontext_520094204 = (when declared(structavhwframescontext):
-    structavhwframescontext
-   else:
-    structavhwframescontext_520094203)
   Avoptionrange_520094156 = (when declared(Avoptionrange):
     Avoptionrange
    else:
@@ -2280,39 +2731,22 @@ type
     Avopencallback
    else:
     Avopencallback_520094355)
+  structavfilterchain_520094418 = (when declared(structavfilterchain):
+    structavfilterchain
+   else:
+    structavfilterchain_520094417)
   structavoutputformat_520094326 = (when declared(structavoutputformat):
     structavoutputformat
    else:
     structavoutputformat_520094325)
-  structavdictionaryentry_520094109 = (when declared(structavdictionaryentry):
-    structavdictionaryentry
-   else:
-    structavdictionaryentry_520094108)
-  Avsubtitle_520094290 = (when declared(Avsubtitle):
-    Avsubtitle
-   else:
-    Avsubtitle_520094289)
   enumavcodecid_520094214 = (when declared(enumavcodecid):
     enumavcodecid
    else:
     enumavcodecid_520094213)
-  Avcodecparser_520094300 = (when declared(Avcodecparser):
-    Avcodecparser
-   else:
-    Avcodecparser_520094299)
-  structavoption_520094101 = (when declared(structavoption):
-    structavoption
-   else:
-    structavoption_520094100)
   enumavoptiontype_520094150 = (when declared(enumavoptiontype):
     enumavoptiontype
    else:
     enumavoptiontype_520094149)
-  structavhwframesconstraints_520094210 = (when declared(
-      structavhwframesconstraints):
-    structavhwframesconstraints
-   else:
-    structavhwframesconstraints_520094209)
   Avhwframescontext_520094206 = (when declared(Avhwframescontext):
     Avhwframescontext
    else:
@@ -2321,14 +2755,18 @@ type
     Avcomponentdescriptor
    else:
     Avcomponentdescriptor_520094161)
-  Avbufferpool_520094176 = (when declared(Avbufferpool):
-    Avbufferpool
+  Avfilterpadparams_520094412 = (when declared(Avfilterpadparams):
+    Avfilterpadparams
    else:
-    Avbufferpool_520094175)
+    Avfilterpadparams_520094411)
   Swsfilter_520094370 = (when declared(Swsfilter):
     Swsfilter
    else:
     Swsfilter_520094369)
+  Avfilterlink_520094376 = (when declared(Avfilterlink):
+    Avfilterlink
+   else:
+    Avfilterlink_520094375)
   Avrational_520094117 = (when declared(Avrational):
     Avrational
    else:
@@ -2337,26 +2775,6 @@ type
     Avprogram
    else:
     Avprogram_520094347)
-  structavpixfmtdescriptor_520094164 = (when declared(structavpixfmtdescriptor):
-    structavpixfmtdescriptor
-   else:
-    structavpixfmtdescriptor_520094163)
-  Avhwaccel_520094280 = (when declared(Avhwaccel):
-    Avhwaccel
-   else:
-    Avhwaccel_520094279)
-  Avcodecparameters_520094268 = (when declared(Avcodecparameters):
-    Avcodecparameters
-   else:
-    Avcodecparameters_520094267)
-  Avhwdeviceinternal_520094196 = (when declared(Avhwdeviceinternal):
-    Avhwdeviceinternal
-   else:
-    Avhwdeviceinternal_520094195)
-  structavsubtitlerect_520094284 = (when declared(structavsubtitlerect):
-    structavsubtitlerect
-   else:
-    structavsubtitlerect_520094283)
   Avframe_520094192 = (when declared(Avframe):
     Avframe
    else:
@@ -2365,22 +2783,27 @@ type
     structavpanscan
    else:
     structavpanscan_520094233)
+  Avfilterformats_520094382 = (when declared(Avfilterformats):
+    Avfilterformats
+   else:
+    Avfilterformats_520094381)
+  structavfilterparams_520094414 = (when declared(structavfilterparams):
+    structavfilterparams
+   else:
+    structavfilterparams_520094413)
   structavbufferref_520094172 = (when declared(structavbufferref):
     structavbufferref
    else:
     structavbufferref_520094171)
-  enumavmediatype_520094119 = (when declared(enumavmediatype):
-    enumavmediatype
+  structavfilterformatsconfig_520094394 = (when declared(
+      structavfilterformatsconfig):
+    structavfilterformatsconfig
    else:
-    enumavmediatype_520094118)
+    structavfilterformatsconfig_520094393)
   Avoptionranges_520094158 = (when declared(Avoptionranges):
     Avoptionranges
    else:
     Avoptionranges_520094157)
-  Avpixfmtdescriptor_520094166 = (when declared(Avpixfmtdescriptor):
-    Avpixfmtdescriptor
-   else:
-    Avpixfmtdescriptor_520094165)
   Avbuffer_520094170 = (when declared(Avbuffer):
     Avbuffer
    else:
@@ -2389,23 +2812,11 @@ type
     File
    else:
     File_520094147)
-  structavpacketlist_520094256 = (when declared(structavpacketlist):
-    structavpacketlist
+  structavbuffersrcparameters_520094426 = (when declared(
+      structavbuffersrcparameters):
+    structavbuffersrcparameters
    else:
-    structavpacketlist_520094255)
-  Avcodecparsercontext_520094298 = (when declared(Avcodecparsercontext):
-    Avcodecparsercontext
-   else:
-    Avcodecparsercontext_520094297)
-  Avchannellayout_520094091 = (when declared(Avchannellayout):
-    Avchannellayout
-   else:
-    Avchannellayout_520094090)
-  structavcodecparsercontext_520094294 = (when declared(
-      structavcodecparsercontext):
-    structavcodecparsercontext
-   else:
-    structavcodecparsercontext_520094293)
+    structavbuffersrcparameters_520094425)
   ptrdifft_520094168 = (when declared(ptrdifft):
     ptrdifft
    else:
@@ -2414,10 +2825,6 @@ type
     Avregionofinterest
    else:
     Avregionofinterest_520094187)
-  structavindexentry_520094338 = (when declared(structavindexentry):
-    structavindexentry
-   else:
-    structavindexentry_520094337)
   Avformatcontext_520094360 = (when declared(Avformatcontext):
     Avformatcontext
    else:
@@ -2430,43 +2837,23 @@ type
     structavcodechwconfig
    else:
     structavcodechwconfig_520094223)
-  Avpanscan_520094236 = (when declared(Avpanscan):
-    Avpanscan
+  Avfilterparams_520094416 = (when declared(Avfilterparams):
+    Avfilterparams
    else:
-    Avpanscan_520094235)
+    Avfilterparams_520094415)
   structavcodecdescriptor_520094262 = (when declared(structavcodecdescriptor):
     structavcodecdescriptor
    else:
     structavcodecdescriptor_520094261)
-  enumavdiscard_520094230 = (when declared(enumavdiscard):
-    enumavdiscard
-   else:
-    enumavdiscard_520094229)
-  enumaviodatamarkertype_520094316 = (when declared(enumaviodatamarkertype):
-    enumaviodatamarkertype
-   else:
-    enumaviodatamarkertype_520094315)
   enumavactiveformatdescription_520094180 = (when declared(
       enumavactiveformatdescription):
     enumavactiveformatdescription
    else:
     enumavactiveformatdescription_520094179)
-  structavoptionrange_520094154 = (when declared(structavoptionrange):
-    structavoptionrange
-   else:
-    structavoptionrange_520094153)
-  structavcodecparameters_520094266 = (when declared(structavcodecparameters):
-    structavcodecparameters
-   else:
-    structavcodecparameters_520094265)
   avformatcontrolmessage_520094354 = (when declared(avformatcontrolmessage):
     avformatcontrolmessage
    else:
     avformatcontrolmessage_520094353)
-  structavcodeccontext_520094274 = (when declared(structavcodeccontext):
-    structavcodeccontext
-   else:
-    structavcodeccontext_520094273)
   structavframe_520094190 = (when declared(structavframe):
     structavframe
    else:
@@ -2478,34 +2865,6 @@ else:
   static :
     hint("Declaration of " & "structavregionofinterest" &
         " already exists, not redeclaring")
-when not declared(Avhwdevicecontext):
-  type
-    Avhwdevicecontext* = Avhwdevicecontext_520094199
-else:
-  static :
-    hint("Declaration of " & "Avhwdevicecontext" &
-        " already exists, not redeclaring")
-when not declared(Avcodecdescriptor):
-  type
-    Avcodecdescriptor* = Avcodecdescriptor_520094263
-else:
-  static :
-    hint("Declaration of " & "Avcodecdescriptor" &
-        " already exists, not redeclaring")
-when not declared(structaviointerruptcb):
-  type
-    structaviointerruptcb* = structaviointerruptcb_520094301
-else:
-  static :
-    hint("Declaration of " & "structaviointerruptcb" &
-        " already exists, not redeclaring")
-when not declared(structrcoverride):
-  type
-    structrcoverride* = structrcoverride_520094269
-else:
-  static :
-    hint("Declaration of " & "structrcoverride" &
-        " already exists, not redeclaring")
 when not declared(structavinputformat):
   type
     structavinputformat* = structavinputformat_520094329
@@ -2513,16 +2872,9 @@ else:
   static :
     hint("Declaration of " & "structavinputformat" &
         " already exists, not redeclaring")
-when not declared(Avcpbproperties):
-  type
-    Avcpbproperties* = Avcpbproperties_520094239
-else:
-  static :
-    hint("Declaration of " & "Avcpbproperties" &
-        " already exists, not redeclaring")
 when not declared(structiofile):
   type
-    structiofile* = structiofile_520094373
+    structiofile* = structiofile_520094431
 else:
   static :
     hint("Declaration of " & "structiofile" & " already exists, not redeclaring")
@@ -2539,33 +2891,6 @@ else:
   static :
     hint("Declaration of " & "structavstream" &
         " already exists, not redeclaring")
-when not declared(Avcodec):
-  type
-    Avcodec* = Avcodec_520094221
-else:
-  static :
-    hint("Declaration of " & "Avcodec" & " already exists, not redeclaring")
-when not declared(structavframesidedata):
-  type
-    structavframesidedata* = structavframesidedata_520094181
-else:
-  static :
-    hint("Declaration of " & "structavframesidedata" &
-        " already exists, not redeclaring")
-when not declared(structavpacket):
-  type
-    structavpacket* = structavpacket_520094251
-else:
-  static :
-    hint("Declaration of " & "structavpacket" &
-        " already exists, not redeclaring")
-when not declared(structaviodircontext):
-  type
-    structaviodircontext* = structaviodircontext_520094311
-else:
-  static :
-    hint("Declaration of " & "structaviodircontext" &
-        " already exists, not redeclaring")
 when not declared(structavchannelcustom):
   type
     structavchannelcustom* = structavchannelcustom_520094084
@@ -2573,40 +2898,12 @@ else:
   static :
     hint("Declaration of " & "structavchannelcustom" &
         " already exists, not redeclaring")
-when not declared(Avdictionaryentry):
-  type
-    Avdictionaryentry* = Avdictionaryentry_520094110
-else:
-  static :
-    hint("Declaration of " & "Avdictionaryentry" &
-        " already exists, not redeclaring")
 when not declared(Aviointerruptcb):
   type
     Aviointerruptcb* = Aviointerruptcb_520094303
 else:
   static :
     hint("Declaration of " & "Aviointerruptcb" &
-        " already exists, not redeclaring")
-when not declared(Aviodircontext):
-  type
-    Aviodircontext* = Aviodircontext_520094313
-else:
-  static :
-    hint("Declaration of " & "Aviodircontext" &
-        " already exists, not redeclaring")
-when not declared(structswsfilter):
-  type
-    structswsfilter* = structswsfilter_520094367
-else:
-  static :
-    hint("Declaration of " & "structswsfilter" &
-        " already exists, not redeclaring")
-when not declared(structavformatcontext):
-  type
-    structavformatcontext* = structavformatcontext_520094331
-else:
-  static :
-    hint("Declaration of " & "structavformatcontext" &
         " already exists, not redeclaring")
 when not declared(structswsvector):
   type
@@ -2621,19 +2918,19 @@ when not declared(Avbufferref):
 else:
   static :
     hint("Declaration of " & "Avbufferref" & " already exists, not redeclaring")
-when not declared(compileroff64t):
-  type
-    compileroff64t* = compileroff64t_520094379
-else:
-  static :
-    hint("Declaration of " & "compileroff64t" &
-        " already exists, not redeclaring")
 when not declared(structavproducerreferencetime):
   type
     structavproducerreferencetime* = structavproducerreferencetime_520094241
 else:
   static :
     hint("Declaration of " & "structavproducerreferencetime" &
+        " already exists, not redeclaring")
+when not declared(structavfilterlink):
+  type
+    structavfilterlink* = structavfilterlink_520094377
+else:
+  static :
+    hint("Declaration of " & "structavfilterlink" &
         " already exists, not redeclaring")
 when not declared(structavcpbproperties):
   type
@@ -2662,20 +2959,6 @@ else:
   static :
     hint("Declaration of " & "Avframesidedata" &
         " already exists, not redeclaring")
-when not declared(structavcodec):
-  type
-    structavcodec* = structavcodec_520094219
-else:
-  static :
-    hint("Declaration of " & "structavcodec" &
-        " already exists, not redeclaring")
-when not declared(Avinputformat):
-  type
-    Avinputformat* = Avinputformat_520094333
-else:
-  static :
-    hint("Declaration of " & "Avinputformat" &
-        " already exists, not redeclaring")
 when not declared(Avcodechwconfig):
   type
     Avcodechwconfig* = Avcodechwconfig_520094225
@@ -2690,20 +2973,6 @@ else:
   static :
     hint("Declaration of " & "Avproducerreferencetime" &
         " already exists, not redeclaring")
-when not declared(Avsubtitlerect):
-  type
-    Avsubtitlerect* = Avsubtitlerect_520094285
-else:
-  static :
-    hint("Declaration of " & "Avsubtitlerect" &
-        " already exists, not redeclaring")
-when not declared(structavoptionranges):
-  type
-    structavoptionranges* = structavoptionranges_520094102
-else:
-  static :
-    hint("Declaration of " & "structavoptionranges" &
-        " already exists, not redeclaring")
 when not declared(structavprobedata):
   type
     structavprobedata* = structavprobedata_520094321
@@ -2711,18 +2980,19 @@ else:
   static :
     hint("Declaration of " & "structavprobedata" &
         " already exists, not redeclaring")
-when not declared(Avpacket):
+when not declared(Avfilterinout):
   type
-    Avpacket* = Avpacket_520094253
+    Avfilterinout* = Avfilterinout_520094407
 else:
   static :
-    hint("Declaration of " & "Avpacket" & " already exists, not redeclaring")
-when not declared(valist):
+    hint("Declaration of " & "Avfilterinout" &
+        " already exists, not redeclaring")
+when not declared(Avfilterpad):
   type
-    valist* = valist_520094106
+    Avfilterpad* = Avfilterpad_520094379
 else:
   static :
-    hint("Declaration of " & "valist" & " already exists, not redeclaring")
+    hint("Declaration of " & "Avfilterpad" & " already exists, not redeclaring")
 when not declared(unionavintfloat64):
   type
     unionavintfloat64* = unionavintfloat64_520094124
@@ -2730,46 +3000,32 @@ else:
   static :
     hint("Declaration of " & "unionavintfloat64" &
         " already exists, not redeclaring")
-when not declared(structaviocontext):
-  type
-    structaviocontext* = structaviocontext_520094317
-else:
-  static :
-    hint("Declaration of " & "structaviocontext" &
-        " already exists, not redeclaring")
 when not declared(Avprofile):
   type
     Avprofile* = Avprofile_520094217
 else:
   static :
     hint("Declaration of " & "Avprofile" & " already exists, not redeclaring")
+when not declared(structavfiltergraphsegment):
+  type
+    structavfiltergraphsegment* = structavfiltergraphsegment_520094421
+else:
+  static :
+    hint("Declaration of " & "structavfiltergraphsegment" &
+        " already exists, not redeclaring")
 when not declared(compilergnucvalist):
   type
-    compilergnucvalist* = compilergnucvalist_520094371
+    compilergnucvalist* = compilergnucvalist_520094429
 else:
   static :
     hint("Declaration of " & "compilergnucvalist" &
         " already exists, not redeclaring")
-when not declared(Avchannelcustom):
+when not declared(Avfilterchain):
   type
-    Avchannelcustom* = Avchannelcustom_520094086
+    Avfilterchain* = Avfilterchain_520094419
 else:
   static :
-    hint("Declaration of " & "Avchannelcustom" &
-        " already exists, not redeclaring")
-when not declared(structavcomponentdescriptor):
-  type
-    structavcomponentdescriptor* = structavcomponentdescriptor_520094159
-else:
-  static :
-    hint("Declaration of " & "structavcomponentdescriptor" &
-        " already exists, not redeclaring")
-when not declared(Avoutputformat):
-  type
-    Avoutputformat* = Avoutputformat_520094327
-else:
-  static :
-    hint("Declaration of " & "Avoutputformat" &
+    hint("Declaration of " & "Avfilterchain" &
         " already exists, not redeclaring")
 when not declared(structavchannellayout):
   type
@@ -2778,12 +3034,6 @@ else:
   static :
     hint("Declaration of " & "structavchannellayout" &
         " already exists, not redeclaring")
-when not declared(Avchapter):
-  type
-    Avchapter* = Avchapter_520094351
-else:
-  static :
-    hint("Declaration of " & "Avchapter" & " already exists, not redeclaring")
 when not declared(structaviodirentry):
   type
     structaviodirentry* = structaviodirentry_520094307
@@ -2798,19 +3048,19 @@ else:
   static :
     hint("Declaration of " & "structavrational" &
         " already exists, not redeclaring")
-when not declared(structavhwaccel):
-  type
-    structavhwaccel* = structavhwaccel_520094275
-else:
-  static :
-    hint("Declaration of " & "structavhwaccel" &
-        " already exists, not redeclaring")
 when not declared(structavcodecparser):
   type
     structavcodecparser* = structavcodecparser_520094295
 else:
   static :
     hint("Declaration of " & "structavcodecparser" &
+        " already exists, not redeclaring")
+when not declared(Avfiltergraphinternal):
+  type
+    Avfiltergraphinternal* = Avfiltergraphinternal_520094397
+else:
+  static :
+    hint("Declaration of " & "Avfiltergraphinternal" &
         " already exists, not redeclaring")
 when not declared(unionavintfloat32):
   type
@@ -2825,25 +3075,19 @@ when not declared(Rcoverride):
 else:
   static :
     hint("Declaration of " & "Rcoverride" & " already exists, not redeclaring")
-when not declared(structavsubtitle):
+when not declared(Avfiltercontext):
   type
-    structavsubtitle* = structavsubtitle_520094287
+    Avfiltercontext* = Avfiltercontext_520094371
 else:
   static :
-    hint("Declaration of " & "structavsubtitle" &
+    hint("Declaration of " & "Avfiltercontext" &
         " already exists, not redeclaring")
-when not declared(Aviodirentry):
+when not declared(structavfiltergraph):
   type
-    Aviodirentry* = Aviodirentry_520094309
+    structavfiltergraph* = structavfiltergraph_520094391
 else:
   static :
-    hint("Declaration of " & "Aviodirentry" & " already exists, not redeclaring")
-when not declared(structavprofile):
-  type
-    structavprofile* = structavprofile_520094215
-else:
-  static :
-    hint("Declaration of " & "structavprofile" &
+    hint("Declaration of " & "structavfiltergraph" &
         " already exists, not redeclaring")
 when not declared(Avhwframesconstraints):
   type
@@ -2858,32 +3102,12 @@ when not declared(Avindexentry):
 else:
   static :
     hint("Declaration of " & "Avindexentry" & " already exists, not redeclaring")
-when not declared(Avdictionary):
-  type
-    Avdictionary* = Avdictionary_520094112
-else:
-  static :
-    hint("Declaration of " & "Avdictionary" & " already exists, not redeclaring")
 when not declared(structavclass):
   type
     structavclass* = structavclass_520094098
 else:
   static :
     hint("Declaration of " & "structavclass" &
-        " already exists, not redeclaring")
-when not declared(structavchapter):
-  type
-    structavchapter* = structavchapter_520094349
-else:
-  static :
-    hint("Declaration of " & "structavchapter" &
-        " already exists, not redeclaring")
-when not declared(Avcodeccontext):
-  type
-    Avcodeccontext* = Avcodeccontext_520094277
-else:
-  static :
-    hint("Declaration of " & "Avcodeccontext" &
         " already exists, not redeclaring")
 when not declared(Avstream):
   type
@@ -2903,20 +3127,6 @@ when not declared(Avpacketsidedata):
 else:
   static :
     hint("Declaration of " & "Avpacketsidedata" &
-        " already exists, not redeclaring")
-when not declared(structavprogram):
-  type
-    structavprogram* = structavprogram_520094345
-else:
-  static :
-    hint("Declaration of " & "structavprogram" &
-        " already exists, not redeclaring")
-when not declared(structavhwdevicecontext):
-  type
-    structavhwdevicecontext* = structavhwdevicecontext_520094197
-else:
-  static :
-    hint("Declaration of " & "structavhwdevicecontext" &
         " already exists, not redeclaring")
 when not declared(Avclasscategory):
   type
@@ -2940,7 +3150,7 @@ else:
         " already exists, not redeclaring")
 when not declared(compilerofft):
   type
-    compilerofft* = compilerofft_520094375
+    compilerofft* = compilerofft_520094433
 else:
   static :
     hint("Declaration of " & "compilerofft" & " already exists, not redeclaring")
@@ -2963,26 +3173,19 @@ else:
   static :
     hint("Declaration of " & "structavhwframescontext" &
         " already exists, not redeclaring")
-when not declared(Avoptionrange):
+when not declared(structavfiltercontext):
   type
-    Avoptionrange* = Avoptionrange_520094155
+    structavfiltercontext* = structavfiltercontext_520094373
 else:
   static :
-    hint("Declaration of " & "Avoptionrange" &
+    hint("Declaration of " & "structavfiltercontext" &
         " already exists, not redeclaring")
-when not declared(Avopencallback):
+when not declared(Avfilterchannellayouts):
   type
-    Avopencallback* = Avopencallback_520094355
+    Avfilterchannellayouts* = Avfilterchannellayouts_520094383
 else:
   static :
-    hint("Declaration of " & "Avopencallback" &
-        " already exists, not redeclaring")
-when not declared(structavoutputformat):
-  type
-    structavoutputformat* = structavoutputformat_520094325
-else:
-  static :
-    hint("Declaration of " & "structavoutputformat" &
+    hint("Declaration of " & "Avfilterchannellayouts" &
         " already exists, not redeclaring")
 when not declared(structavdictionaryentry):
   type
@@ -3018,44 +3221,12 @@ else:
   static :
     hint("Declaration of " & "structavhwframesconstraints" &
         " already exists, not redeclaring")
-when not declared(Avhwframescontext):
-  type
-    Avhwframescontext* = Avhwframescontext_520094205
-else:
-  static :
-    hint("Declaration of " & "Avhwframescontext" &
-        " already exists, not redeclaring")
-when not declared(Avcomponentdescriptor):
-  type
-    Avcomponentdescriptor* = Avcomponentdescriptor_520094161
-else:
-  static :
-    hint("Declaration of " & "Avcomponentdescriptor" &
-        " already exists, not redeclaring")
 when not declared(Avbufferpool):
   type
     Avbufferpool* = Avbufferpool_520094175
 else:
   static :
     hint("Declaration of " & "Avbufferpool" & " already exists, not redeclaring")
-when not declared(Swsfilter):
-  type
-    Swsfilter* = Swsfilter_520094369
-else:
-  static :
-    hint("Declaration of " & "Swsfilter" & " already exists, not redeclaring")
-when not declared(Avrational):
-  type
-    Avrational* = Avrational_520094116
-else:
-  static :
-    hint("Declaration of " & "Avrational" & " already exists, not redeclaring")
-when not declared(Avprogram):
-  type
-    Avprogram* = Avprogram_520094347
-else:
-  static :
-    hint("Declaration of " & "Avprogram" & " already exists, not redeclaring")
 when not declared(structavpixfmtdescriptor):
   type
     structavpixfmtdescriptor* = structavpixfmtdescriptor_520094163
@@ -3090,33 +3261,6 @@ else:
   static :
     hint("Declaration of " & "structavsubtitlerect" &
         " already exists, not redeclaring")
-when not declared(Avframe):
-  type
-    Avframe* = Avframe_520094191
-else:
-  static :
-    hint("Declaration of " & "Avframe" & " already exists, not redeclaring")
-when not declared(structavpanscan):
-  type
-    structavpanscan* = structavpanscan_520094233
-else:
-  static :
-    hint("Declaration of " & "structavpanscan" &
-        " already exists, not redeclaring")
-when not declared(structavbufferref):
-  type
-    structavbufferref* = structavbufferref_520094171
-else:
-  static :
-    hint("Declaration of " & "structavbufferref" &
-        " already exists, not redeclaring")
-when not declared(Avoptionranges):
-  type
-    Avoptionranges* = Avoptionranges_520094157
-else:
-  static :
-    hint("Declaration of " & "Avoptionranges" &
-        " already exists, not redeclaring")
 when not declared(Avpixfmtdescriptor):
   type
     Avpixfmtdescriptor* = Avpixfmtdescriptor_520094165
@@ -3124,18 +3268,6 @@ else:
   static :
     hint("Declaration of " & "Avpixfmtdescriptor" &
         " already exists, not redeclaring")
-when not declared(Avbuffer):
-  type
-    Avbuffer* = Avbuffer_520094169
-else:
-  static :
-    hint("Declaration of " & "Avbuffer" & " already exists, not redeclaring")
-when not declared(File):
-  type
-    File* = File_520094147
-else:
-  static :
-    hint("Declaration of " & "File" & " already exists, not redeclaring")
 when not declared(structavpacketlist):
   type
     structavpacketlist* = structavpacketlist_520094255
@@ -3164,19 +3296,6 @@ else:
   static :
     hint("Declaration of " & "structavcodecparsercontext" &
         " already exists, not redeclaring")
-when not declared(ptrdifft):
-  type
-    ptrdifft* = ptrdifft_520094167
-else:
-  static :
-    hint("Declaration of " & "ptrdifft" & " already exists, not redeclaring")
-when not declared(Avregionofinterest):
-  type
-    Avregionofinterest* = Avregionofinterest_520094187
-else:
-  static :
-    hint("Declaration of " & "Avregionofinterest" &
-        " already exists, not redeclaring")
 when not declared(structavindexentry):
   type
     structavindexentry* = structavindexentry_520094337
@@ -3184,32 +3303,25 @@ else:
   static :
     hint("Declaration of " & "structavindexentry" &
         " already exists, not redeclaring")
-when not declared(Avformatcontext):
-  type
-    Avformatcontext* = Avformatcontext_520094359
-else:
-  static :
-    hint("Declaration of " & "Avformatcontext" &
-        " already exists, not redeclaring")
-when not declared(structavcodechwconfig):
-  type
-    structavcodechwconfig* = structavcodechwconfig_520094223
-else:
-  static :
-    hint("Declaration of " & "structavcodechwconfig" &
-        " already exists, not redeclaring")
 when not declared(Avpanscan):
   type
     Avpanscan* = Avpanscan_520094235
 else:
   static :
     hint("Declaration of " & "Avpanscan" & " already exists, not redeclaring")
-when not declared(structavcodecdescriptor):
+when not declared(structavfilter):
   type
-    structavcodecdescriptor* = structavcodecdescriptor_520094261
+    structavfilter* = structavfilter_520094385
 else:
   static :
-    hint("Declaration of " & "structavcodecdescriptor" &
+    hint("Declaration of " & "structavfilter" &
+        " already exists, not redeclaring")
+when not declared(avfilteractionfunc):
+  type
+    avfilteractionfunc* = avfilteractionfunc_520094399
+else:
+  static :
+    hint("Declaration of " & "avfilteractionfunc" &
         " already exists, not redeclaring")
 when not declared(structavoptionrange):
   type
@@ -3225,12 +3337,12 @@ else:
   static :
     hint("Declaration of " & "structavcodecparameters" &
         " already exists, not redeclaring")
-when not declared(avformatcontrolmessage):
+when not declared(Avfiltergraphsegment):
   type
-    avformatcontrolmessage* = avformatcontrolmessage_520094353
+    Avfiltergraphsegment* = Avfiltergraphsegment_520094423
 else:
   static :
-    hint("Declaration of " & "avformatcontrolmessage" &
+    hint("Declaration of " & "Avfiltergraphsegment" &
         " already exists, not redeclaring")
 when not declared(structavcodeccontext):
   type
@@ -3238,6 +3350,481 @@ when not declared(structavcodeccontext):
 else:
   static :
     hint("Declaration of " & "structavcodeccontext" &
+        " already exists, not redeclaring")
+when not declared(Avhwdevicecontext):
+  type
+    Avhwdevicecontext* = Avhwdevicecontext_520094199
+else:
+  static :
+    hint("Declaration of " & "Avhwdevicecontext" &
+        " already exists, not redeclaring")
+when not declared(Avcodecdescriptor):
+  type
+    Avcodecdescriptor* = Avcodecdescriptor_520094263
+else:
+  static :
+    hint("Declaration of " & "Avcodecdescriptor" &
+        " already exists, not redeclaring")
+when not declared(structaviointerruptcb):
+  type
+    structaviointerruptcb* = structaviointerruptcb_520094301
+else:
+  static :
+    hint("Declaration of " & "structaviointerruptcb" &
+        " already exists, not redeclaring")
+when not declared(structrcoverride):
+  type
+    structrcoverride* = structrcoverride_520094269
+else:
+  static :
+    hint("Declaration of " & "structrcoverride" &
+        " already exists, not redeclaring")
+when not declared(Avcpbproperties):
+  type
+    Avcpbproperties* = Avcpbproperties_520094239
+else:
+  static :
+    hint("Declaration of " & "Avcpbproperties" &
+        " already exists, not redeclaring")
+when not declared(Avfilterformatsconfig):
+  type
+    Avfilterformatsconfig* = Avfilterformatsconfig_520094395
+else:
+  static :
+    hint("Declaration of " & "Avfilterformatsconfig" &
+        " already exists, not redeclaring")
+when not declared(avfilterexecutefunc):
+  type
+    avfilterexecutefunc* = avfilterexecutefunc_520094401
+else:
+  static :
+    hint("Declaration of " & "avfilterexecutefunc" &
+        " already exists, not redeclaring")
+when not declared(Avcodec):
+  type
+    Avcodec* = Avcodec_520094221
+else:
+  static :
+    hint("Declaration of " & "Avcodec" & " already exists, not redeclaring")
+when not declared(structavframesidedata):
+  type
+    structavframesidedata* = structavframesidedata_520094181
+else:
+  static :
+    hint("Declaration of " & "structavframesidedata" &
+        " already exists, not redeclaring")
+when not declared(Aviodircontext):
+  type
+    Aviodircontext* = Aviodircontext_520094313
+else:
+  static :
+    hint("Declaration of " & "Aviodircontext" &
+        " already exists, not redeclaring")
+when not declared(structavpacket):
+  type
+    structavpacket* = structavpacket_520094251
+else:
+  static :
+    hint("Declaration of " & "structavpacket" &
+        " already exists, not redeclaring")
+when not declared(structaviodircontext):
+  type
+    structaviodircontext* = structaviodircontext_520094311
+else:
+  static :
+    hint("Declaration of " & "structaviodircontext" &
+        " already exists, not redeclaring")
+when not declared(Avdictionaryentry):
+  type
+    Avdictionaryentry* = Avdictionaryentry_520094110
+else:
+  static :
+    hint("Declaration of " & "Avdictionaryentry" &
+        " already exists, not redeclaring")
+when not declared(structswsfilter):
+  type
+    structswsfilter* = structswsfilter_520094367
+else:
+  static :
+    hint("Declaration of " & "structswsfilter" &
+        " already exists, not redeclaring")
+when not declared(structavformatcontext):
+  type
+    structavformatcontext* = structavformatcontext_520094331
+else:
+  static :
+    hint("Declaration of " & "structavformatcontext" &
+        " already exists, not redeclaring")
+when not declared(Avfiltergraph):
+  type
+    Avfiltergraph* = Avfiltergraph_520094403
+else:
+  static :
+    hint("Declaration of " & "Avfiltergraph" &
+        " already exists, not redeclaring")
+when not declared(compileroff64t):
+  type
+    compileroff64t* = compileroff64t_520094437
+else:
+  static :
+    hint("Declaration of " & "compileroff64t" &
+        " already exists, not redeclaring")
+when not declared(structavcodec):
+  type
+    structavcodec* = structavcodec_520094219
+else:
+  static :
+    hint("Declaration of " & "structavcodec" &
+        " already exists, not redeclaring")
+when not declared(Avinputformat):
+  type
+    Avinputformat* = Avinputformat_520094333
+else:
+  static :
+    hint("Declaration of " & "Avinputformat" &
+        " already exists, not redeclaring")
+when not declared(Avsubtitlerect):
+  type
+    Avsubtitlerect* = Avsubtitlerect_520094285
+else:
+  static :
+    hint("Declaration of " & "Avsubtitlerect" &
+        " already exists, not redeclaring")
+when not declared(structavoptionranges):
+  type
+    structavoptionranges* = structavoptionranges_520094102
+else:
+  static :
+    hint("Declaration of " & "structavoptionranges" &
+        " already exists, not redeclaring")
+when not declared(Avpacket):
+  type
+    Avpacket* = Avpacket_520094253
+else:
+  static :
+    hint("Declaration of " & "Avpacket" & " already exists, not redeclaring")
+when not declared(valist):
+  type
+    valist* = valist_520094106
+else:
+  static :
+    hint("Declaration of " & "valist" & " already exists, not redeclaring")
+when not declared(structaviocontext):
+  type
+    structaviocontext* = structaviocontext_520094317
+else:
+  static :
+    hint("Declaration of " & "structaviocontext" &
+        " already exists, not redeclaring")
+when not declared(structavfilterpadparams):
+  type
+    structavfilterpadparams* = structavfilterpadparams_520094409
+else:
+  static :
+    hint("Declaration of " & "structavfilterpadparams" &
+        " already exists, not redeclaring")
+when not declared(Avchannelcustom):
+  type
+    Avchannelcustom* = Avchannelcustom_520094086
+else:
+  static :
+    hint("Declaration of " & "Avchannelcustom" &
+        " already exists, not redeclaring")
+when not declared(structavcomponentdescriptor):
+  type
+    structavcomponentdescriptor* = structavcomponentdescriptor_520094159
+else:
+  static :
+    hint("Declaration of " & "structavcomponentdescriptor" &
+        " already exists, not redeclaring")
+when not declared(Avoutputformat):
+  type
+    Avoutputformat* = Avoutputformat_520094327
+else:
+  static :
+    hint("Declaration of " & "Avoutputformat" &
+        " already exists, not redeclaring")
+when not declared(Avchapter):
+  type
+    Avchapter* = Avchapter_520094351
+else:
+  static :
+    hint("Declaration of " & "Avchapter" & " already exists, not redeclaring")
+when not declared(Avbuffersrcparameters):
+  type
+    Avbuffersrcparameters* = Avbuffersrcparameters_520094427
+else:
+  static :
+    hint("Declaration of " & "Avbuffersrcparameters" &
+        " already exists, not redeclaring")
+when not declared(structavhwaccel):
+  type
+    structavhwaccel* = structavhwaccel_520094275
+else:
+  static :
+    hint("Declaration of " & "structavhwaccel" &
+        " already exists, not redeclaring")
+when not declared(structavsubtitle):
+  type
+    structavsubtitle* = structavsubtitle_520094287
+else:
+  static :
+    hint("Declaration of " & "structavsubtitle" &
+        " already exists, not redeclaring")
+when not declared(Avfilter):
+  type
+    Avfilter* = Avfilter_520094387
+else:
+  static :
+    hint("Declaration of " & "Avfilter" & " already exists, not redeclaring")
+when not declared(Aviodirentry):
+  type
+    Aviodirentry* = Aviodirentry_520094309
+else:
+  static :
+    hint("Declaration of " & "Aviodirentry" & " already exists, not redeclaring")
+when not declared(structavprofile):
+  type
+    structavprofile* = structavprofile_520094215
+else:
+  static :
+    hint("Declaration of " & "structavprofile" &
+        " already exists, not redeclaring")
+when not declared(Avdictionary):
+  type
+    Avdictionary* = Avdictionary_520094112
+else:
+  static :
+    hint("Declaration of " & "Avdictionary" & " already exists, not redeclaring")
+when not declared(structavchapter):
+  type
+    structavchapter* = structavchapter_520094349
+else:
+  static :
+    hint("Declaration of " & "structavchapter" &
+        " already exists, not redeclaring")
+when not declared(Avfilterinternal):
+  type
+    Avfilterinternal* = Avfilterinternal_520094389
+else:
+  static :
+    hint("Declaration of " & "Avfilterinternal" &
+        " already exists, not redeclaring")
+when not declared(structavfilterinout):
+  type
+    structavfilterinout* = structavfilterinout_520094405
+else:
+  static :
+    hint("Declaration of " & "structavfilterinout" &
+        " already exists, not redeclaring")
+when not declared(Avcodeccontext):
+  type
+    Avcodeccontext* = Avcodeccontext_520094277
+else:
+  static :
+    hint("Declaration of " & "Avcodeccontext" &
+        " already exists, not redeclaring")
+when not declared(structavprogram):
+  type
+    structavprogram* = structavprogram_520094345
+else:
+  static :
+    hint("Declaration of " & "structavprogram" &
+        " already exists, not redeclaring")
+when not declared(structavhwdevicecontext):
+  type
+    structavhwdevicecontext* = structavhwdevicecontext_520094197
+else:
+  static :
+    hint("Declaration of " & "structavhwdevicecontext" &
+        " already exists, not redeclaring")
+when not declared(Avoptionrange):
+  type
+    Avoptionrange* = Avoptionrange_520094155
+else:
+  static :
+    hint("Declaration of " & "Avoptionrange" &
+        " already exists, not redeclaring")
+when not declared(Avopencallback):
+  type
+    Avopencallback* = Avopencallback_520094355
+else:
+  static :
+    hint("Declaration of " & "Avopencallback" &
+        " already exists, not redeclaring")
+when not declared(structavfilterchain):
+  type
+    structavfilterchain* = structavfilterchain_520094417
+else:
+  static :
+    hint("Declaration of " & "structavfilterchain" &
+        " already exists, not redeclaring")
+when not declared(structavoutputformat):
+  type
+    structavoutputformat* = structavoutputformat_520094325
+else:
+  static :
+    hint("Declaration of " & "structavoutputformat" &
+        " already exists, not redeclaring")
+when not declared(Avhwframescontext):
+  type
+    Avhwframescontext* = Avhwframescontext_520094205
+else:
+  static :
+    hint("Declaration of " & "Avhwframescontext" &
+        " already exists, not redeclaring")
+when not declared(Avcomponentdescriptor):
+  type
+    Avcomponentdescriptor* = Avcomponentdescriptor_520094161
+else:
+  static :
+    hint("Declaration of " & "Avcomponentdescriptor" &
+        " already exists, not redeclaring")
+when not declared(Avfilterpadparams):
+  type
+    Avfilterpadparams* = Avfilterpadparams_520094411
+else:
+  static :
+    hint("Declaration of " & "Avfilterpadparams" &
+        " already exists, not redeclaring")
+when not declared(Swsfilter):
+  type
+    Swsfilter* = Swsfilter_520094369
+else:
+  static :
+    hint("Declaration of " & "Swsfilter" & " already exists, not redeclaring")
+when not declared(Avfilterlink):
+  type
+    Avfilterlink* = Avfilterlink_520094375
+else:
+  static :
+    hint("Declaration of " & "Avfilterlink" & " already exists, not redeclaring")
+when not declared(Avrational):
+  type
+    Avrational* = Avrational_520094116
+else:
+  static :
+    hint("Declaration of " & "Avrational" & " already exists, not redeclaring")
+when not declared(Avprogram):
+  type
+    Avprogram* = Avprogram_520094347
+else:
+  static :
+    hint("Declaration of " & "Avprogram" & " already exists, not redeclaring")
+when not declared(Avframe):
+  type
+    Avframe* = Avframe_520094191
+else:
+  static :
+    hint("Declaration of " & "Avframe" & " already exists, not redeclaring")
+when not declared(structavpanscan):
+  type
+    structavpanscan* = structavpanscan_520094233
+else:
+  static :
+    hint("Declaration of " & "structavpanscan" &
+        " already exists, not redeclaring")
+when not declared(Avfilterformats):
+  type
+    Avfilterformats* = Avfilterformats_520094381
+else:
+  static :
+    hint("Declaration of " & "Avfilterformats" &
+        " already exists, not redeclaring")
+when not declared(structavfilterparams):
+  type
+    structavfilterparams* = structavfilterparams_520094413
+else:
+  static :
+    hint("Declaration of " & "structavfilterparams" &
+        " already exists, not redeclaring")
+when not declared(structavbufferref):
+  type
+    structavbufferref* = structavbufferref_520094171
+else:
+  static :
+    hint("Declaration of " & "structavbufferref" &
+        " already exists, not redeclaring")
+when not declared(structavfilterformatsconfig):
+  type
+    structavfilterformatsconfig* = structavfilterformatsconfig_520094393
+else:
+  static :
+    hint("Declaration of " & "structavfilterformatsconfig" &
+        " already exists, not redeclaring")
+when not declared(Avoptionranges):
+  type
+    Avoptionranges* = Avoptionranges_520094157
+else:
+  static :
+    hint("Declaration of " & "Avoptionranges" &
+        " already exists, not redeclaring")
+when not declared(Avbuffer):
+  type
+    Avbuffer* = Avbuffer_520094169
+else:
+  static :
+    hint("Declaration of " & "Avbuffer" & " already exists, not redeclaring")
+when not declared(File):
+  type
+    File* = File_520094147
+else:
+  static :
+    hint("Declaration of " & "File" & " already exists, not redeclaring")
+when not declared(structavbuffersrcparameters):
+  type
+    structavbuffersrcparameters* = structavbuffersrcparameters_520094425
+else:
+  static :
+    hint("Declaration of " & "structavbuffersrcparameters" &
+        " already exists, not redeclaring")
+when not declared(ptrdifft):
+  type
+    ptrdifft* = ptrdifft_520094167
+else:
+  static :
+    hint("Declaration of " & "ptrdifft" & " already exists, not redeclaring")
+when not declared(Avregionofinterest):
+  type
+    Avregionofinterest* = Avregionofinterest_520094187
+else:
+  static :
+    hint("Declaration of " & "Avregionofinterest" &
+        " already exists, not redeclaring")
+when not declared(Avformatcontext):
+  type
+    Avformatcontext* = Avformatcontext_520094359
+else:
+  static :
+    hint("Declaration of " & "Avformatcontext" &
+        " already exists, not redeclaring")
+when not declared(structavcodechwconfig):
+  type
+    structavcodechwconfig* = structavcodechwconfig_520094223
+else:
+  static :
+    hint("Declaration of " & "structavcodechwconfig" &
+        " already exists, not redeclaring")
+when not declared(Avfilterparams):
+  type
+    Avfilterparams* = Avfilterparams_520094415
+else:
+  static :
+    hint("Declaration of " & "Avfilterparams" &
+        " already exists, not redeclaring")
+when not declared(structavcodecdescriptor):
+  type
+    structavcodecdescriptor* = structavcodecdescriptor_520094261
+else:
+  static :
+    hint("Declaration of " & "structavcodecdescriptor" &
+        " already exists, not redeclaring")
+when not declared(avformatcontrolmessage):
+  type
+    avformatcontrolmessage* = avformatcontrolmessage_520094353
+else:
+  static :
+    hint("Declaration of " & "avformatcontrolmessage" &
         " already exists, not redeclaring")
 when not declared(structavframe):
   type
@@ -7963,6 +8550,76 @@ when not declared(Swscsbt2020):
 else:
   static :
     hint("Declaration of " & "Swscsbt2020" & " already exists, not redeclaring")
+when not declared(Libavfilterversionmajor):
+  when 9 is static:
+    const
+      Libavfilterversionmajor* = 9 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version_major.h:30:9
+  else:
+    let Libavfilterversionmajor* = 9 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version_major.h:30:9
+else:
+  static :
+    hint("Declaration of " & "Libavfilterversionmajor" &
+        " already exists, not redeclaring")
+when not declared(Libavfilterversionminor):
+  when 12 is static:
+    const
+      Libavfilterversionminor* = 12 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version.h:34:9
+  else:
+    let Libavfilterversionminor* = 12 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version.h:34:9
+else:
+  static :
+    hint("Declaration of " & "Libavfilterversionminor" &
+        " already exists, not redeclaring")
+when not declared(Libavfilterversionmicro):
+  when 100 is static:
+    const
+      Libavfilterversionmicro* = 100 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version.h:35:9
+  else:
+    let Libavfilterversionmicro* = 100 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/version.h:35:9
+else:
+  static :
+    hint("Declaration of " & "Libavfilterversionmicro" &
+        " already exists, not redeclaring")
+when not declared(Avfiltercmdflagone):
+  when 1 is static:
+    const
+      Avfiltercmdflagone* = 1 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:742:9
+  else:
+    let Avfiltercmdflagone* = 1 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:742:9
+else:
+  static :
+    hint("Declaration of " & "Avfiltercmdflagone" &
+        " already exists, not redeclaring")
+when not declared(Avfiltercmdflagfast):
+  when 2 is static:
+    const
+      Avfiltercmdflagfast* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:743:9
+  else:
+    let Avfiltercmdflagfast* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/avfilter.h:743:9
+else:
+  static :
+    hint("Declaration of " & "Avfiltercmdflagfast" &
+        " already exists, not redeclaring")
+when not declared(Avbuffersinkflagpeek):
+  when 1 is static:
+    const
+      Avbuffersinkflagpeek* = 1 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersink.h:88:9
+  else:
+    let Avbuffersinkflagpeek* = 1 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersink.h:88:9
+else:
+  static :
+    hint("Declaration of " & "Avbuffersinkflagpeek" &
+        " already exists, not redeclaring")
+when not declared(Avbuffersinkflagnorequest):
+  when 2 is static:
+    const
+      Avbuffersinkflagnorequest* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersink.h:95:9
+  else:
+    let Avbuffersinkflagnorequest* = 2 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavfilter/buffersink.h:95:9
+else:
+  static :
+    hint("Declaration of " & "Avbuffersinkflagnorequest" &
+        " already exists, not redeclaring")
 when not declared(avstrerror):
   proc avstrerror*(errnum: cint; errbuf: cstring; errbufsize: csize_t): cint {.
       cdecl, importc: "av_strerror".}
@@ -9268,7 +9925,7 @@ else:
     hint("Declaration of " & "avcolorprimariesfromname" &
         " already exists, not redeclaring")
 when not declared(avcolortransfername):
-  proc avcolortransfername*(transfer: enumavcolortransfercharacteristic_520094133): cstring {.
+  proc avcolortransfername*(transfer: enumavcolortransfercharacteristic_520094140): cstring {.
       cdecl, importc: "av_color_transfer_name".}
 else:
   static :
@@ -11900,3 +12557,482 @@ when not declared(swsgetclass):
 else:
   static :
     hint("Declaration of " & "swsgetclass" & " already exists, not redeclaring")
+when not declared(avfilterversion):
+  proc avfilterversion*(): cuint {.cdecl, importc: "avfilter_version".}
+else:
+  static :
+    hint("Declaration of " & "avfilterversion" &
+        " already exists, not redeclaring")
+when not declared(avfilterconfiguration):
+  proc avfilterconfiguration*(): cstring {.cdecl,
+      importc: "avfilter_configuration".}
+else:
+  static :
+    hint("Declaration of " & "avfilterconfiguration" &
+        " already exists, not redeclaring")
+when not declared(avfilterlicense):
+  proc avfilterlicense*(): cstring {.cdecl, importc: "avfilter_license".}
+else:
+  static :
+    hint("Declaration of " & "avfilterlicense" &
+        " already exists, not redeclaring")
+when not declared(avfilterpadgetname):
+  proc avfilterpadgetname*(pads: ptr Avfilterpad_520094380; padidx: cint): cstring {.
+      cdecl, importc: "avfilter_pad_get_name".}
+else:
+  static :
+    hint("Declaration of " & "avfilterpadgetname" &
+        " already exists, not redeclaring")
+when not declared(avfilterpadgettype):
+  proc avfilterpadgettype*(pads: ptr Avfilterpad_520094380; padidx: cint): enumavmediatype_520094119 {.
+      cdecl, importc: "avfilter_pad_get_type".}
+else:
+  static :
+    hint("Declaration of " & "avfilterpadgettype" &
+        " already exists, not redeclaring")
+when not declared(avfilterfilterpadcount):
+  proc avfilterfilterpadcount*(filter: ptr Avfilter_520094388; isoutput: cint): cuint {.
+      cdecl, importc: "avfilter_filter_pad_count".}
+else:
+  static :
+    hint("Declaration of " & "avfilterfilterpadcount" &
+        " already exists, not redeclaring")
+when not declared(avfilterlink):
+  proc avfilterlink*(src: ptr Avfiltercontext_520094372; srcpad: cuint;
+                     dst: ptr Avfiltercontext_520094372; dstpad: cuint): cint {.
+      cdecl, importc: "avfilter_link".}
+else:
+  static :
+    hint("Declaration of " & "avfilterlink" & " already exists, not redeclaring")
+when not declared(avfilterlinkfree):
+  proc avfilterlinkfree*(link: ptr ptr Avfilterlink_520094376): void {.cdecl,
+      importc: "avfilter_link_free".}
+else:
+  static :
+    hint("Declaration of " & "avfilterlinkfree" &
+        " already exists, not redeclaring")
+when not declared(avfilterconfiglinks):
+  proc avfilterconfiglinks*(filter: ptr Avfiltercontext_520094372): cint {.
+      cdecl, importc: "avfilter_config_links".}
+else:
+  static :
+    hint("Declaration of " & "avfilterconfiglinks" &
+        " already exists, not redeclaring")
+when not declared(avfilterprocesscommand):
+  proc avfilterprocesscommand*(filter: ptr Avfiltercontext_520094372;
+                               cmd: cstring; arg: cstring; res: cstring;
+                               reslen: cint; flags: cint): cint {.cdecl,
+      importc: "avfilter_process_command".}
+else:
+  static :
+    hint("Declaration of " & "avfilterprocesscommand" &
+        " already exists, not redeclaring")
+when not declared(avfilteriterate):
+  proc avfilteriterate*(opaque: ptr pointer): ptr Avfilter_520094388 {.cdecl,
+      importc: "av_filter_iterate".}
+else:
+  static :
+    hint("Declaration of " & "avfilteriterate" &
+        " already exists, not redeclaring")
+when not declared(avfiltergetbyname):
+  proc avfiltergetbyname*(name: cstring): ptr Avfilter_520094388 {.cdecl,
+      importc: "avfilter_get_by_name".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergetbyname" &
+        " already exists, not redeclaring")
+when not declared(avfilterinitstr):
+  proc avfilterinitstr*(ctx: ptr Avfiltercontext_520094372; args: cstring): cint {.
+      cdecl, importc: "avfilter_init_str".}
+else:
+  static :
+    hint("Declaration of " & "avfilterinitstr" &
+        " already exists, not redeclaring")
+when not declared(avfilterinitdict):
+  proc avfilterinitdict*(ctx: ptr Avfiltercontext_520094372;
+                         options: ptr ptr Avdictionary_520094113): cint {.cdecl,
+      importc: "avfilter_init_dict".}
+else:
+  static :
+    hint("Declaration of " & "avfilterinitdict" &
+        " already exists, not redeclaring")
+when not declared(avfilterfree):
+  proc avfilterfree*(filter: ptr Avfiltercontext_520094372): void {.cdecl,
+      importc: "avfilter_free".}
+else:
+  static :
+    hint("Declaration of " & "avfilterfree" & " already exists, not redeclaring")
+when not declared(avfilterinsertfilter):
+  proc avfilterinsertfilter*(link: ptr Avfilterlink_520094376;
+                             filt: ptr Avfiltercontext_520094372;
+                             filtsrcpadidx: cuint; filtdstpadidx: cuint): cint {.
+      cdecl, importc: "avfilter_insert_filter".}
+else:
+  static :
+    hint("Declaration of " & "avfilterinsertfilter" &
+        " already exists, not redeclaring")
+when not declared(avfiltergetclass):
+  proc avfiltergetclass*(): ptr Avclass_520094105 {.cdecl,
+      importc: "avfilter_get_class".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergetclass" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphalloc):
+  proc avfiltergraphalloc*(): ptr Avfiltergraph_520094404 {.cdecl,
+      importc: "avfilter_graph_alloc".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphalloc" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphallocfilter):
+  proc avfiltergraphallocfilter*(graph: ptr Avfiltergraph_520094404;
+                                 filter: ptr Avfilter_520094388; name: cstring): ptr Avfiltercontext_520094372 {.
+      cdecl, importc: "avfilter_graph_alloc_filter".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphallocfilter" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphgetfilter):
+  proc avfiltergraphgetfilter*(graph: ptr Avfiltergraph_520094404; name: cstring): ptr Avfiltercontext_520094372 {.
+      cdecl, importc: "avfilter_graph_get_filter".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphgetfilter" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphcreatefilter):
+  proc avfiltergraphcreatefilter*(filtctx: ptr ptr Avfiltercontext_520094372;
+                                  filt: ptr Avfilter_520094388; name: cstring;
+                                  args: cstring; opaque: pointer;
+                                  graphctx: ptr Avfiltergraph_520094404): cint {.
+      cdecl, importc: "avfilter_graph_create_filter".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphcreatefilter" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsetautoconvert):
+  proc avfiltergraphsetautoconvert*(graph: ptr Avfiltergraph_520094404;
+                                    flags: cuint): void {.cdecl,
+      importc: "avfilter_graph_set_auto_convert".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsetautoconvert" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphconfig):
+  proc avfiltergraphconfig*(graphctx: ptr Avfiltergraph_520094404;
+                            logctx: pointer): cint {.cdecl,
+      importc: "avfilter_graph_config".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphconfig" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphfree):
+  proc avfiltergraphfree*(graph: ptr ptr Avfiltergraph_520094404): void {.cdecl,
+      importc: "avfilter_graph_free".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphfree" &
+        " already exists, not redeclaring")
+when not declared(avfilterinoutalloc):
+  proc avfilterinoutalloc*(): ptr Avfilterinout_520094408 {.cdecl,
+      importc: "avfilter_inout_alloc".}
+else:
+  static :
+    hint("Declaration of " & "avfilterinoutalloc" &
+        " already exists, not redeclaring")
+when not declared(avfilterinoutfree):
+  proc avfilterinoutfree*(inout: ptr ptr Avfilterinout_520094408): void {.cdecl,
+      importc: "avfilter_inout_free".}
+else:
+  static :
+    hint("Declaration of " & "avfilterinoutfree" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphparse):
+  proc avfiltergraphparse*(graph: ptr Avfiltergraph_520094404; filters: cstring;
+                           inputs: ptr Avfilterinout_520094408;
+                           outputs: ptr Avfilterinout_520094408; logctx: pointer): cint {.
+      cdecl, importc: "avfilter_graph_parse".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphparse" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphparseptr):
+  proc avfiltergraphparseptr*(graph: ptr Avfiltergraph_520094404;
+                              filters: cstring; inputs: ptr ptr Avfilterinout_520094408;
+                              outputs: ptr ptr Avfilterinout_520094408;
+                              logctx: pointer): cint {.cdecl,
+      importc: "avfilter_graph_parse_ptr".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphparseptr" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphparse2):
+  proc avfiltergraphparse2*(graph: ptr Avfiltergraph_520094404;
+                            filters: cstring; inputs: ptr ptr Avfilterinout_520094408;
+                            outputs: ptr ptr Avfilterinout_520094408): cint {.
+      cdecl, importc: "avfilter_graph_parse2".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphparse2" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentparse):
+  proc avfiltergraphsegmentparse*(graph: ptr Avfiltergraph_520094404;
+                                  graphstr: cstring; flags: cint;
+                                  seg: ptr ptr Avfiltergraphsegment_520094424): cint {.
+      cdecl, importc: "avfilter_graph_segment_parse".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentparse" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentcreatefilters):
+  proc avfiltergraphsegmentcreatefilters*(seg: ptr Avfiltergraphsegment_520094424;
+      flags: cint): cint {.cdecl,
+                           importc: "avfilter_graph_segment_create_filters".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentcreatefilters" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentapplyopts):
+  proc avfiltergraphsegmentapplyopts*(seg: ptr Avfiltergraphsegment_520094424;
+                                      flags: cint): cint {.cdecl,
+      importc: "avfilter_graph_segment_apply_opts".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentapplyopts" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentinit):
+  proc avfiltergraphsegmentinit*(seg: ptr Avfiltergraphsegment_520094424;
+                                 flags: cint): cint {.cdecl,
+      importc: "avfilter_graph_segment_init".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentinit" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentlink):
+  proc avfiltergraphsegmentlink*(seg: ptr Avfiltergraphsegment_520094424;
+                                 flags: cint; inputs: ptr ptr Avfilterinout_520094408;
+                                 outputs: ptr ptr Avfilterinout_520094408): cint {.
+      cdecl, importc: "avfilter_graph_segment_link".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentlink" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentapply):
+  proc avfiltergraphsegmentapply*(seg: ptr Avfiltergraphsegment_520094424;
+                                  flags: cint; inputs: ptr ptr Avfilterinout_520094408;
+                                  outputs: ptr ptr Avfilterinout_520094408): cint {.
+      cdecl, importc: "avfilter_graph_segment_apply".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentapply" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsegmentfree):
+  proc avfiltergraphsegmentfree*(seg: ptr ptr Avfiltergraphsegment_520094424): void {.
+      cdecl, importc: "avfilter_graph_segment_free".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsegmentfree" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphsendcommand):
+  proc avfiltergraphsendcommand*(graph: ptr Avfiltergraph_520094404;
+                                 target: cstring; cmd: cstring; arg: cstring;
+                                 res: cstring; reslen: cint; flags: cint): cint {.
+      cdecl, importc: "avfilter_graph_send_command".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphsendcommand" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphqueuecommand):
+  proc avfiltergraphqueuecommand*(graph: ptr Avfiltergraph_520094404;
+                                  target: cstring; cmd: cstring; arg: cstring;
+                                  flags: cint; ts: cdouble): cint {.cdecl,
+      importc: "avfilter_graph_queue_command".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphqueuecommand" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphdump):
+  proc avfiltergraphdump*(graph: ptr Avfiltergraph_520094404; options: cstring): cstring {.
+      cdecl, importc: "avfilter_graph_dump".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphdump" &
+        " already exists, not redeclaring")
+when not declared(avfiltergraphrequestoldest):
+  proc avfiltergraphrequestoldest*(graph: ptr Avfiltergraph_520094404): cint {.
+      cdecl, importc: "avfilter_graph_request_oldest".}
+else:
+  static :
+    hint("Declaration of " & "avfiltergraphrequestoldest" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetframeflags):
+  proc avbuffersinkgetframeflags*(ctx: ptr Avfiltercontext_520094372;
+                                  frame: ptr Avframe_520094192; flags: cint): cint {.
+      cdecl, importc: "av_buffersink_get_frame_flags".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetframeflags" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinksetframesize):
+  proc avbuffersinksetframesize*(ctx: ptr Avfiltercontext_520094372;
+                                 framesize: cuint): void {.cdecl,
+      importc: "av_buffersink_set_frame_size".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinksetframesize" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgettype):
+  proc avbuffersinkgettype*(ctx: ptr Avfiltercontext_520094372): enumavmediatype_520094119 {.
+      cdecl, importc: "av_buffersink_get_type".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgettype" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgettimebase):
+  proc avbuffersinkgettimebase*(ctx: ptr Avfiltercontext_520094372): Avrational_520094117 {.
+      cdecl, importc: "av_buffersink_get_time_base".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgettimebase" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetformat):
+  proc avbuffersinkgetformat*(ctx: ptr Avfiltercontext_520094372): cint {.cdecl,
+      importc: "av_buffersink_get_format".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetformat" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetframerate):
+  proc avbuffersinkgetframerate*(ctx: ptr Avfiltercontext_520094372): Avrational_520094117 {.
+      cdecl, importc: "av_buffersink_get_frame_rate".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetframerate" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetw):
+  proc avbuffersinkgetw*(ctx: ptr Avfiltercontext_520094372): cint {.cdecl,
+      importc: "av_buffersink_get_w".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetw" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgeth):
+  proc avbuffersinkgeth*(ctx: ptr Avfiltercontext_520094372): cint {.cdecl,
+      importc: "av_buffersink_get_h".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgeth" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetsampleaspectratio):
+  proc avbuffersinkgetsampleaspectratio*(ctx: ptr Avfiltercontext_520094372): Avrational_520094117 {.
+      cdecl, importc: "av_buffersink_get_sample_aspect_ratio".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetsampleaspectratio" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetchannels):
+  proc avbuffersinkgetchannels*(ctx: ptr Avfiltercontext_520094372): cint {.
+      cdecl, importc: "av_buffersink_get_channels".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetchannels" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetchannellayout):
+  proc avbuffersinkgetchannellayout*(ctx: ptr Avfiltercontext_520094372): uint64 {.
+      cdecl, importc: "av_buffersink_get_channel_layout".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetchannellayout" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetchlayout):
+  proc avbuffersinkgetchlayout*(ctx: ptr Avfiltercontext_520094372;
+                                chlayout: ptr Avchannellayout_520094091): cint {.
+      cdecl, importc: "av_buffersink_get_ch_layout".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetchlayout" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetsamplerate):
+  proc avbuffersinkgetsamplerate*(ctx: ptr Avfiltercontext_520094372): cint {.
+      cdecl, importc: "av_buffersink_get_sample_rate".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetsamplerate" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgethwframesctx):
+  proc avbuffersinkgethwframesctx*(ctx: ptr Avfiltercontext_520094372): ptr Avbufferref_520094174 {.
+      cdecl, importc: "av_buffersink_get_hw_frames_ctx".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgethwframesctx" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetframe):
+  proc avbuffersinkgetframe*(ctx: ptr Avfiltercontext_520094372;
+                             frame: ptr Avframe_520094192): cint {.cdecl,
+      importc: "av_buffersink_get_frame".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetframe" &
+        " already exists, not redeclaring")
+when not declared(avbuffersinkgetsamples):
+  proc avbuffersinkgetsamples*(ctx: ptr Avfiltercontext_520094372;
+                               frame: ptr Avframe_520094192; nbsamples: cint): cint {.
+      cdecl, importc: "av_buffersink_get_samples".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersinkgetsamples" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcgetnbfailedrequests):
+  proc avbuffersrcgetnbfailedrequests*(buffersrc: ptr Avfiltercontext_520094372): cuint {.
+      cdecl, importc: "av_buffersrc_get_nb_failed_requests".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcgetnbfailedrequests" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcparametersalloc):
+  proc avbuffersrcparametersalloc*(): ptr Avbuffersrcparameters_520094428 {.
+      cdecl, importc: "av_buffersrc_parameters_alloc".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcparametersalloc" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcparametersset):
+  proc avbuffersrcparametersset*(ctx: ptr Avfiltercontext_520094372;
+                                 param: ptr Avbuffersrcparameters_520094428): cint {.
+      cdecl, importc: "av_buffersrc_parameters_set".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcparametersset" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcwriteframe):
+  proc avbuffersrcwriteframe*(ctx: ptr Avfiltercontext_520094372;
+                              frame: ptr Avframe_520094192): cint {.cdecl,
+      importc: "av_buffersrc_write_frame".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcwriteframe" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcaddframe):
+  proc avbuffersrcaddframe*(ctx: ptr Avfiltercontext_520094372;
+                            frame: ptr Avframe_520094192): cint {.cdecl,
+      importc: "av_buffersrc_add_frame".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcaddframe" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcaddframeflags):
+  proc avbuffersrcaddframeflags*(buffersrc: ptr Avfiltercontext_520094372;
+                                 frame: ptr Avframe_520094192; flags: cint): cint {.
+      cdecl, importc: "av_buffersrc_add_frame_flags".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcaddframeflags" &
+        " already exists, not redeclaring")
+when not declared(avbuffersrcclose):
+  proc avbuffersrcclose*(ctx: ptr Avfiltercontext_520094372; pts: int64;
+                         flags: cuint): cint {.cdecl,
+      importc: "av_buffersrc_close".}
+else:
+  static :
+    hint("Declaration of " & "avbuffersrcclose" &
+        " already exists, not redeclaring")

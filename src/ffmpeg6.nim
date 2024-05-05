@@ -45,6 +45,9 @@ export packet,codec,parser_context
 import lib/avformat/[avformat, formatcontext]
 export avformat, formatcontext
 
+import lib/avfilter/[filter]
+export filter
+
 # template AV_CHANNEL_LAYOUT_MASK*(nb, m: untyped): untyped =
 #   [AV_CHANNEL_ORDER_NATIVE.cint, nb.cint, m.cint, nil.cint]
 
