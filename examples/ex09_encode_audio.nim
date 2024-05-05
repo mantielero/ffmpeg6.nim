@@ -8,12 +8,6 @@ import std/[os,streams,math, posix, strformat]
 const
   AVERROR_EOF = -541478725
 
-#[
-#include <libavutil/channel_layout.h>
-#include <libavutil/common.h>
-#include <libavutil/frame.h>
-#include <libavutil/samplefmt.h>
-]#
 
 #FIXME-----------
 # type
@@ -210,8 +204,12 @@ proc main =
   
     encode(c, frame, pkt, outFile)
     
+  # flush the encoder
+  frame.handle = nil
+  encode(c, frame, pkt, outFile)
 
   outFile.close()
+
 main()
 
 #[
@@ -230,30 +228,6 @@ int main(int argc, char **argv)
 
 
 
-
-    /* encode a single tone sound */
-    t = 0;
-    tincr = 2 * M_PI * 440.0 / c->sample_rate;
-    for (i = 0; i < 200; i++) {
-        /* make sure the frame is writable -- makes a copy if the encoder
-         * kept a reference internally */
-        ret = av_frame_make_writable(frame);
-        if (ret < 0)
-            exit(1);
-        samples = (uint16_t*)frame->data[0];
-
-        for (j = 0; j < c->frame_size; j++) {
-            samples[2*j] = (int)(sin(t) * 10000);
-
-            for (k = 1; k < c->ch_layout.nb_channels; k++)
-                samples[2*j + k] = samples[2*j];
-            t += tincr;
-        }
-        encode(c, frame, pkt, f);
-    }
-
-    /* flush the encoder */
-    encode(c, NULL, pkt, f);
 
 
 
