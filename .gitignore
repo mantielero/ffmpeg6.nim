@@ -15,3 +15,5 @@ examples/*
 
 src/FFmpeg-master/
 src/FFmpeg-release-6.1/
+
+src/wrapperFuthark/create
