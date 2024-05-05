@@ -12,3 +12,6 @@ examples/*
 !examples/*.nim
 
 .vscode/*
+
+src/FFmpeg-master/
+src/FFmpeg-release-6.1/
