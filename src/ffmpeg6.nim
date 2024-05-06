@@ -1,4 +1,4 @@
-{.passL:"-lavformat -lavutil -lswscale -lavcodec".}
+{.passL:"-lavformat -lavutil -lswscale -lavcodec -lavfilter".}
 
 #[ import wrapper/libavutil/[dict,rational,opt,mathematics,imgutils,frame, pixfmt, avutil]
 export dict,rational,opt,mathematics,imgutils, frame, pixfmt,avutil

@@ -43,11 +43,16 @@ type
     handle*: ptr Avfiltergraph
   FilterGraph* = ref FilterGraphObj
 
+proc `destroy=`*(val:FilterGraph) =
+  if val.handle != nil:
+    avfilter_graph_free(val.handle.addr)  
+
 proc newFilterGraph*():FilterGraph =
   result = new FilterGraph
   result.handle =  avfilter_graph_alloc()
   if result.handle == nil:
     raise newException(ValueError, "failed to allocate FilterGraph")
+
 
 # avfilter_graph_create_filter(
 #                 buffersrc_ctx.addr, buffersrc.handle, "in".cstring,
