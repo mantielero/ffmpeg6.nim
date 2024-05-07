@@ -4,7 +4,7 @@ import ffmpeg6
 import std/os
 
 proc main =
-  var filename = "media/sample-5s.mp4"
+  let filename = "media/sample-5s.mp4"
   if paramCount() != 1:
     echo """usage: %s <input_file>
       example program to demonstrate the use of the libavformat metadata API."""
