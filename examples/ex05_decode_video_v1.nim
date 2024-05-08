@@ -284,7 +284,7 @@ const
   AV_NOPTS_VALUE:int64 = 0x80000000000# -92233720368547(valor mínimo que puede almacenarse)
 
 proc main =
-  let filename = "/home/jose/src/nimlang/ffmpeg.nim/examples/media/ROCKET.MPG"
+  let filename = "media/ROCKET.MPG"
   #let filename = "/home/jose/src/nimlang/ffmpeg.nim/examples/media/sample_640x360.mpeg"
   let outFilename = "prueba.pgm"
 
@@ -361,12 +361,7 @@ proc main =
 
       if pkt.size > 0:
         echo "new frame: ", n
-        decode(c, pkt, outFilename)
-        # pgmSave(frame.data[0], # data*: array[8'i64, ptr uint8]
-        #         frame.linesize[0].int, 
-        #         frame.width, 
-        #         frame.height, 
-        #         "frame.pgm")        
+        decode(c, pkt, outFilename)atEnd      
         n += 1
       elif f.atEnd:
         break

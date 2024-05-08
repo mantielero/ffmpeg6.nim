@@ -36,8 +36,8 @@ export avcodec
 import wrapperFuthark/libav
 export libav
 
-import lib/avutil/[dict, frame, image]
-export dict, frame, image
+import lib/avutil/[dict, frame, image, pgm, ppm]
+export dict, frame, image, pgm, ppm
 
 import lib/avcodec/[packet,codec, parser_context]
 export packet,codec,parser_context
