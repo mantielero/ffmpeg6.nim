@@ -47,3 +47,15 @@ proc scale*(scalingContext:SwsContext; srcImg,dstImg:ImageBuffer) =
                       tmpSrcData,  tmpSrcLinesize, 
                       0.cint, srcImg.size.height.cint, 
                       tmpDstData, tmpDstLinesize)
+
+proc scale*(srcImg:ImageBuffer;
+            size:tuple[width,height:int];
+            pixFmt:enumavpixelformat;
+            flags:int ): ImageBuffer =
+  var dstImg = newImageBuffer(size, pixFmt, 1)
+
+  var swsCtx = newScalingContext( srcImg.size, srcImg.pixFmt,
+                                  size, pixFmt,
+                                  flags )
+  scale(swsCtx, srcImg, dstImg)  
+  return dstImg

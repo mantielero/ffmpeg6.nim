@@ -6,6 +6,7 @@ type
     data*:array[4,ptr uint8]
     lineSize*:array[4, cint]
     size*:tuple[width,height:int]
+    pixFmt*:enumavpixelformat
     bufferSize*:int
   ImageBuffer* = ref ImageBufferObj
 
@@ -24,7 +25,7 @@ proc newImageBuffer*( size:tuple[width,height:int];
     raise newException(ValueError, "Could not allocate source image")
   result.bufferSize = ret.int
   result.size = size
-  echo ret
+  #echo ret
     # /* allocate source and destination image buffers */
     # if ((ret = av_image_alloc(src_data, src_linesize,
     #                           src_w, src_h, src_pix_fmt, 16)) < 0) {
@@ -33,6 +34,18 @@ proc newImageBuffer*( size:tuple[width,height:int];
     # }
 
 
+proc setY*(img:ImageBuffer; x,y:int; val:int) =
+  var lumi = cast[ptr UncheckedArray[uint8]](cast[int](img.data[0]) + y * img.linesize[0])
+  lumi[x] = val.uint8
+
+
+proc setCb*(img:ImageBuffer; x,y:int; val:int) =
+  var lumi = cast[ptr UncheckedArray[uint8]](cast[int](img.data[1]) + y * img.linesize[1])
+  lumi[x] = val.uint8
+
+proc setCr*(img:ImageBuffer; x,y:int; val:int) =
+  var lumi = cast[ptr UncheckedArray[uint8]](cast[int](img.data[2]) + y * img.linesize[2])
+  lumi[x] = val.uint8
 
 proc parseVideoSize*(val:string):tuple[width,height:int] =
   ## parse from "800x600" into a tuple: (width:800,heigth:600)
