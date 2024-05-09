@@ -12,21 +12,27 @@ ffplay -f s16le -ac 2 -ar 44100 media/audio.raw
 
 ]#
 import ffmpeg6
-import std/[streams, posix]
+import std/[streams, posix,strformat]
+import system
 
-# proc getFormatFromSampleFmt(sampleFmt:enumavsampleformat) =
-#   let sample_fmt_entries = @[ (AV_SAMPLE_FMT_U8, "u8", "u8"),
-#                               (AV_SAMPLE_FMT_S16, "s16be", "s16le"),
-#                               (AV_SAMPLE_FMT_S32, "s32be", "s32le"),                              
-#                               (AV_SAMPLE_FMT_FLT, "f32be", "f32le"),
-#                               (AV_SAMPLE_FMT_DBL, "f64be", "f64le")                                                            
-#                             ]
-#   for i in 0..<sample_fmt_entries.len:
-#     let entry = sample_fmt_entries[i]
-#     if entry[0] == sampleFmt:
-#       return AV_NE(entry[1], entry[2])
+proc getFormatFromSampleFmt(sampleFmt:enumavsampleformat):string =
+  let sample_fmt_entries = @[ (AV_SAMPLE_FMT_U8, "u8", "u8"),
+                              (AV_SAMPLE_FMT_S16, "s16be", "s16le"),
+                              (AV_SAMPLE_FMT_S16P, "s16be", "s16le"),
+                              (AV_SAMPLE_FMT_S32, "s32be", "s32le"),                              
+                              (AV_SAMPLE_FMT_FLT, "f32be", "f32le"),
+                              (AV_SAMPLE_FMT_DBL, "f64be", "f64le")                                                            
+                            ]
+  #echo sampleFmt  # AV_SAMPLE_FMT_S16P
+  for i in 0..<sample_fmt_entries.len:
+    let entry = sample_fmt_entries[i]
+    if entry[0] == sampleFmt:
+      if cpuEndian == littleEndian:
+        return entry[2]
+      else:
+        return entry[1]
   
-#   raise newException(ValueError, "sample format %s is not supported as output format") # av_get_sample_fmt_name(sample_fmt)
+  raise newException(ValueError, "sample format %s is not supported as output format") # av_get_sample_fmt_name(sample_fmt)
 
 
 proc main =
@@ -60,25 +66,15 @@ proc main =
   if av_sample_fmt_is_planar(samplingFormat) == 0:
     echo "Sampling format interleaved"
   elif av_sample_fmt_is_planar(samplingFormat) == 1:
-    echo "Sampling format planar"
+    var packed = av_get_sample_fmt_name(samplingFormat)
+    echo &"Sampling format planar: {packed}. This example will output the first channel only"
 
-#[
 
-    if (av_sample_fmt_is_planar(sfmt)) {
-        const char *packed = av_get_sample_fmt_name(sfmt);
-        printf("Warning: the sample format the decoder produced is planar "
-               "(%s). This example will output the first channel only.\n",
-               packed ? packed : "?");
-        sfmt = av_get_packed_sample_fmt(sfmt);
-    }
- 
-    n_channels = c->ch_layout.nb_channels;
-    if ((ret = get_format_from_sample_fmt(&fmt, sfmt)) < 0)
-        goto end;
- 
-    printf("Play the output audio file with the command:\n"
-           "ffplay -f %s -ac %d -ar %d %s\n",
-           fmt, n_channels, c->sample_rate,
-           outfilename);
-]#
+  var nChannels = c.handle.ch_layout.nb_channels
+  var sfmt = getFormatFromSampleFmt(samplingFormat)
+  #var sfmt = "Xx"
+  echo &"""Play the output audio file with the command:
+ffplay -f {sfmt} -ac {nChannels} -ar {c.handle.sample_rate} {outFileName}     
+"""
+
 main() 
