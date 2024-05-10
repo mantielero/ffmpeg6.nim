@@ -62,3 +62,4 @@ proc sendFrame*(frame:Frame; codecContext:CodecContext) =
   var ret = avcodec_send_frame(codecContext.handle, cast[ptr AvFrame](frame.handle))
   if ret < 0:
     raise newException(ValueError, "Error sending a frame for encoding")
+

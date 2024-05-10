@@ -152,6 +152,7 @@ proc main =
 
   #var tmpStreamMapping = cast[ptr UncheckedArray[int]](streamMapping)
   var stream_index = 0
+  var n = 0 
   for i in 0..<formatContext.streamsNumber:
     echo "Stream format #",i
     var tmpStreams = cast[ptr UncheckedArray[ptr AvStream]](formatContext.handle.streams)
@@ -159,28 +160,28 @@ proc main =
     var inCodecParameters = inStream.codecpar  # ok
     
     var ct = inCodecParameters.codec_type
-    if ct != AVMEDIA_TYPE_AUDIO and ct != AVMEDIA_TYPE_VIDEO and ct != AVMEDIA_TYPE_SUBTITLE:
-      #tmpStreamMapping[i] = -1
+    if ct in @[AVMEDIA_TYPE_AUDIO, AVMEDIA_TYPE_VIDEO, AVMEDIA_TYPE_SUBTITLE]:
+      streamMapping[n] = streamIndex
+      streamIndex += 1
+      # https://ffmpeg.org/doxygen/trunk/group__lavf__core.html#gaf2c94216a6a19144e86cac843a0a4409
+      # Add a new stream to a media file.
+      var outStream = avformat_new_stream(outFmtCtx.handle, nil)
+      if outStream == nil:
+        raise newException(ValueError, "failed allocating output stream")
+
+      var ret = avcodec_parameters_copy(outStream.codecpar, inCodecParameters)
+      if (ret < 0):
+        raise newException(ValueError, "Failed to copy codec parameters")
+
+      outStream.codecpar.codec_tag = 0
+
+      av_dump_format(outFmtCtx.handle, 0, outputFilename.cstring, 1)
+
+    else:
       streamMapping[i] = -1 # When not audio, video or subtitle.
       continue
-
-    streamMapping[i] = stream_index
-    stream_index += 1
-    # https://ffmpeg.org/doxygen/trunk/group__lavf__core.html#gaf2c94216a6a19144e86cac843a0a4409
-    # Add a new stream to a media file.
-    var outStream = avformat_new_stream(outFmtCtx.handle, nil)
-    if outStream == nil:
-      raise newException(ValueError, "failed allocating output stream")
-
-    var ret = avcodec_parameters_copy(outStream.codecpar, inCodecParameters)
-    if (ret < 0):
-      raise newException(ValueError, "Failed to copy codec parameters")
-
-    outStream.codecpar.codec_tag = 0
-
-    av_dump_format(outFmtCtx.handle, 0, outputFilename.cstring, 1)
-
-
+    
+    n += 1
   # echo outFormat.flags
   # echo AVFMT_NOFILE
   # echo outFormat.flags and AVFMT_NOFILE

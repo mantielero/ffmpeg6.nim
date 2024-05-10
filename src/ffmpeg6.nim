@@ -42,8 +42,8 @@ export dict, frame, image, pgm, ppm
 import lib/avcodec/[packet,codec, parser_context]
 export packet,codec,parser_context
 
-import lib/avformat/[avformat, formatcontext]
-export avformat, formatcontext
+import lib/avformat/[avformat, formatcontext, muxing, avio]
+export avformat, formatcontext, muxing, avio
 
 import lib/avfilter/[filter]
 export filter

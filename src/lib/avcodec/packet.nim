@@ -2,6 +2,7 @@
 import ../../wrapperFuthark/libav
 import parser_context, codec
 import ../avutil/frame
+import ../avformat/formatcontext
 import std/[streams,posix]
 
 const 
@@ -132,6 +133,13 @@ iterator getPackets2*(f:FileStream; parser: ParserContextRef; c:CodecContext;
 
 
 
+iterator getPackets*(fmtCtx:FormatContext): PacketRef =
+  let pkt = newPacket()
+  while true:  
+    var ret = av_read_frame(fmtCtx.handle, cast[ptr AvPacket](pkt.handle))
+    if ret < 0:
+      break
+    yield pkt
 
 proc decode*(pkt:PacketRef; 
              decCtx:CodecContext): Frame =
@@ -200,3 +208,15 @@ proc decode2*(frame: Frame; decCtx: CodecContext; f:FileStream) =
     for ch in 0..<decCtx.handle.ch_layout.nb_channels:
       f.writeData(cast[ptr uint8](cast[int](frame.handle.data[ch]) + data_size*i), data_size )
       #echo cast[ptr uint8](cast[int](decodedFrame.data[ch]) + data_size*i)[]  
+
+
+proc packetRescaleTS*(pkt:PacketRef; inStream,outStream:formatcontext.Stream) =
+  # copy packet
+  # https://ffmpeg.org/doxygen/trunk/group__lavc__packet.html#gae5c86e4d93f6e7aa62ef2c60763ea67e
+  # av_packet_rescale_ts(pkt, in_stream->time_base, out_stream->time_base);
+  av_packet_rescale_ts(cast[ptr AvPacket](pkt.handle), 
+                        inStream.handle.time_base, outStream.handle.time_base);
+
+
+proc getStream*(fmtCtx:FormatContext; pkt:PacketRef):formatcontext.Stream =
+  fmtCtx.getStream(pkt.handle.stream_index)
