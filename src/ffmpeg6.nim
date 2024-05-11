@@ -36,21 +36,26 @@ export avcodec
 import wrapperFuthark/libav
 export libav
 
-import lib/avutil/[dict, frame, image, pgm, ppm]
-export dict, frame, image, pgm, ppm
+# import lib/avutil/[dict, frame, image, pgm, ppm]
+# export dict, frame, image, pgm, ppm
 
-import lib/avcodec/[packet,codec, parser_context]
-export packet,codec,parser_context
+# import lib/avcodec/[packet,codec, parser_context]
+# export packet,codec,parser_context
 
-import lib/avformat/[avformat, formatcontext, muxing, avio]
-export avformat, formatcontext, muxing, avio
+# import lib/avformat/[avformat, formatcontext, muxing, avio]
+# export avformat, formatcontext, muxing, avio
 
-import lib/avfilter/[filter]
-export filter
+# import lib/avfilter/[filter]
+# export filter
 
-import lib/swscale/[swscale]
-export swscale
+# import lib/swscale/[swscale]
+# export swscale
 
+import lib/ffmpeg
+export ffmpeg
+
+import vs/vs
+export vs
 # template AV_CHANNEL_LAYOUT_MASK*(nb, m: untyped): untyped =
 #   [AV_CHANNEL_ORDER_NATIVE.cint, nb.cint, m.cint, nil.cint]
 

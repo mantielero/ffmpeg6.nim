@@ -2,7 +2,7 @@
 import ../../wrapperFuthark/libav
 import parser_context, codec
 import ../avutil/frame
-import ../avformat/formatcontext
+import ../avformat/[formatcontext,stream]
 import std/[streams,posix]
 
 const 
@@ -143,10 +143,14 @@ iterator getPackets*(fmtCtx:FormatContext): PacketRef =
 
 proc decode*(pkt:PacketRef; 
              decCtx:CodecContext): Frame =
+  ## decode the packet with the decoder
+  ## if the packet is not in the addecuate codec, it will fail
   # https://ffmpeg.org/doxygen/trunk/group__lavc__decoding.html#ga58bc4bf1e0ac59e27362597e467efff3
   # Supply raw packet data as input to a decoder.
   var ret = avcodec_send_packet(decCtx.handle, pkt.handle)
+  #echo ret
   if ret < 0:
+    #discard
     raise newException(ValueError, "error sending a packet for decoding")
   #echo "Receiving frame"
 
@@ -155,12 +159,13 @@ proc decode*(pkt:PacketRef;
   while ret >= 0:
     ret = avcodec_receive_frame(decCtx.handle, frame.handle)
     if ret == -EAGAIN or ret == AVERROR_EOF:
-      #break
-      return frame
+      break
+      #return frame
     elif ret < 0:
       raise newException(ValueError, "Error during decoding")
 
-    return frame
+    if frame.handle.nbsamples > 0 or frame.handle.width > 0:
+      return frame
 
 
 #[
@@ -210,7 +215,7 @@ proc decode2*(frame: Frame; decCtx: CodecContext; f:FileStream) =
       #echo cast[ptr uint8](cast[int](decodedFrame.data[ch]) + data_size*i)[]  
 
 
-proc packetRescaleTS*(pkt:PacketRef; inStream,outStream:formatcontext.Stream) =
+proc packetRescaleTS*(pkt:PacketRef; inStream,outStream:StreamRef) =
   # copy packet
   # https://ffmpeg.org/doxygen/trunk/group__lavc__packet.html#gae5c86e4d93f6e7aa62ef2c60763ea67e
   # av_packet_rescale_ts(pkt, in_stream->time_base, out_stream->time_base);
@@ -218,5 +223,5 @@ proc packetRescaleTS*(pkt:PacketRef; inStream,outStream:formatcontext.Stream) =
                         inStream.handle.time_base, outStream.handle.time_base);
 
 
-proc getStream*(fmtCtx:FormatContext; pkt:PacketRef):formatcontext.Stream =
+proc getStream*(fmtCtx:FormatContext; pkt:PacketRef):StreamRef =
   fmtCtx.getStream(pkt.handle.stream_index)

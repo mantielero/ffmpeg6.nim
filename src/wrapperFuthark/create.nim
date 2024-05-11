@@ -43,3 +43,6 @@ importc:
   
 # FIX
 # sed -i 's/structavchannellayout_u_t\ {/structavchannellayout_u_t\*\ {/' libav.nim 
+
+
+# c2nim --header libavutil/error.h

@@ -4,6 +4,7 @@ import ../../wrapperFuthark/libav
 type
   AvFrameObj* = object
     handle*:ptr AvFrame
+    index*:int = -1
   Frame* = ref AvFrameObj
 
 proc `destroy=`*(val:Frame) =

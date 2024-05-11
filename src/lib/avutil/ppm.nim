@@ -37,7 +37,8 @@ proc savePpm*(filename:string;
 
   f.close
 
-
+proc savePpm*(frame:Frame; filename:string) =
+  savePpm(filename, frame) 
 
   # https://learn.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering
   # Chroma subsampling
