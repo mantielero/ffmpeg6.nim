@@ -10,16 +10,6 @@ import std/[streams, strformat, posix,os, terminal]
 ]#
 
 
-#[
-static AVFormatContext *fmt_ctx;
-static AVCodecContext *dec_ctx;
-AVFilterContext *buffersink_ctx;
-AVFilterContext *buffersrc_ctx;
-AVFilterGraph *filter_graph;
-static int video_stream_index = -1;
-static int64_t last_pts = AV_NOPTS_VALUE;
-]#
-
 const
   AV_OPT_SEARCH_CHILDREN  = (1 shl 0) # #define AV_OPT_SEARCH_CHILDREN   (1 << 0)
   AVERROR_EOF = -541478725
