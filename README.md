@@ -9,3 +9,5 @@ https://github.com/leandromoreira/ffmpeg-libav-tutorial?tab=readme-ov-file#ffmpe
 ## Links
 ### Demo Media
 https://sembiance.com/fileFormatSamples/video/mpeg1/
+### Inspiration
+https://pyav.basswood-io.com/docs/stable/cookbook/basics.html
