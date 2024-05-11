@@ -212,26 +212,3 @@ proc main =
 
 main()
 
-#[
-int main(int argc, char **argv)
-{
-
-    const AVCodec *codec;
-    AVCodecContext *c= NULL;
-    AVFrame *frame;
-    AVPacket *pkt;
-    int i, j, k, ret;
-    FILE *f;
-    uint16_t *samples;
-    float t, tincr;
-
-
-
-
-
-
-
-
-}
-
-]#
