@@ -1079,7 +1079,7 @@ type
     opaque*: pointer
 
   Avchannelcustom_520094086 = structavchannelcustom_520094085 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:275:3
-  structavchannellayout_u_t {.union, bycopy.} = object
+  structavchannellayout_u_t* {.union, bycopy.} = object
     mask*: uint64
     map*: ptr Avchannelcustom_520094087
 
