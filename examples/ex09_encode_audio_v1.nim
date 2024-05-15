@@ -5,15 +5,8 @@
 import ffmpeg6
 import std/[os,streams,math, posix, strformat]
 
-const
-  AVERROR_EOF = -541478725
-
-
-#FIXME-----------
-# type
-#   Mm {.union, bycopy.} = object
-#     mask*: uint64
-#     map*: ptr structavchannelcustom  
+# const
+#   AVERROR_EOF = -541478725
     
 let  
   AV_CH_FRONT_LEFT* = (1'u64 shl AV_CHAN_FRONT_LEFT.uint64)
@@ -23,21 +16,6 @@ let
                                     nbchannels:2,
                                     u:AV_CH_LAYOUT_STEREO, 
                                     opaque:nil)
-#--------------------
-#[
-  structavchannellayout_u_t {.union, bycopy.} = object
-    mask*: uint64
-    map*: ptr Avchannelcustom_520094135
-]#
-
-#[
-  structavchannellayout_520094143 {.pure, inheritable, bycopy.} = object
-    order*: enumavchannelorder_520094129 ## Generated based on /home/jose/src/nimlang/ffmpeg.nim/src/FFmpeg-release-6.1/libavutil/channel_layout.h:307:16
-    nbchannels*: cint
-    u*: structavchannellayout_u_t
-    opaque*: pointer
-]#
-
 
 
 proc checkSampleFmt(codec:AvCodecRef; sampleFmt: enumavsampleformat): bool =
