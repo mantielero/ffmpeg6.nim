@@ -5,9 +5,6 @@
 import ffmpeg6
 import std/[os,streams,math, posix, strformat]
 
-# const
-#   AVERROR_EOF = -541478725
-    
 let  
   AV_CH_FRONT_LEFT* = (1'u64 shl AV_CHAN_FRONT_LEFT.uint64)
   AV_CH_FRONT_RIGHT* = (1'u64 shl AV_CHAN_FRONT_RIGHT.uint64)
