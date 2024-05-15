@@ -225,3 +225,46 @@ proc packetRescaleTS*(pkt:PacketRef; inStream,outStream:StreamRef) =
 
 proc getStream*(fmtCtx:FormatContext; pkt:PacketRef):StreamRef =
   fmtCtx.getStream(pkt.handle.stream_index)
+
+
+# proc encode*(ctx:CodecContext;
+#             frame:Frame; 
+#             pkt:PacketRef;
+#             outFile:FileStream) =
+#     # send the frame for encoding
+#     sendFrame(frame, ctx)
+
+#     # read all the available output packets (in general there may be any
+#     # number of them
+#     while true:
+#       var ret = avcodec_receive_packet(ctx.handle, pkt.handle)
+
+#       if ret == -EAGAIN or ret == AVERROR_EOF:
+#         break
+#       elif ret < 0:
+#         raise newException(ValueError, "error during encoding")
+
+#       outFile.writeData(pkt.handle.data, pkt.handle.size)
+#       av_packet_unref(pkt.handle)
+
+# Encoding
+iterator encode*(ctx:CodecContext;
+                     frame:Frame):PacketRef =
+  ## encode: given a frame, get a packet
+  # send the frame for encoding
+  let pkt = newPacket()    
+  sendFrame(frame, ctx)
+
+  # read all the available output packets (in general there may be any
+  # number of them
+  while true:
+    var ret = avcodec_receive_packet(ctx.handle, pkt.handle)
+
+    if ret == -EAGAIN or ret == AVERROR_EOF:
+      break
+    elif ret < 0:
+      raise newException(ValueError, "error during encoding")
+    if pkt.handle.size > 0:
+      yield pkt
+    #outFile.writeData(pkt.handle.data, pkt.handle.size)
+    #av_packet_unref(pkt.handle)

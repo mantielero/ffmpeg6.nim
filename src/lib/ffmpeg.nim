@@ -7,8 +7,8 @@ export filter
 import avformat/[avformat, avio, formatcontext, muxing,stream]
 export avformat, avio, formatcontext, muxing, stream
 
-import avutil/[dict,frame,image,pgm,ppm]
-export dict,frame,image,pgm,ppm
+import avutil/[audio,dict,frame,image,pgm,ppm]
+export audio,dict,frame,image,pgm,ppm
 
 import swscale/[swscale]
 export swscale

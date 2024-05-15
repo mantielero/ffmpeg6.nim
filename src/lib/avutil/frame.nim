@@ -5,6 +5,7 @@ type
   AvFrameObj* = object
     handle*:ptr AvFrame
     index*:int = -1
+
   Frame* = ref AvFrameObj
 
 proc `destroy=`*(val:Frame) =
@@ -25,5 +26,12 @@ proc getBuffer*(frame:Frame) =
   if ret < 0:
     raise newException(ValueError, "Could not allocate frame data")    
 
+proc makeWritable*(frame:Frame) =
+  var ret = av_frame_make_writable(frame.handle)
+  if (ret < 0):
+    raise newException(ValueError, "failed making the frame writable")
+    #quit(QuitFailure)
 
 
+# proc data0*(frame:Frame) =
+#   var data0 = cast[ptr UncheckedArray[uint16]](frame.handle.data[0])
